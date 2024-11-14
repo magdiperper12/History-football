@@ -11,7 +11,7 @@ import {
 	FaStore,
 	FaSignOutAlt,
 } from 'react-icons/fa';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image'; // Import StaticImageData
 import image from '../../image/salah.png';
 import image2 from '../../image/logo2-remove.png';
 
@@ -30,7 +30,7 @@ const menuItems: MenuItem[] = [
 ];
 
 type Club = {
-	imgSrc: string;
+	imgSrc: StaticImageData; // Change type to StaticImageData
 	name: string;
 };
 
@@ -40,7 +40,7 @@ const clubs: Club[] = [
 ];
 
 type Player = {
-	imgSrc: string;
+	imgSrc: StaticImageData; // Change type to StaticImageData
 	name: string;
 };
 
