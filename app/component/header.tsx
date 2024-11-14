@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { FaSearch, FaCog, FaBars } from 'react-icons/fa';
+import { FaSearch, FaCog, FaBars, FaSkyatlas } from 'react-icons/fa';
 import image from '../../image/logo-r.png';
 import Image from 'next/image';
-import AImessage from '../AI-massage';
+import { FaFaceDizzy, FaFaceSmile } from 'react-icons/fa6';
+import { CiSettings } from 'react-icons/ci';
 
 // Define types for the navbar data structure
 interface NavbarLink {
@@ -33,6 +34,7 @@ const navbarData = {
 	icons: [
 		{ id: 'search', icon: <FaSearch size={20} /> },
 		{ id: 'settings', icon: <FaCog size={20} /> },
+		{ id: 'profile', icon: <FaFaceSmile size={20} /> },
 	] as NavbarIcon[],
 	languages: [
 		{ value: 'en', label: 'English' },
@@ -83,13 +85,13 @@ const Navbar = () => {
 					</div>
 				</Link>
 
-				{/* Navbar Links for Desktop */}
 				<nav className='hidden md:flex gap-5'>
-					{navbarData.links.map((link) => (
+					{navbarData.links.map((link, index) => (
 						<Link
 							key={link.text}
 							href={link.href}
-							className='text-sm text-gray-700 dark:text-white hover:text-[#6c83ff] transition-all duration-200'>
+							className={`text-sm text-gray-700 dark:text-white hover:text-[#6c83ff] transition-opacity duration-700 ease-in-out opacity-0 animate-fadeIn`}
+							style={{ animationDelay: `${250 * index}ms` }}>
 							{link.text}
 						</Link>
 					))}
@@ -174,6 +176,61 @@ const Navbar = () => {
 												className={`w-6 h-6 rounded-full ${
 													isDarkMode ? 'bg-blue-200' : 'bg-blue-950'
 												}`}></div>
+										</div>
+									</div>
+								)}
+
+							{id === 'profile' &&
+								renderToggleMenu(
+									id,
+									<div className='absolute flex justify-center items-center flex-col end-5 w-44 px-4 py-2 rounded-md bg-blue-100 dark:bg-blue-950 text-blue-950 dark:text-white my-2 shadow-lg'>
+										<label>your name</label>
+										<ul className=' w-full mt-2'>
+											{navbarData.languages.map((lang) => (
+												<li key={lang.value}>
+													<button
+														type='button'
+														onClick={() => handleLanguageChange(lang.value)}
+														className='inline-flex w-full items-center  text-sm  outline-none border-none'>
+														<div className='inline-flex w-full px-4 py-2 my-1 items-center bg-blue-200 dark:bg-blue-400 dark:text-gray-900 dark:text-gray-100 hover:bg-blue-300 dark:hover:text-blue-50 dark:hover:bg-blue-800 rounded-md'>
+															<svg
+																aria-hidden='true'
+																className='h-3.5 w-3.5 rounded-full me-2'
+																xmlns='http://www.w3.org/2000/svg'
+																id='flag-icon-css-de'
+																viewBox='0 0 512 512'>
+																<path
+																	fill='#ffce00'
+																	d='M0 341.3h512V512H0z'
+																/>
+																<path d='M0 0h512v170.7H0z' />
+																<path
+																	fill='#d00'
+																	d='M0 170.7h512v170.6H0z'
+																/>
+															</svg>
+															{lang.label}
+														</div>
+													</button>
+												</li>
+											))}
+										</ul>
+
+										{/* Dark Mode Toggle at the Bottom */}
+										<div
+											className={`mt-4 ${
+												isDarkMode ? 'bg-blue-500' : 'bg-blue-600'
+											} text-white p-3 rounded-full shadow-lg flex items-center gap-2 cursor-pointer`}
+											onClick={() => setIsDarkMode(!isDarkMode)}>
+											<span>{'Setting '}</span>
+											<div
+												className={`w-6 h-6 rounded-full flex justify-center items-center ${
+													isDarkMode
+														? 'bg-blue-200 text-blue-900'
+														: 'bg-blue-950'
+												}`}>
+												<CiSettings />
+											</div>
 										</div>
 									</div>
 								)}

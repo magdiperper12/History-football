@@ -12,6 +12,15 @@ const config: Config = {
 				background: 'var(--background)',
 				foreground: 'var(--foreground)',
 			},
+			animation: {
+				fadeIn: 'fadeIn 0.7s ease-in-out forwards',
+			},
+			keyframes: {
+				fadeIn: {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
+				},
+			},
 		},
 	},
 	darkMode: 'class', // Enable dark mode using class-based approach

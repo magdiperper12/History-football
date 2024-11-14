@@ -1,6 +1,7 @@
 import React from 'react';
 import image from '../../image/salah.png';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Item {
 	title: string;
@@ -22,7 +23,7 @@ const RightSidebar: React.FC = () => {
 			className:
 				'bg-blue-50 py-5 rounded-lg bg-white dark:bg-gray-800 text-slate-600 dark:text-gray-200',
 			nestedName:
-				'p-4 dark:bg-blue-400 bg-blue-100 rounded-lg p-4 text-blue-950 dark:text-blue-50',
+				'p-4 dark:bg-blue-400 bg-blue-100 rounded-lg w-full text-center p-4 text-blue-950 dark:text-blue-50',
 			showImage: true, // Indicates that this section should display an image
 			items: [
 				{
@@ -79,16 +80,22 @@ const RightSidebar: React.FC = () => {
 							<h3 className='font-bold m-auto'>{item.title}</h3>
 							{/* Display image only in the first section and make it rounded-full */}
 							{section.showImage && idx === 0 && (
-								<Image
-									src={image}
-									alt='player'
-									width={100}
-									height={100}
-									className='rounded-full m-auto'
-								/>
+								<div className='w-full text-center gap-2'>
+									<Image
+										src={image}
+										alt='player'
+										width={100}
+										height={100}
+										className='rounded-full m-auto'
+									/>
+									<Link
+										href={'/player'}
+										className='text-lg text-gray-500 dark:text-gray-600  m-2 pointer'>
+										viw-profile
+									</Link>
+								</div>
 							)}
-							<p>{item.description}🚓🚗🛴</p>
-							<p>{item.description} 😂❤🧡😊</p>
+							<p className=''>{item.description}</p>
 						</div>
 					))}
 				</div>
