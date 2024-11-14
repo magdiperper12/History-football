@@ -7,30 +7,46 @@ import image from '../../image/logo-r.png';
 import Image from 'next/image';
 import AImessage from '../AI-massage';
 
+// Define types for the navbar data structure
+interface NavbarLink {
+	text: string;
+	href: string;
+}
+
+interface NavbarIcon {
+	id: string;
+	icon: JSX.Element;
+}
+
+interface NavbarLanguage {
+	value: string;
+	label: string;
+}
+
 const navbarData = {
 	links: [
 		{ text: 'Home', href: '/' },
 		{ text: 'Live match', href: '/live-match' },
 		{ text: 'Trophies', href: '/trophies' },
-		{ text: 'History', href: '/hystory' },
-	],
+		{ text: 'History', href: '/history' }, // Corrected the typo 'hystory' to 'history'
+	] as NavbarLink[],
 	icons: [
 		{ id: 'search', icon: <FaSearch size={20} /> },
 		{ id: 'settings', icon: <FaCog size={20} /> },
-	],
+	] as NavbarIcon[],
 	languages: [
 		{ value: 'en', label: 'English' },
 		{ value: 'es', label: 'Spanish' },
 		{ value: 'ar', label: 'Arabic' },
-	],
+	] as NavbarLanguage[],
 };
 
 const Navbar = () => {
-	const [activeToggle, setActiveToggle] = useState(null);
-	const [isDarkMode, setIsDarkMode] = useState(false);
-	const [isRTL, setIsRTL] = useState(false);
+	const [activeToggle, setActiveToggle] = useState<string | null>(null);
+	const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+	const [isRTL, setIsRTL] = useState<boolean>(false);
 
-	const handleToggle = (toggleName) => {
+	const handleToggle = (toggleName: string) => {
 		setActiveToggle((prev) => (prev === toggleName ? null : toggleName));
 	};
 
@@ -40,19 +56,19 @@ const Navbar = () => {
 	}, [isDarkMode]);
 
 	// Toggle RTL layout based on selected language
-	const handleLanguageChange = (langValue) => {
+	const handleLanguageChange = (langValue: string) => {
 		const isArabic = langValue === 'ar';
 		setIsRTL(isArabic);
 		document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
 	};
 
-	const renderToggleMenu = (id, content) =>
+	const renderToggleMenu = (id: string, content: JSX.Element) =>
 		activeToggle === id && <div>{content}</div>;
 
 	return (
 		<header className='fixed top-0 w-full z-50 shadow-lg bg-white transition-colors duration-300 dark:bg-gray-900 shadow-md dark:shadow-gray-800 shadow-gray-200 pb-1'>
 			<div
-				className={`container mx-auto flex justify-between items-center px-6 w-full `}>
+				className={`container mx-auto flex justify-between items-center px-6 w-full`}>
 				{/* Logo */}
 				<Link
 					href='/'
@@ -102,7 +118,7 @@ const Navbar = () => {
 								renderToggleMenu(
 									id,
 									<div className='w-52 flex gap-1  items-center justify-around px-3 py-2 rounded-md bg-blue-200 text-blue-600 dark:bg-blue-700 text-blue-950 dark:text-white outline-none my-2 absolute end-5'>
-										<FaSearch className='' />
+										<FaSearch />
 										<input
 											className='w-full outline-none	bg-blue-200 dark:bg-blue-700 '
 											type='text'
@@ -139,7 +155,7 @@ const Navbar = () => {
 																	fill='#d00'
 																	d='M0 170.7h512v170.6H0z'
 																/>
-															</svg>{' '}
+															</svg>
 															{lang.label}
 														</div>
 													</button>
@@ -155,7 +171,7 @@ const Navbar = () => {
 											onClick={() => setIsDarkMode(!isDarkMode)}>
 											<span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
 											<div
-												className={`w-6  h-6 rounded-full ${
+												className={`w-6 h-6 rounded-full ${
 													isDarkMode ? 'bg-blue-200' : 'bg-blue-950'
 												}`}></div>
 										</div>

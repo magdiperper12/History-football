@@ -1,12 +1,31 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
-function Footer() {
+// Define the types for the footer items and social links
+interface SocialLink {
+	id: number;
+	name: string;
+	icon: JSX.Element;
+	url: string;
+}
+
+interface FooterItem {
+	name: string;
+	url: string;
+}
+
+interface FooterSection {
+	id: number;
+	title: string;
+	items: FooterItem[];
+}
+
+const Footer: React.FC = () => {
 	// Define the social media links
-	const socialLinks = [
+	const socialLinks: SocialLink[] = [
 		{
 			id: 1,
 			name: 'Twitter',
@@ -28,7 +47,7 @@ function Footer() {
 	];
 
 	// Define the footer content structure
-	const footerLinks = [
+	const footerLinks: FooterSection[] = [
 		{
 			id: 1,
 			title: 'Company',
@@ -105,6 +124,6 @@ function Footer() {
 			</footer>
 		</div>
 	);
-}
+};
 
 export default Footer;

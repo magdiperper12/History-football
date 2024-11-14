@@ -15,7 +15,12 @@ import Image from 'next/image';
 import image from '../../image/salah.png';
 import image2 from '../../image/logo2-remove.png';
 
-const menuItems = [
+type MenuItem = {
+	icon: React.ReactNode;
+	label: string;
+};
+
+const menuItems: MenuItem[] = [
 	{ icon: <FaBell />, label: 'Notifications' },
 	{ icon: <FaTachometerAlt />, label: 'Dashboard' },
 	{ icon: <FaFootballBall />, label: 'Live Match' },
@@ -24,12 +29,22 @@ const menuItems = [
 	{ icon: <FaStore />, label: 'Shop' },
 ];
 
-const clubs = [
+type Club = {
+	imgSrc: string;
+	name: string;
+};
+
+const clubs: Club[] = [
 	{ imgSrc: image, name: 'Club Name' },
 	{ imgSrc: image2, name: 'Another Club' },
 ];
 
-const players = [
+type Player = {
+	imgSrc: string;
+	name: string;
+};
+
+const players: Player[] = [
 	{ imgSrc: image, name: 'Salah' },
 	{ imgSrc: image2, name: 'Lionel Messi' },
 ];
@@ -46,7 +61,13 @@ const SidebarSection = ({ title, children }: SidebarSectionProps) => (
 	</div>
 );
 
-const SidebarButton = ({ icon, label, onClick }) => (
+type SidebarButtonProps = {
+	icon: React.ReactNode;
+	label: string;
+	onClick: () => void;
+};
+
+const SidebarButton = ({ icon, label, onClick }: SidebarButtonProps) => (
 	<button
 		className='flex items-center justify-center space-x-2 p-2 rounded hover:bg-opacity-80 transition-colors'
 		onClick={onClick}>
@@ -56,11 +77,11 @@ const SidebarButton = ({ icon, label, onClick }) => (
 );
 
 const LeftSidebar = () => {
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 	const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
 	return (
-		<div className='md:w-1/5 p-4 rounded-lg bg-white dark:bg-gray-800 text-slate-600  dark:text-gray-200'>
+		<div className='md:w-1/5 p-4 rounded-lg bg-white dark:bg-gray-800 text-slate-600 dark:text-gray-200'>
 			{/* Toggle Button for Small Screens */}
 			<button
 				className='md:hidden mb-4 p-2 bg-blue-600 text-white rounded'
@@ -88,7 +109,7 @@ const LeftSidebar = () => {
 							key={index}
 							className='flex items-center space-x-3 text-blue-500 dark:text-blue-400'>
 							{item.icon}
-							<span className='text-slate-600  dark:text-gray-200'>
+							<span className='text-slate-600 dark:text-gray-200'>
 								{item.label}
 							</span>
 						</div>
