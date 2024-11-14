@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 import {
 	FaBell,
 	FaComments,
@@ -34,7 +34,12 @@ const players = [
 	{ imgSrc: image2, name: 'Lionel Messi' },
 ];
 
-const SidebarSection = ({ title, children }) => (
+type SidebarSectionProps = {
+	title: string;
+	children: ReactNode; // Accepts any valid React children
+};
+
+const SidebarSection = ({ title, children }: SidebarSectionProps) => (
 	<div className='space-y-4'>
 		<h2 className='text-lg font-semibold'>{title}</h2>
 		{children}
