@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import image from '../../image/salah.png'; // Add appropriate image path
+import image from '../image/salah.png'; // Add appropriate image path
 
 interface Item {
 	title: string;
