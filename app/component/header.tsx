@@ -28,8 +28,9 @@ const navbarData = {
 	links: [
 		{ text: 'Home', href: '/' },
 		{ text: 'Live match', href: '/live-match' },
-		{ text: 'Trophies', href: '/trophies' },
-		{ text: 'History', href: '/history' }, // Corrected the typo 'hystory' to 'history'
+		{ text: 'Player', href: '/trophies' },
+		{ text: 'History', href: '/history' },
+		{ text: 'Table', href: '/trophies/jadwal' }, // Corrected the typo 'hystory' to 'history'
 	] as NavbarLink[],
 	icons: [
 		{ id: 'search', icon: <FaSearch size={20} /> },
