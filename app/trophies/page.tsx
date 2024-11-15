@@ -6,13 +6,18 @@ import { FaSearch } from 'react-icons/fa';
 import image from '../image/salah.png';
 import Link from 'next/link';
 
+interface User {
+	id: number;
+	name: string;
+}
+
 export default async function Trophies() {
-	async function gitleage() {
+	async function gitleage(): Promise<User[]> {
 		const primer = await fetch('https://jsonplaceholder.typicode.com/users');
-		const data = await primer.json();
+		const data: User[] = await primer.json();
 		return data;
 	}
-	const dataphoto = await gitleage();
+	const dataphoto: User[] = await gitleage();
 
 	return (
 		<div className='min-h-screen flex flex-col justify-center items-center bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-200 p-4'>
@@ -30,7 +35,7 @@ export default async function Trophies() {
 
 			{/* Trophies Grid */}
 			<div className='w-full max-w-screen-md grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-				{dataphoto.map((item) => (
+				{dataphoto.map((item: User) => (
 					<Link
 						href={`/trophies/${item.id}`} // Properly encode spaces and special characters
 						key={item.id}
