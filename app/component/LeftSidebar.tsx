@@ -24,8 +24,8 @@ const menuItems: MenuItem[] = [
 	{ icon: <FaChartLine />, label: 'Standings' },
 	{ icon: <FaStore />, label: 'Shop' },
 ];
+type Club = { imgSrc?: StaticImageData; name: string; logo?: string };
 
-type Club = { imgSrc: StaticImageData; name: string };
 const clubs: Club[] = [
 	{ imgSrc: image, name: 'Club Name' },
 	{ imgSrc: image2, name: 'Another Club' },
@@ -149,7 +149,7 @@ const LeftSidebar = () => {
 							key={index}
 							className='flex items-center space-x-3'>
 							<Image
-								src={club.imgSrc}
+								src={club.imgSrc || image} // Use fallback image
 								alt={club.name}
 								width={24}
 								height={24}

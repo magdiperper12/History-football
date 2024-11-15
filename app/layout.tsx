@@ -32,14 +32,14 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body
-				className={`${geistSans.variable} ${geistMono.variable}text-white dark:text-blue-950   bg-blue-50 dark:bg-blue-950 `}>
+				className={`bg-gradient-to-r from-blue-200 via-gray-50 to-gray-200 dark:from-blue-900 dark:via-gray-900 dark:to-gray-800  `}>
 				<Navbar />
 				<div className=' m-auto container '>
 					{/* Navbar */}
 
 					{/* Page Content */}
 
-					<div className='flex min-h-screen relative pt-24 flex-col lg:flex-row  mx-auto bg-blue-50 dark:bg-blue-950 text-blue-500 dark:text-blue-100 w-full'>
+					<div className='flex min-h-screen relative pt-20 flex-col lg:flex-row  mx-auto  text-blue-500 dark:text-blue-100 w-full'>
 						{/* Left Sidebar */}
 						<LeftSidebar />
 
