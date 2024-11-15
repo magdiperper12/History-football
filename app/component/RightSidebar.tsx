@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../../image/salah.png';
+import image from '../image/salah.png';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -23,7 +23,7 @@ const RightSidebar: React.FC = () => {
 			className:
 				'bg-blue-50 py-5 rounded-lg bg-white dark:bg-gray-800 text-slate-600 dark:text-gray-200',
 			nestedName:
-				'p-4 dark:bg-blue-400 bg-blue-100 rounded-lg w-full text-center p-4 text-blue-950 dark:text-blue-50',
+				'p-4 dark:bg-blue-950 bg-blue-100 rounded-lg w-full text-center p-4 text-blue-950 dark:text-blue-100',
 			showImage: true, // Indicates that this section should display an image
 			items: [
 				{
@@ -37,7 +37,7 @@ const RightSidebar: React.FC = () => {
 			className:
 				'py-5 rounded-lg bg-white dark:bg-gray-800 text-slate-600 dark:text-gray-200',
 			nestedName:
-				'p-4 bg-blue-50 dark:bg-blue-800 rounded-lg p-4 text-blue-950 dark:text-blue-100',
+				'p-4 bg-blue-50 dark:bg-blue-900 rounded-lg p-4 text-blue-950 dark:text-blue-100',
 			showImage: false, // No image for this section
 			items: [
 				{
@@ -62,25 +62,27 @@ const RightSidebar: React.FC = () => {
 	];
 
 	return (
-		<div className='w-full md:w-1/5 p-3 rounded-lg bg-white dark:bg-gray-800 text-slate-600 dark:text-gray-200'>
+		<div className='w-full lg:w-1/5 p-3 rounded-lg bg-white dark:bg-gray-800 text-slate-600 dark:text-gray-200'>
 			{sections.map((section, index) => (
 				<div
 					key={index}
-					className={`space-y-4 ${section.className} ${
+					className={`space-y-5 ${section.className} ${
 						index === 0 ? 'text-slate-600 dark:text-slate-200 my-3' : ''
 					}`}>
-					<h2 className='text-sm m-1 flex justify-center items-center w-full relative'>
-						<span className='w-2 h-3 bg-blue-500 dark:bg-blue-50 absolute start-1'></span>
+					<h2 className='text-sm m-1 flex justify-center items-center w-full relative '>
+						<span className='w-2 h-3 bg-blue-500 dark:bg-blue-300 absolute start-1'></span>
 						<span className='absolute start-4'> {section.title}</span>
 					</h2>
 					{section.items.map((item, idx) => (
 						<div
 							key={idx}
 							className={`${section.nestedName}`}>
-							<h3 className='font-bold m-auto'>{item.title}</h3>
+							<h3 className='font-bold m-auto py-1 text-blue-900 dark:text-blue-200'>
+								{item.title}
+							</h3>
 							{/* Display image only in the first section and make it rounded-full */}
 							{section.showImage && idx === 0 && (
-								<div className='w-full text-center gap-2'>
+								<div className='w-full text-center flex flex-col gap-3'>
 									<Image
 										src={image}
 										alt='player'
@@ -90,12 +92,14 @@ const RightSidebar: React.FC = () => {
 									/>
 									<Link
 										href={'/player'}
-										className='text-lg text-gray-500 dark:text-gray-600  m-2 pointer'>
-										viw-profile
+										className='text-lg text-blue-500 dark:text-blue-300   pointer'>
+										View profile
 									</Link>
 								</div>
 							)}
-							<p className=''>{item.description}</p>
+							<p className=' text-blue-950 dark:text-blue-50'>
+								{item.description}
+							</p>
 						</div>
 					))}
 				</div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import image from '../../image/salah.png';
+import image from '../image/salah.png';
 
 // Define the types for clubs and match data
 interface Club {
@@ -52,15 +52,15 @@ const Container: React.FC = () => {
 			{/* Football Match Results */}
 			<div>
 				<h2 className='text-2xl font-semibold m-4 flex justify-center'>
-					محدش مهتم يسمع قصتك غير لما توصل 🏍
+					محدش مهتم يسمع قصتك غير لما توصل 🚓🚲🛵🏍
 				</h2>
 				<div className='flex flex-col w-full justify-center gap-5'>
 					{matches.map((match, index) => (
 						<div
 							key={index}
-							className='flex items-center justify-between bg-blue-100 dark:bg-gray-800 rounded-full shadow-md w-full'>
+							className='flex items-center justify-between bg-blue-100 dark:bg-gray-600 rounded-full shadow-md w-full'>
 							{/* Club A */}
-							<div className='flex items-center justify-start space-x-2 bg-red-700 text-blue-50 px-4 py-2 w-5/12 rounded-s-full'>
+							<div className='flex items-center justify-start space-x-2 bg-red-200  dark:bg-red-950 text-red-900 dark:text-red-100 px-4 py-2 w-5/12 rounded-s-full'>
 								<img
 									src={match.clubA.logo}
 									alt={match.clubA.name}
@@ -72,12 +72,12 @@ const Container: React.FC = () => {
 							</div>
 
 							{/* Score */}
-							<div className='md:text-xl text-sm font-bold text-blue-900 dark:text-white p-3'>
+							<div className='md:text-xl text-sm font-bold text-blue-900 dark:text-blue-100 p-3'>
 								{match.score}
 							</div>
 
 							{/* Club B */}
-							<div className='flex items-center justify-end space-x-2 bg-blue-700 text-blue-50 px-4 py-2 w-5/12 rounded-e-full'>
+							<div className='flex items-center justify-end space-x-2 dark:bg-blue-900 bg-blue-200 text-blue-900 dark:text-blue-100 px-4 py-2 w-5/12 rounded-e-full'>
 								<span className='md:text-lg text-sm font-semibold'>
 									{match.clubB.name}
 								</span>

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { FaSearch, FaCog, FaBars, FaSkyatlas } from 'react-icons/fa';
-import image from '../../image/logo-r.png';
+import image from '../image/logo2-remove.png';
 import Image from 'next/image';
 import { FaFaceDizzy, FaFaceSmile } from 'react-icons/fa6';
 import { CiSettings } from 'react-icons/ci';
@@ -70,18 +70,23 @@ const Navbar = () => {
 	return (
 		<header className='fixed top-0 w-full z-50 shadow-lg bg-white transition-colors duration-300 dark:bg-gray-900 shadow-md dark:shadow-gray-800 shadow-gray-200 pb-1'>
 			<div
-				className={`container mx-auto flex justify-between items-center px-6 w-full`}>
+				className={`container mx-auto flex justify-between items-center px-1 md:px-6  w-full`}>
 				{/* Logo */}
 				<Link
 					href='/'
-					className='flex flex-col items-center justify-center '>
+					className='flex ms-0  items-center justify-center '>
 					<Image
 						src={image}
 						alt='logo'
-						className='w-24 h-auto '
+						className='w-28 h-auto -mx-3 -px-3'
 					/>
-					<div className='text-gray-800 text-xl -mt-3 font-bold dark:text-blue-100'>
-						historic
+					<div className='-mx-3 -px-3'>
+						<p className='bg-red-700 text-white text-xs  animate-pulse  shadow-red-900 rounded-full px-1'>
+							Under Development
+						</p>
+						<h1 className='text-blue-950 text-xl font-extrabold dark:text-blue-200 text-3xl tracking-wide'>
+							HISTORIC
+						</h1>
 					</div>
 				</Link>
 
@@ -90,7 +95,7 @@ const Navbar = () => {
 						<Link
 							key={link.text}
 							href={link.href}
-							className={`text-sm text-gray-700 dark:text-white hover:text-[#6c83ff] transition-opacity duration-700 ease-in-out opacity-0 animate-fadeIn`}
+							className={`text-lg font-bold  text-gray-700 dark:text-white hover:text-[#6c83ff] transition-opacity duration-700 ease-in-out opacity-0 animate-fadeIn`}
 							style={{ animationDelay: `${250 * index}ms` }}>
 							{link.text}
 						</Link>
@@ -98,7 +103,7 @@ const Navbar = () => {
 				</nav>
 
 				{/* Icons for Desktop */}
-				<div className='flex items-center gap-5'>
+				<div className='flex items-center gap-3 md:gap-5'>
 					{navbarData.icons.map(({ id, icon }) => (
 						<div
 							key={id}

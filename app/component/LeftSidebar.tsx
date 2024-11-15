@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, ReactNode } from 'react';
+import React, { useState } from 'react';
 import {
 	FaBell,
 	FaComments,
@@ -11,15 +11,11 @@ import {
 	FaStore,
 	FaSignOutAlt,
 } from 'react-icons/fa';
-import Image, { StaticImageData } from 'next/image'; // Import StaticImageData
-import image from '../../image/salah.png';
-import image2 from '../../image/logo2-remove.png';
+import Image, { StaticImageData } from 'next/image';
+import image from '../image/salah.png';
+import image2 from '../image/logo2-remove.png';
 
-type MenuItem = {
-	icon: React.ReactNode;
-	label: string;
-};
-
+type MenuItem = { icon: React.ReactNode; label: string };
 const menuItems: MenuItem[] = [
 	{ icon: <FaBell />, label: 'Notifications' },
 	{ icon: <FaTachometerAlt />, label: 'Dashboard' },
@@ -29,31 +25,28 @@ const menuItems: MenuItem[] = [
 	{ icon: <FaStore />, label: 'Shop' },
 ];
 
-type Club = {
-	imgSrc: StaticImageData; // Change type to StaticImageData
-	name: string;
-};
-
+type Club = { imgSrc: StaticImageData; name: string };
 const clubs: Club[] = [
 	{ imgSrc: image, name: 'Club Name' },
 	{ imgSrc: image2, name: 'Another Club' },
 ];
 
-type Player = {
-	imgSrc: StaticImageData; // Change type to StaticImageData
-	name: string;
-};
-
+type Player = { imgSrc: StaticImageData; name: string };
 const players: Player[] = [
 	{ imgSrc: image, name: 'Salah' },
 	{ imgSrc: image2, name: 'Lionel Messi' },
 ];
 
-type SidebarSectionProps = {
-	title: string;
-	children: ReactNode; // Accepts any valid React children
-};
+type Match = { clubA: Club; clubB: Club; score: string };
+const matches: Match[] = [
+	{
+		clubA: { name: 'Barcelona', logo: 'https://via.placeholder.com/40' },
+		clubB: { name: 'Real Madrid', logo: 'https://via.placeholder.com/40' },
+		score: '2 - 1',
+	},
+];
 
+type SidebarSectionProps = { title: string; children: React.ReactNode };
 const SidebarSection = ({ title, children }: SidebarSectionProps) => (
 	<div className='space-y-4'>
 		<h2 className='text-lg font-semibold'>{title}</h2>
@@ -61,13 +54,15 @@ const SidebarSection = ({ title, children }: SidebarSectionProps) => (
 	</div>
 );
 
-type SidebarButtonProps = {
+const SidebarButton = ({
+	icon,
+	label,
+	onClick,
+}: {
 	icon: React.ReactNode;
 	label: string;
 	onClick: () => void;
-};
-
-const SidebarButton = ({ icon, label, onClick }: SidebarButtonProps) => (
+}) => (
 	<button
 		className='flex items-center justify-center space-x-2 p-2 rounded hover:bg-opacity-80 transition-colors'
 		onClick={onClick}>
@@ -76,33 +71,56 @@ const SidebarButton = ({ icon, label, onClick }: SidebarButtonProps) => (
 	</button>
 );
 
+const MatchCard = ({ match }: { match: Match }) => (
+	<div className='flex items-center w-full'>
+		<div className='flex items-center justify-start space-x-2 lg:space-x-0  bg-red-200 dark:bg-red-900 text-red-900 dark:text-red-100 px-2  py-2 lg:px-0  w-5/12 rounded-s-full'>
+			<img
+				src={match.clubA.logo}
+				alt={match.clubA.name}
+				className='w-10 h-10 lg:h-5 lg:w-5 rounded-full'
+			/>
+			<span className=' text-sm font-semibold'>{match.clubA.name}</span>
+		</div>
+		<div className=' text-sm font-bold  text-blue-900 dark:text-blue-100 p-3 lg:p-3 text-nowrap'>
+			{match.score}
+		</div>
+		<div className='flex items-center justify-end space-x-2 lg:space-x-0 dark:bg-blue-900 bg-blue-200 text-blue-900 dark:text-blue-100 px-2 py-2 lg:px-0 w-5/12 rounded-e-full'>
+			<span className=' text-sm font-semibold'>{match.clubB.name}</span>
+			<img
+				src={match.clubB.logo}
+				alt={match.clubB.name}
+				className='w-10 h-10 lg:h-5 lg:w-5 rounded-full'
+			/>
+		</div>
+	</div>
+);
+
 const LeftSidebar = () => {
-	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
 	return (
-		<div className='md:w-1/5 p-4 rounded-lg bg-white dark:bg-gray-800 text-slate-600 dark:text-gray-200'>
-			{/* Toggle Button for Small Screens */}
+		<div className='lg:w-1/5 p-4 rounded-lg bg-white dark:bg-gray-800 text-slate-600 dark:text-gray-200'>
 			<button
-				className='md:hidden mb-4 p-2 bg-blue-600 text-white rounded'
+				className='lg:hidden mb-4 p-2 bg-blue-600 text-white rounded'
 				onClick={toggleMenu}>
 				{isMenuOpen ? 'Close Menu' : 'Open Menu'}
 			</button>
-
-			{/* Sidebar Content */}
 			<div
 				className={`flex flex-col space-y-6 ${
 					isMenuOpen ? 'block' : 'hidden'
-				} md:block`}>
-				{/* Last Match Result */}
+				} lg:block`}>
 				<SidebarSection title='Last Match Result'>
-					<div className='flex items-center space-x-2'>
-						<FaTachometerAlt className='text-blue-500 dark:text-blue-400' />
-						<span>Team A 2 - 1 Team B</span>
+					<div className='flex flex-col w-full gap-5'>
+						{matches.map((match, index) => (
+							<MatchCard
+								key={index}
+								match={match}
+							/>
+						))}
 					</div>
 				</SidebarSection>
 
-				{/* Sidebar Menu */}
 				<SidebarSection title='Menu'>
 					{menuItems.map((item, index) => (
 						<div
@@ -116,7 +134,6 @@ const LeftSidebar = () => {
 					))}
 				</SidebarSection>
 
-				{/* Search Bar */}
 				<div className='flex items-center space-x-2 bg-gray-200 dark:bg-gray-700 p-2 rounded my-6'>
 					<FaSearch className='text-blue-500 dark:text-blue-400' />
 					<input
@@ -126,7 +143,6 @@ const LeftSidebar = () => {
 					/>
 				</div>
 
-				{/* Football Clubs */}
 				<SidebarSection title='Football Clubs'>
 					{clubs.map((club, index) => (
 						<div
@@ -144,7 +160,6 @@ const LeftSidebar = () => {
 					))}
 				</SidebarSection>
 
-				{/* Best Football Players */}
 				<SidebarSection title='Football Players'>
 					{players.map((player, index) => (
 						<div
@@ -162,7 +177,6 @@ const LeftSidebar = () => {
 					))}
 				</SidebarSection>
 
-				{/* Logout Button */}
 				<div className='mt-8 w-full bg-red-600 text-white hover:bg-red-500'>
 					<SidebarButton
 						icon={<FaSignOutAlt />}

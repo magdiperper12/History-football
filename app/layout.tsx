@@ -32,25 +32,27 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body
-				className={`${geistSans.variable} ${geistMono.variable}  bg-primary dark:bg-dark text-white`}>
-				{/* Navbar */}
+				className={`${geistSans.variable} ${geistMono.variable}text-white dark:text-blue-950   bg-blue-50 dark:bg-blue-950 `}>
 				<Navbar />
+				<div className=' m-auto container '>
+					{/* Navbar */}
 
-				{/* Page Content */}
+					{/* Page Content */}
 
-				<div className='flex min-h-screen relative pt-24 flex-col md:flex-row  mx-auto bg-blue-50 dark:bg-blue-950 text-blue-500 dark:text-blue-100 w-full'>
-					{/* Left Sidebar */}
-					<LeftSidebar />
+					<div className='flex min-h-screen relative pt-24 flex-col lg:flex-row  mx-auto bg-blue-50 dark:bg-blue-950 text-blue-500 dark:text-blue-100 w-full'>
+						{/* Left Sidebar */}
+						<LeftSidebar />
 
-					{/* Main Content */}
-					<main className='flex-grow'>{children}</main>
+						{/* Main Content */}
+						<main className='flex-grow'>{children}</main>
 
-					{/* Right Sidebar */}
-					<RightSidebar />
+						{/* Right Sidebar */}
+						<RightSidebar />
+					</div>
+					<AImessage />
+					{/* Footer */}
+					<Footer />
 				</div>
-				<AImessage />
-				{/* Footer */}
-				<Footer />
 			</body>
 		</html>
 	);
