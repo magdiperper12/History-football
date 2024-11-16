@@ -25,12 +25,12 @@ const matches: Match[] = [
 			name: 'Manchester United',
 			logo: 'https://via.placeholder.com/40',
 		},
-		score: 'VS',
+		score: '9 pm',
 	},
 	{
 		clubA: { name: 'Chelsea', logo: 'https://via.placeholder.com/40' },
 		clubB: { name: 'Arsenal', logo: 'https://via.placeholder.com/40' },
-		score: 'VS',
+		score: '11 pm',
 	},
 ];
 

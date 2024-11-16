@@ -39,7 +39,7 @@ export default function RootLayout({
 
 					{/* Page Content */}
 
-					<div className='flex min-h-screen relative pt-20 flex-col lg:flex-row  mx-auto  text-blue-500 dark:text-blue-100 w-full'>
+					<div className='flex min-h-screen relative pt-[83px] flex-col lg:flex-row  mx-auto  text-blue-500 dark:text-blue-100 w-full'>
 						{/* Left Sidebar */}
 						<LeftSidebar />
 

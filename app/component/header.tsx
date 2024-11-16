@@ -30,7 +30,8 @@ const navbarData = {
 		{ text: 'Live match', href: '/live-match' },
 		{ text: 'Player', href: '/trophies' },
 		{ text: 'History', href: '/history' },
-		{ text: 'Table', href: '/trophies/jadwal' }, // Corrected the typo 'hystory' to 'history'
+		{ text: 'Table', href: '/trophies/jadwal' },
+		{ text: 'Social', href: '/social' },
 	] as NavbarLink[],
 	icons: [
 		{ id: 'search', icon: <FaSearch size={20} /> },
@@ -69,7 +70,7 @@ const Navbar = () => {
 		activeToggle === id && <div>{content}</div>;
 
 	return (
-		<header className='fixed top-0 w-full z-50 shadow-lg bg-white transition-colors duration-300 dark:bg-gray-900 shadow-md dark:shadow-gray-800 shadow-gray-200 pb-1'>
+		<header className='fixed top-0 w-full z-50 shadow-lg bg-white transition-colors duration-300 dark:bg-gray-900 dark:shadow-gray-800 shadow-gray-200 pb-1'>
 			<div
 				className={`container mx-auto flex justify-between items-center px-1 md:px-6  w-full`}>
 				{/* Logo */}
@@ -85,7 +86,7 @@ const Navbar = () => {
 						<p className='bg-red-700 text-white text-xs  animate-pulse  shadow-red-900 rounded-full px-1'>
 							Under Development
 						</p>
-						<h1 className='text-blue-950 text-xl font-extrabold dark:text-blue-200 text-3xl tracking-wide'>
+						<h1 className='text-blue-950 font-extrabold dark:text-blue-200 text-3xl tracking-wide'>
 							HISTORIC
 						</h1>
 					</div>
@@ -125,7 +126,7 @@ const Navbar = () => {
 							{id === 'search' &&
 								renderToggleMenu(
 									id,
-									<div className='w-52 flex gap-1  items-center justify-around px-3 py-2 rounded-md bg-blue-200 text-blue-600 dark:bg-blue-700 text-blue-950 dark:text-white outline-none my-2 absolute end-5'>
+									<div className='w-52 flex gap-1  items-center justify-around px-3 py-2 rounded-md bg-blue-200  dark:bg-blue-700 text-blue-950 dark:text-white outline-none my-2 absolute end-5'>
 										<FaSearch />
 										<input
 											className='w-full outline-none	bg-blue-200 dark:bg-blue-700 '
@@ -147,7 +148,7 @@ const Navbar = () => {
 														type='button'
 														onClick={() => handleLanguageChange(lang.value)}
 														className='inline-flex w-full items-center  text-sm  outline-none border-none'>
-														<div className='inline-flex w-full px-4 py-2 my-1 items-center bg-blue-200 dark:bg-blue-400 dark:text-gray-900 dark:text-gray-100 hover:bg-blue-300 dark:hover:text-blue-50 dark:hover:bg-blue-800 rounded-md'>
+														<div className='inline-flex w-full px-4 py-2 my-1 items-center bg-blue-200 dark:bg-blue-400  dark:text-gray-100 hover:bg-blue-300 dark:hover:text-blue-50 dark:hover:bg-blue-800 rounded-md'>
 															<svg
 																aria-hidden='true'
 																className='h-3.5 w-3.5 rounded-full me-2'
@@ -198,7 +199,7 @@ const Navbar = () => {
 														type='button'
 														onClick={() => handleLanguageChange(lang.value)}
 														className='inline-flex w-full items-center  text-sm  outline-none border-none'>
-														<div className='inline-flex w-full px-4 py-2 my-1 items-center bg-blue-200 dark:bg-blue-400 dark:text-gray-900 dark:text-gray-100 hover:bg-blue-300 dark:hover:text-blue-50 dark:hover:bg-blue-800 rounded-md'>
+														<div className='inline-flex w-full px-4 py-2 my-1 items-center bg-blue-200 dark:bg-blue-400  dark:text-gray-100 hover:bg-blue-300 dark:hover:text-blue-50 dark:hover:bg-blue-800 rounded-md'>
 															<svg
 																aria-hidden='true'
 																className='h-3.5 w-3.5 rounded-full me-2'

@@ -118,7 +118,7 @@ const AImessage: React.FC = () => {
 				className={`z-50 transition-transform duration-500 ease-in-out w-10/12 md:w-80 shadow-custom shadow-blue-200 rounded-2xl fixed ${
 					isVisible
 						? 'bottom-10 end-8 md:bottom-10 md:end-5 translate-y-0 opacity-100'
-						: 'bottom-8 md:end-8 md:bottom-12 md:end-8 translate-y-full opacity-0 pointer-events-none'
+						: 'bottom-8 md:end-8 md:bottom-12 translate-y-full opacity-0 pointer-events-none'
 				}`}>
 				<div className='bg-blue-600 dark:bg-blue-950 text-white px-7 py-3 flex justify-between items-center rounded-t-2xl'>
 					<div className='flex items-center'>
