@@ -16,7 +16,7 @@ interface NavbarLink {
 
 interface NavbarIcon {
 	id: string;
-	icon: JSX.Element;
+	icon: JSX.Element | string;
 }
 
 interface NavbarLanguage {
@@ -37,6 +37,19 @@ const navbarData = {
 		{ id: 'search', icon: <FaSearch size={20} /> },
 		{ id: 'settings', icon: <FaCog size={20} /> },
 		{ id: 'profile', icon: <FaFaceSmile size={20} /> },
+		// <div className='hidden md:relative md:block'>
+		// 	<button
+		// 		type='button'
+		// 		className='overflow-hidden rounded-full border border-gray-300 shadow-inner'>
+		// 		<span className='sr-only'>Toggle dashboard menu</span>
+
+		// 		<img
+		// 			src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+		// 			alt=''
+		// 			className='size-10 object-cover'
+		// 		/>
+		// 	</button>
+		// </div>,
 	] as NavbarIcon[],
 	languages: [
 		{ value: 'en', label: 'English' },
@@ -70,7 +83,7 @@ const Navbar = () => {
 		activeToggle === id && <div>{content}</div>;
 
 	return (
-		<header className='fixed top-0 w-full z-50 shadow-lg bg-white transition-colors duration-300 dark:bg-gray-900 dark:shadow-gray-800 shadow-gray-200 pb-1'>
+		<header className='fixed top-0 w-full z-50 shadow-lg bg-primary transition-colors duration-300 dark:bg-darkprimary dark:shadow-darkprimary shadow-secoundry pb-1'>
 			<div
 				className={`container mx-auto flex justify-between items-center px-1 md:px-6  w-full`}>
 				{/* Logo */}
@@ -83,10 +96,10 @@ const Navbar = () => {
 						className='w-28 h-auto -mx-3 -px-3'
 					/>
 					<div className='-mx-3 -px-3'>
-						<p className='bg-red-700 text-white text-xs  animate-pulse  shadow-red-900 rounded-full px-1'>
+						<p className='bg-red-700 text-white text-xs w-auto  animate-pulse text-center shadow-red-900 rounded-full px-1'>
 							Under Development
 						</p>
-						<h1 className='text-blue-950 font-extrabold dark:text-blue-200 text-3xl tracking-wide'>
+						<h1 className=' font-extrabold dark:text-secoundry text-3xl text-darkthird  tracking-wide'>
 							HISTORIC
 						</h1>
 					</div>
@@ -97,7 +110,7 @@ const Navbar = () => {
 						<Link
 							key={link.text}
 							href={link.href}
-							className={`text-lg font-bold  text-gray-700 dark:text-white hover:text-[#6c83ff] transition-opacity duration-700 ease-in-out opacity-0 animate-fadeIn`}
+							className={`text-lg font-bold  text-darkthird dark:text-primary hover:text-[#6c83ff] transition-opacity duration-700 ease-in-out opacity-0 animate-fadeIn`}
 							style={{ animationDelay: `${250 * index}ms` }}>
 							{link.text}
 						</Link>
@@ -119,17 +132,17 @@ const Navbar = () => {
 							/>
 							<label
 								htmlFor={id}
-								className='end-0 cursor-pointer hover:scale-110 transition-all text-blue-900 dark:text-blue-100'>
+								className='end-0 cursor-pointer hover:scale-110 transition-all text-darkthird dark:text-primary dark:hover:text-forth transform '>
 								{icon}
 							</label>
 
 							{id === 'search' &&
 								renderToggleMenu(
 									id,
-									<div className='w-52 flex gap-1  items-center justify-around px-3 py-2 rounded-md bg-blue-200  dark:bg-blue-700 text-blue-950 dark:text-white outline-none my-2 absolute end-5'>
+									<div className='w-52 flex gap-1  items-center justify-around px-3 py-2 rounded-md bg-secoundry dark:bg-darksecoundry text-darkthird dark:text-primary outline-none my-2 absolute end-5'>
 										<FaSearch />
 										<input
-											className='w-full outline-none	bg-blue-200 dark:bg-blue-700 '
+											className='w-full outline-none	bg-secoundry dark:bg-darksecoundry '
 											type='text'
 											placeholder='Search...'
 										/>
@@ -139,7 +152,7 @@ const Navbar = () => {
 							{id === 'settings' &&
 								renderToggleMenu(
 									id,
-									<div className='absolute flex justify-center items-center flex-col end-5 w-44 px-4 py-2 rounded-md bg-blue-100 dark:bg-blue-950 text-blue-950 dark:text-white my-2 shadow-lg'>
+									<div className='absolute flex justify-center items-center flex-col end-5 w-44 px-4 py-2 rounded-md bg-primary dark:bg-darkprimary text-darkprimary dark:text-primary my-2 shadow-lg'>
 										<label>Language</label>
 										<ul className=' w-full mt-2'>
 											{navbarData.languages.map((lang) => (
@@ -148,7 +161,7 @@ const Navbar = () => {
 														type='button'
 														onClick={() => handleLanguageChange(lang.value)}
 														className='inline-flex w-full items-center  text-sm  outline-none border-none'>
-														<div className='inline-flex w-full px-4 py-2 my-1 items-center bg-blue-200 dark:bg-blue-400  dark:text-gray-100 hover:bg-blue-300 dark:hover:text-blue-50 dark:hover:bg-blue-800 rounded-md'>
+														<div className='inline-flex w-full px-4 py-2 my-1 items-center bg-secoundry dark:bg-darksecoundry text-darkprimary  dark:text-secoundry hover:bg-blue-300 dark:hover:text-primary dark:hover:bg-darksecoundry rounded-md'>
 															<svg
 																aria-hidden='true'
 																className='h-3.5 w-3.5 rounded-full me-2'
@@ -174,14 +187,14 @@ const Navbar = () => {
 
 										{/* Dark Mode Toggle at the Bottom */}
 										<div
-											className={`mt-4 ${
-												isDarkMode ? 'bg-blue-500' : 'bg-blue-600'
-											} text-white p-3 rounded-full shadow-lg flex items-center gap-2 cursor-pointer`}
+											className={`mt-4 mb-1 ${
+												isDarkMode ? 'bg-darkthird' : 'bg-third'
+											} dark:text-secoundry text-darksecoundry p-3 rounded-full shadow-lg flex items-center gap-2 cursor-pointer`}
 											onClick={() => setIsDarkMode(!isDarkMode)}>
 											<span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
 											<div
 												className={`w-6 h-6 rounded-full ${
-													isDarkMode ? 'bg-blue-200' : 'bg-blue-950'
+													isDarkMode ? 'bg-third' : 'bg-darkthird'
 												}`}></div>
 										</div>
 									</div>
@@ -190,54 +203,57 @@ const Navbar = () => {
 							{id === 'profile' &&
 								renderToggleMenu(
 									id,
-									<div className='absolute flex justify-center items-center flex-col end-5 w-44 px-4 py-2 rounded-md bg-blue-100 dark:bg-blue-950 text-blue-950 dark:text-white my-2 shadow-lg'>
-										<label>your name</label>
-										<ul className=' w-full mt-2'>
-											{navbarData.languages.map((lang) => (
-												<li key={lang.value}>
-													<button
-														type='button'
-														onClick={() => handleLanguageChange(lang.value)}
-														className='inline-flex w-full items-center  text-sm  outline-none border-none'>
-														<div className='inline-flex w-full px-4 py-2 my-1 items-center bg-blue-200 dark:bg-blue-400  dark:text-gray-100 hover:bg-blue-300 dark:hover:text-blue-50 dark:hover:bg-blue-800 rounded-md'>
-															<svg
-																aria-hidden='true'
-																className='h-3.5 w-3.5 rounded-full me-2'
-																xmlns='http://www.w3.org/2000/svg'
-																id='flag-icon-css-de'
-																viewBox='0 0 512 512'>
-																<path
-																	fill='#ffce00'
-																	d='M0 341.3h512V512H0z'
-																/>
-																<path d='M0 0h512v170.7H0z' />
-																<path
-																	fill='#d00'
-																	d='M0 170.7h512v170.6H0z'
-																/>
-															</svg>
-															{lang.label}
-														</div>
-													</button>
-												</li>
-											))}
-										</ul>
+									<div
+										className='absolute end-0 z-10 mt-0.5 w-56 divide-y divide-secoundry dark:divide-darksecoundry rounded-lg border border-secoundry dark:border-darksecoundry bg-primary dark:bg-darkprimary shadow-lg'
+										role='menu'>
+										<div className='p-2'>
+											<a
+												href='#'
+												className='block rounded-lg px-4 py-2 text-sm text-darksecoundry hover:bg-primary dark:text-secoundry dark:bg-darkprimary  hover:text-darkprimary dark:hover:text-forth'
+												role='menuitem'>
+												My profile
+											</a>
 
-										{/* Dark Mode Toggle at the Bottom */}
-										<div
-											className={`mt-4 ${
-												isDarkMode ? 'bg-blue-500' : 'bg-blue-600'
-											} text-white p-3 rounded-full shadow-lg flex items-center gap-2 cursor-pointer`}
-											onClick={() => setIsDarkMode(!isDarkMode)}>
-											<span>{'Setting '}</span>
-											<div
-												className={`w-6 h-6 rounded-full flex justify-center items-center ${
-													isDarkMode
-														? 'bg-blue-200 text-blue-900'
-														: 'bg-blue-950'
-												}`}>
-												<CiSettings />
-											</div>
+											<a
+												href='#'
+												className='block rounded-lg px-4 py-2 text-sm text-darksecoundry hover:bg-primary dark:text-secoundry dark:bg-darkprimary  hover:text-darkprimary dark:hover:text-forth'
+												role='menuitem'>
+												Billing summary
+											</a>
+
+											<a
+												href='#'
+												className='block rounded-lg px-4 py-2 text-sm text-darksecoundry hover:bg-primary dark:text-secoundry dark:bg-darkprimary  hover:text-darkprimary dark:hover:text-forth'
+												role='menuitem'>
+												Team settings
+											</a>
+										</div>
+
+										<div className='p-2 '>
+											<form
+												method='POST'
+												action='#'>
+												<Link
+													href={'/Login'}
+													type='submit'
+													className='flex w-full items-center justify-center m-auto gap-2 rounded-xl px-4 py-2 text-sm text-blue-600 font-bold dark:text-red-400 hover:bg-secoundry dark:hover:bg-darksecoundry '
+													role='menuitem'>
+													<svg
+														xmlns='http://www.w3.org/2000/svg'
+														fill='none'
+														viewBox='0 0 24 24'
+														strokeWidth='1.5'
+														stroke='currentColor'
+														className='size-4'>
+														<path
+															strokeLinecap='round'
+															strokeLinejoin='round'
+															d='M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3'
+														/>
+													</svg>
+													Login
+												</Link>
+											</form>
 										</div>
 									</div>
 								)}

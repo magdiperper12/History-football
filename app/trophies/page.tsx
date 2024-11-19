@@ -20,11 +20,11 @@ export default async function Trophies() {
 	const dataphoto: User[] = await gitleage();
 
 	return (
-		<div className='min-h-screen flex flex-col justify-center items-center bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-200 p-4'>
+		<div className='min-h-screen flex flex-col justify-center items-center   text-darksecoundry dark:text-secoundry p-4'>
 			{/* Search Bar */}
 			<div className='w-full max-w-screen-md'>
-				<div className='flex items-center space-x-2 bg-gray-200 dark:bg-gray-700 p-4 rounded-full mb-6'>
-					<FaSearch className='text-blue-500 dark:text-blue-400' />
+				<div className='flex items-center space-x-2 bg-secoundry dark:bg-darksecoundry shadow-lg shadow-third dark:shadow-darkprimary p-4 rounded-full mb-6'>
+					<FaSearch className='text-darksecoundry dark:text-primary' />
 					<input
 						type='text'
 						className='w-full bg-transparent outline-none'
@@ -34,12 +34,12 @@ export default async function Trophies() {
 			</div>
 
 			{/* Trophies Grid */}
-			<div className='w-full max-w-screen-md grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+			<div className='w-full container mx-auto p-6 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
 				{dataphoto.map((item: User) => (
 					<Link
 						href={`/trophies/${item.id}`} // Properly encode spaces and special characters
 						key={item.id}
-						className='bg-white dark:bg-blue-900 text-gray-700 dark:text-gray-200 flex flex-col items-center gap-3 justify-start p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300'>
+						className='bg-white dark:bg-darkprimary dark:shadow-darkprimary shadow-third text-gray-700 dark:text-gray-200 flex flex-col items-center gap-3 justify-start p-4 rounded-lg shadow-xl hover:shadow-sm transition-shadow duration-300'>
 						<Image
 							src={image}
 							alt={`${item.name}'s trophy`}

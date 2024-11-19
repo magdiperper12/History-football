@@ -102,16 +102,19 @@ const AImessage: React.FC = () => {
 	return (
 		<div className=''>
 			<div
-				className={`bg-black  dark:bg-blue-100 fixed bottom-10 end-8 md:bottom-8 md:end-10 text-white rounded-full h-12 w-12   flex justify-center items-center cursor-pointer shadow-lg z-50 transition-transform duration-300 ease-in-out ${
+				className={`  dark:bg-darkprimary bg-darkthird  dark:shadow-custom-dark shadow-custom-light fixed bottom-10 end-8 md:bottom-8 md:end-10 text-white rounded-full h-12 w-12   flex justify-center items-center cursor-pointer  z-50 transition-transform duration-300 ease-in-out ${
 					isVisible ? 'opacity-0' : 'opacity-100'
-				}relative`}
+				}  animate-spin `}
 				onClick={() => setIsVisible(!isVisible)} // Toggling visibility
 				aria-label='Toggle Chat'>
-				<img
+				<div className='font-bold text-indigo-100 dark:text-indigo-400 text-4xl animate-pulse'>
+					H
+				</div>
+				{/* <img
 					src='https://botbat.blr1.digitaloceanspaces.com/botbat.logo.io.svg'
 					alt='Chat Icon'
-					className='h-10 w-10 md:h-12 md:w-12 absolute top-1  '
-				/>
+					className='h-10 w-10 md:h-12 md:w-12 '
+				/> */}
 			</div>
 
 			<div

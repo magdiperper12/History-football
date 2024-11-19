@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
 	];
 
 	return (
-		<footer className='bg-white dark:bg-gray-800 dark:text-blue-100'>
+		<footer className=' dark:text-blue-100'>
 			<div className='mx-auto max-w-screen-xl px-4 pb-8 pt-16 sm:px-6 lg:px-8'>
 				<div className='mx-auto max-w-md'>
 					<strong className='block text-center text-xl font-bold text-blue-950 dark:text-blue-100 sm:text-3xl'>
@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
 							</label>
 
 							<input
-								className='w-full rounded-full border-gray-200 bg-gray-100 p-4 pe-32 text-sm font-medium'
+								className='w-full rounded-full border-forth bg-third dark:bg-darksecoundry p-4 pe-32 text-sm font-medium'
 								id='email'
 								type='email'
 								placeholder='john@doe.com'

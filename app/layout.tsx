@@ -8,16 +8,10 @@ import LeftSidebar from './component/LeftSidebar';
 import RightSidebar from './component/RightSidebar';
 import AImessage from './AI-massage';
 
-const geistSans = localFont({
-	src: './fonts/GeistVF.woff',
-	variable: '--font-geist-sans',
-	weight: '100 900',
-});
-const geistMono = localFont({
-	src: './fonts/GeistMonoVF.woff',
-	variable: '--font-geist-mono',
-	weight: '100 900',
-});
+import { Inconsolata, Roboto } from 'next/font/google';
+
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inconsolata({ subsets: ['latin'], weight: '700' });
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -32,25 +26,18 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body
-				className={`bg-gradient-to-r from-blue-200 via-gray-50 to-gray-200 dark:from-blue-900 dark:via-gray-900 dark:to-gray-800  `}>
+				className={`bg-gradient-to-r ${inter.className} from-third via-primary to-third dark:from-darksecoundry dark:via-black dark:to-darksecoundry  `}>
 				<Navbar />
 				<div className=' m-auto container '>
-					{/* Navbar */}
-
-					{/* Page Content */}
-
 					<div className='flex min-h-screen relative pt-[83px] flex-col lg:flex-row  mx-auto  text-blue-500 dark:text-blue-100 w-full'>
-						{/* Left Sidebar */}
 						<LeftSidebar />
 
-						{/* Main Content */}
 						<main className='flex-grow'>{children}</main>
 
-						{/* Right Sidebar */}
 						<RightSidebar />
 					</div>
 					<AImessage />
-					{/* Footer */}
+
 					<Footer />
 				</div>
 			</body>

@@ -1,42 +1,207 @@
 import React from 'react';
 
-const Container: React.FC = () => {
+const UnifiedComponent: React.FC = () => {
+	const features = [
+		{
+			id: 1,
+			title: 'Shooting Stars',
+			description:
+				'Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.',
+			icon: (
+				<svg
+					fill='none'
+					stroke='currentColor'
+					strokeLinecap='round'
+					strokeLinejoin='round'
+					strokeWidth='2'
+					className='sm:w-16 sm:h-16 w-10 h-10'
+					viewBox='0 0 24 24'>
+					<path d='M22 12h-4l-3 9L9 3l-3 9H2'></path>
+				</svg>
+			),
+		},
+		{
+			id: 2,
+			title: 'The Catalyzer',
+			description:
+				'Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.',
+			icon: (
+				<svg
+					fill='none'
+					stroke='currentColor'
+					strokeLinecap='round'
+					strokeLinejoin='round'
+					strokeWidth='2'
+					className='sm:w-16 sm:h-16 w-10 h-10'
+					viewBox='0 0 24 24'>
+					<circle
+						cx='6'
+						cy='6'
+						r='3'></circle>
+					<circle
+						cx='6'
+						cy='18'
+						r='3'></circle>
+					<path d='M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12'></path>
+				</svg>
+			),
+		},
+		{
+			id: 3,
+			title: 'Neptune',
+			description:
+				'Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.',
+			icon: (
+				<svg
+					fill='none'
+					stroke='currentColor'
+					strokeLinecap='round'
+					strokeLinejoin='round'
+					strokeWidth='2'
+					className='sm:w-16 sm:h-16 w-10 h-10'
+					viewBox='0 0 24 24'>
+					<path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'></path>
+					<circle
+						cx='12'
+						cy='7'
+						r='4'></circle>
+				</svg>
+			),
+		},
+	];
+
 	return (
-		<div>
-			<section className=''>
-				<div className='mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen '>
-					<div className='mx-auto max-w-xl text-center'>
-						<h1 className='text-3xl font-extrabold sm:text-5xl'>
-							Understand User Flow.
-							<strong className='font-extrabold text-red-700 sm:block'>
-								{' '}
-								Increase Conversion.{' '}
-							</strong>
+		<section className='text-darksecoundry  body-font'>
+			<div className='container px-5 py-24 mx-auto max-w-screen-lg'>
+				{/* Header */}
+				<div className='text-center mb-20'>
+					<h1 className='sm:text-3xl text-2xl font-medium title-font text-darksecoundry dark:text-primary mb-4'>
+						Raw Denim Heirloom Man Braid
+					</h1>
+					<p className='text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-icon dark:text-third text-opacity-80'>
+						Blue bottle crucifix vinyl post-ironic four dollar toast vegan
+						taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi
+						pug.
+					</p>
+					<div className='flex mt-6 justify-center'>
+						<div className='w-16 h-1 rounded-full bg-indigo-500 inline-flex'></div>
+					</div>
+				</div>
+				{/* Features */}
+				<div className='flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6'>
+					{features.map((feature, index) => (
+						<article
+							key={feature.id}
+							className='p-4 md:w-1/3 flex flex-col text-center items-center'>
+							<div className='w-24 h-24 inline-flex items-center justify-center rounded-full  p-5 text-icon dark:text-icon mb-5 flex-shrink-0'>
+								{feature.icon}
+							</div>
+							<div className='flex-grow'>
+								<h2 className='text-darkprimary dark:text-secoundry text-lg title-font font-medium mb-3'>
+									{feature.title}
+								</h2>
+								<p className='leading-relaxed text-base text-darkprimary dark:text-forth'>
+									{feature.description}
+								</p>
+								<a
+									href='#'
+									className='mt-3 text-indigo-500 inline-flex items-center'>
+									Learn More
+									<svg
+										fill='none'
+										stroke='currentColor'
+										strokeLinecap='round'
+										strokeLinejoin='round'
+										strokeWidth='2'
+										className='w-4 h-4 ml-2'
+										viewBox='0 0 24 24'>
+										<path d='M5 12h14M12 5l7 7-7 7'></path>
+									</svg>
+								</a>
+							</div>
+						</article>
+					))}
+				</div>
+				{/* Button */}
+			</div>
+			<section className='text-darksecoundry dark:text-primary  body-font'>
+				<div className='container px-5 py-24 mx-auto max-w-screen-md'>
+					<div className='flex flex-col text-center w-full mb-20'>
+						<h1 className='sm:text-3xl text-2xl font-medium title-font mb-4 text-icon'>
+							Master Cleanse Reliac Heirloom
 						</h1>
-
-						<p className='mt-4 sm:text-xl/relaxed'>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
-							illo tenetur fuga ducimus numquam ea!
+						<p className='lg:w-2/3 mx-auto leading-relaxed text-base'>
+							Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
+							gentrify, subway tile poke farm-to-table. Franzen you probably
+							haven't heard of them man bun deep jianbing selfies heirloom prism
+							food truck ugh squid celiac humblebrag.
 						</p>
-
-						<div className='mt-8 flex flex-wrap justify-center gap-4'>
-							<a
-								className='block w-full rounded bg-red-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto'
-								href='#'>
-								Get Started
-							</a>
-
-							<a
-								className='block w-full rounded px-12 py-3 text-sm font-medium text-red-600 shadow hover:text-red-700 focus:outline-none focus:ring active:text-red-500 sm:w-auto'
-								href='#'>
-								Learn More
-							</a>
-						</div>
+					</div>
+					<div className='flex flex-wrap -m-4 text-center'>
+						{[
+							{
+								count: '2.7K',
+								label: 'Downloads',
+								icon: <path d='M8 17l4 4 4-4m-4-5v9'></path>,
+							},
+							{
+								count: '1.3K',
+								label: 'Users',
+								icon: (
+									<>
+										<path d='M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2'></path>
+										<circle
+											cx='9'
+											cy='7'
+											r='4'></circle>
+										<path d='M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75'></path>
+									</>
+								),
+							},
+							{
+								count: '74',
+								label: 'Files',
+								icon: (
+									<>
+										<path d='M3 18v-6a9 9 0 0118 0v6'></path>
+										<path d='M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z'></path>
+									</>
+								),
+							},
+							{
+								count: '46',
+								label: 'Places',
+								icon: (
+									<path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'></path>
+								),
+							},
+						].map((stat, index) => (
+							<div
+								key={index}
+								className='p-4 md:w-1/4 sm:w-1/2 w-full'>
+								<div className='border-2 border-forth dark:border-icon px-4 py-6 rounded-lg'>
+									<svg
+										fill='none'
+										stroke='currentColor'
+										strokeLinecap='round'
+										strokeLinejoin='round'
+										strokeWidth='2'
+										className='text-icon w-12 h-12 mb-3 inline-block'
+										viewBox='0 0 24 24'>
+										{stat.icon}
+									</svg>
+									<h2 className='title-font font-medium text-3xl text-icon'>
+										{stat.count}
+									</h2>
+									<p className='leading-relaxed'>{stat.label}</p>
+								</div>
+							</div>
+						))}
 					</div>
 				</div>
 			</section>
-		</div>
+		</section>
 	);
 };
 
-export default Container;
+export default UnifiedComponent;

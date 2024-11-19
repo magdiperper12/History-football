@@ -2,22 +2,22 @@
 import React from 'react';
 function LeftSidebar() {
 	return (
-		<div className='lg:w-1/5  rounded-lg bg-white dark:bg-gray-800 text-slate-600 dark:text-gray-200'>
-			<div className='flex'>
-				<div className='flex h-screen w-16 flex-col justify-between border-e bg-white'>
-					<div>
+		<div className='lg:w-1/6  rounded-lg bg-primary dark:bg-darkprimary text-darkprimary dark:text-primary h-auto'>
+			<div className='flex h-full'>
+				<div className='flex w-16 h-full flex-col justify-between     bg-secoundry dark:bg-darkprimary text-darkprimary dark:text-primary'>
+					<div className=''>
 						<div className='inline-flex size-16 items-center justify-center'>
-							<span className='grid size-10 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600'>
-								L
+							<span className='grid size-10 font-bold place-content-center  rounded-lg bg-primary dark:bg-darksecoundry text-darksecoundry dark:text-prbg-primary dark:text-secoundry text-lg '>
+								H
 							</span>
 						</div>
 
-						<div className='border-t border-gray-100'>
+						<div className=''>
 							<div className='px-2'>
 								<div className='py-4'>
 									<a
 										href='#'
-										className='t group relative flex justify-center rounded bg-blue-50 px-2 py-1.5 text-blue-700'>
+										className='t group relative flex justify-center rounded bg-blue-50  px-2 py-1.5 text-darksecoundry  dark:bg-darkthird  dark:text-primary'>
 										<svg
 											xmlns='http://www.w3.org/2000/svg'
 											className='size-5 opacity-75'
@@ -43,11 +43,11 @@ function LeftSidebar() {
 									</a>
 								</div>
 
-								<ul className='space-y-1 border-t border-gray-100 pt-4'>
+								<ul className='space-y-1  pt-4'>
 									<li>
 										<a
 											href='#'
-											className='group relative flex justify-center rounded px-2 py-1.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700'>
+											className='group relative flex justify-center rounded px-2 py-1.5 text-blue-500 dark:text-blue-200 hover:bg-gray-50 hover:text-darkprimary dark:hover:bg-darkthird'>
 											<svg
 												xmlns='http://www.w3.org/2000/svg'
 												className='size-5 opacity-75'
@@ -71,7 +71,7 @@ function LeftSidebar() {
 									<li>
 										<a
 											href='#'
-											className='group relative flex justify-center rounded px-2 py-1.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700'>
+											className='group relative flex justify-center rounded px-2 py-1.5 text-blue-500 dark:text-blue-200 hover:bg-gray-50 hover:text-darkprimary dark:hover:bg-darkthird'>
 											<svg
 												xmlns='http://www.w3.org/2000/svg'
 												className='size-5 opacity-75'
@@ -95,7 +95,7 @@ function LeftSidebar() {
 									<li>
 										<a
 											href='#'
-											className='group relative flex justify-center rounded px-2 py-1.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700'>
+											className='group relative flex justify-center rounded px-2 py-1.5 text-blue-500 dark:text-blue-200 hover:bg-gray-50 hover:text-darkprimary dark:hover:bg-darkthird'>
 											<svg
 												xmlns='http://www.w3.org/2000/svg'
 												className='size-5 opacity-75'
@@ -119,7 +119,7 @@ function LeftSidebar() {
 									<li>
 										<a
 											href='#'
-											className='group relative flex justify-center rounded px-2 py-1.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700'>
+											className='group relative flex justify-center rounded px-2 py-1.5 text-blue-500 dark:text-blue-200 hover:bg-gray-50 hover:text-darkprimary dark:hover:bg-darkthird'>
 											<svg
 												xmlns='http://www.w3.org/2000/svg'
 												className='size-5 opacity-75'
@@ -144,11 +144,11 @@ function LeftSidebar() {
 						</div>
 					</div>
 
-					<div className='sticky inset-x-0 bottom-0 border-t border-gray-100 bg-white p-2'>
+					<div className='sticky inset-x-0     p-2'>
 						<form action='#'>
 							<button
 								type='submit'
-								className='group relative flex w-full justify-center rounded-lg px-2 py-1.5 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700'>
+								className='group relative flex w-full justify-center rounded-lg px-2 py-1.5 text-sm  text-blue-500 dark:text-blue-200 dark:bg-gray-700 hover:bg-gray-50 hover:text-darkprimary dark:hover:bg-darkthird'>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									className='size-5 opacity-75'
@@ -171,20 +171,20 @@ function LeftSidebar() {
 					</div>
 				</div>
 
-				<div className='flex h-screen flex-1 flex-col justify-between border-e bg-white'>
+				<div className='flex h-full flex-1 flex-col justify-between  bg-primary dark:bg-darksecoundry text-darksecoundry dark:text-primary'>
 					<div className='px-4 py-6'>
 						<ul className='mt-14 space-y-1'>
 							<li>
 								<a
 									href='#'
-									className='block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700'>
+									className='block rounded-lg bg-secoundry dark:bg-darkthird px-4 py-2 text-sm font-medium text-darksecoundry dark:text-primary'>
 									General
 								</a>
 							</li>
 
 							<li>
 								<details className='group [&_summary::-webkit-details-marker]:hidden'>
-									<summary className='flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700'>
+									<summary className='flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-darksecoundry hover:bg-secoundry dark:text-secoundry hover:text-darkprimary dark:hover:bg-darkthird'>
 										<span className='text-sm font-medium'> Teams </span>
 
 										<span className='shrink-0 transition duration-300 group-open:-rotate-180'>
@@ -206,7 +206,7 @@ function LeftSidebar() {
 										<li>
 											<a
 												href='#'
-												className='block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700'>
+												className='block rounded-lg px-4 py-2 text-sm font-medium text-darksecoundry hover:bg-secoundry dark:text-secoundry hover:text-darkprimary dark:hover:bg-darkthird'>
 												Banned Users
 											</a>
 										</li>
@@ -214,7 +214,7 @@ function LeftSidebar() {
 										<li>
 											<a
 												href='#'
-												className='block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700'>
+												className='block rounded-lg px-4 py-2 text-sm font-medium text-darksecoundry hover:bg-secoundry dark:text-secoundry hover:text-darkprimary dark:hover:bg-darkthird'>
 												Calendar
 											</a>
 										</li>
@@ -225,7 +225,7 @@ function LeftSidebar() {
 							<li>
 								<a
 									href='#'
-									className='block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700'>
+									className='block rounded-lg px-4 py-2 text-sm font-medium text-darksecoundry hover:bg-secoundry dark:text-secoundry hover:text-darkprimary dark:hover:bg-darkthird'>
 									Billing
 								</a>
 							</li>
@@ -233,14 +233,14 @@ function LeftSidebar() {
 							<li>
 								<a
 									href='#'
-									className='block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700'>
+									className='block rounded-lg px-4 py-2 text-sm font-medium text-darksecoundry hover:bg-secoundry dark:text-secoundry hover:text-darkprimary dark:hover:bg-darkthird'>
 									Invoices
 								</a>
 							</li>
 
 							<li>
 								<details className='group [&_summary::-webkit-details-marker]:hidden'>
-									<summary className='flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700'>
+									<summary className='flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-darksecoundry hover:bg-secoundry dark:text-secoundry hover:text-darkprimary dark:hover:bg-darkthird'>
 										<span className='text-sm font-medium'> Account </span>
 
 										<span className='shrink-0 transition duration-300 group-open:-rotate-180'>
@@ -262,7 +262,7 @@ function LeftSidebar() {
 										<li>
 											<a
 												href='#'
-												className='block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700'>
+												className='block rounded-lg px-4 py-2 text-sm font-medium text-darksecoundry hover:bg-secoundry dark:text-secoundry hover:text-darkprimary dark:hover:bg-darkthird'>
 												Details
 											</a>
 										</li>
@@ -270,7 +270,7 @@ function LeftSidebar() {
 										<li>
 											<a
 												href='#'
-												className='block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700'>
+												className='block rounded-lg px-4 py-2 text-sm font-medium text-darksecoundry hover:bg-secoundry dark:text-secoundry hover:text-darkprimary dark:hover:bg-darkthird'>
 												Security
 											</a>
 										</li>
@@ -279,7 +279,7 @@ function LeftSidebar() {
 											<form action='#'>
 												<button
 													type='submit'
-													className='w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-500 [text-align:_inherit] hover:bg-gray-100 hover:text-gray-700'>
+													className='w-full rounded-lg px-4 py-2 text-sm font-medium text-darksecoundry [text-align:_inherit] hover:bg-primary dark:text-secoundry hover:text-darkprimary dark:hover:bg-darkthird'>
 													Logout
 												</button>
 											</form>

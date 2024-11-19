@@ -20,7 +20,7 @@ interface Section {
 	items: Item[];
 }
 
-const profile: React.FC = () => {
+const PlayerProfile: React.FC = () => {
 	const sections: Section[] = [
 		{
 			title: 'Player Profile',
@@ -45,7 +45,7 @@ const profile: React.FC = () => {
 	];
 
 	return (
-		<div className='max-w-6xl py-0 mx-auto p-6'>
+		<div className=' py-0  container mx-auto p-6'>
 			{sections.map((section, index) => (
 				<div
 					key={index}
@@ -119,4 +119,4 @@ const profile: React.FC = () => {
 	);
 };
 
-export default profile;
+export default PlayerProfile;

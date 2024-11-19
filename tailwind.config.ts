@@ -9,8 +9,15 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
-				background: 'var(--background)',
-				foreground: 'var(--foreground)',
+				primary: '#E3FDFD',
+				secoundry: '#CBF1F5',
+				third: '#A6E3E9',
+				forth: '#71C9CE',
+				darkprimary: '#1B262C',
+				darksecoundry: '#0b3e60',
+				darkthird: '#3282B8',
+				darkforth: '#BBE1FA',
+				icon: '#6366F1',
 			},
 			animation: {
 				fadeIn: 'fadeIn 0.7s ease-in-out forwards',
@@ -20,6 +27,12 @@ const config: Config = {
 					'0%': { opacity: '0' },
 					'100%': { opacity: '1' },
 				},
+			},
+			boxShadow: {
+				'custom-light': '0px 0px 20px #71C9CE',
+				'custom-dark': '0px 0px 20px #3282B8',
+				glow: '0 0 10px rgba(255, 255, 255, 0.5)',
+				'inner-glow': 'inset 0 2px 4px rgba(0, 0, 0, 0.6)',
 			},
 		},
 	},

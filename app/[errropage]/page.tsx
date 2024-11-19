@@ -7,7 +7,7 @@ const Home: React.FC = () => {
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
 					viewBox='0 0 1024 768'
-					className='mx-auto h-56 w-auto text-black sm:h-64'>
+					className='mx-auto h-56 w-auto text-black dark:text-secoundry sm:h-64'>
 					<g
 						fill='none'
 						fillRule='evenodd'>
@@ -24,11 +24,13 @@ const Home: React.FC = () => {
 					</g>
 				</svg>
 
-				<h1 className='mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
+				<h1 className='mt-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-forth sm:text-4xl'>
 					Uh-oh!
 				</h1>
 
-				<p className='mt-4 text-gray-500'>We can't find that page.</p>
+				<p className='mt-4 text-gray-500 dark:text-darkthird'>
+					We can't find that page.
+				</p>
 			</div>
 		</div>
 	);
