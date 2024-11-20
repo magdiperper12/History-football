@@ -30,8 +30,8 @@ const config: Config = {
 			},
 			boxShadow: {
 				'custom-light': '0px 0px 20px #71C9CE',
-				'custom-dark': '0px 0px 20px #3282B8',
-				glow: '0 0 10px rgba(255, 255, 255, 0.5)',
+				'custom-dark': '0px 0px 10px #175a87',
+				glow: '0 0 10px rgba(255, 150, 255, 0.5)',
 				'inner-glow': 'inset 0 2px 4px rgba(0, 0, 0, 0.6)',
 			},
 		},

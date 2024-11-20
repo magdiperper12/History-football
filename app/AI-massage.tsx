@@ -5,7 +5,7 @@ import { MdSend, MdArrowDropDown } from 'react-icons/md';
 // import soundEffect from './sounds/declarations';
 import { MdAttachFile, MdInsertEmoticon } from 'react-icons/md';
 import { IoIosArrowDown } from 'react-icons/io';
-
+import { IoChatbubbleEllipsesSharp } from 'react-icons/io5';
 import { FaRobot } from 'react-icons/fa';
 import dynamic from 'next/dynamic';
 
@@ -102,13 +102,13 @@ const AImessage: React.FC = () => {
 	return (
 		<div className=''>
 			<div
-				className={`  dark:bg-darkprimary bg-darkthird  dark:shadow-custom-dark shadow-custom-light fixed bottom-10 end-8 md:bottom-8 md:end-10 text-white rounded-full h-12 w-12   flex justify-center items-center cursor-pointer  z-50 transition-transform duration-300 ease-in-out ${
+				className={`  dark:bg-darkprimary bg-darkthird  dark:shadow-custom-dark shadow-custom-light fixed bottom-10 end-8 md:bottom-8 md:end-10 text-white rounded-full h-14 w-14   flex justify-center items-center cursor-pointer  z-50 transition-transform duration-300 ease-in-out ${
 					isVisible ? 'opacity-0' : 'opacity-100'
-				}  animate-spin `}
+				}   `}
 				onClick={() => setIsVisible(!isVisible)} // Toggling visibility
 				aria-label='Toggle Chat'>
 				<div className='font-bold text-indigo-100 dark:text-indigo-400 text-4xl animate-pulse'>
-					H
+					<IoChatbubbleEllipsesSharp />
 				</div>
 				{/* <img
 					src='https://botbat.blr1.digitaloceanspaces.com/botbat.logo.io.svg'

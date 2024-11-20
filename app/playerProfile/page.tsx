@@ -1,121 +1,96 @@
 import React from 'react';
+import image from '../image/salah.png';
 import Image from 'next/image';
-import image from '../image/salah.png'; // Add appropriate image path
 
-interface Item {
-	title: string;
-	description: string;
-	country: string;
-	club: string;
-	age: number;
-	tall: number;
-	clubNum: number;
-}
-
-interface Section {
-	title: string;
-	className: string;
-	nestedName: string;
-	showImage: boolean;
-	items: Item[];
-}
-
-const PlayerProfile: React.FC = () => {
-	const sections: Section[] = [
-		{
-			title: 'Player Profile',
-			showImage: true, // Indicates that this section should display an image
-			items: [
-				{
-					title: 'Mohamed Salah',
-					description:
-						'محمد صلاح (مصر, 32) هو لاعب كرة قدم, يلعب حاليًا لصالح ليفربول في إنجلترا.',
-					country: 'Egypt',
-					club: 'Liverpool',
-					age: 32,
-					tall: 178,
-					clubNum: 11,
-				},
-			],
-			className:
-				'bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-xl shadow-lg p-8',
-			nestedName:
-				'bg-blue-100 dark:bg-blue-900 text-center rounded-lg p-6 text-blue-950 dark:text-blue-50',
-		},
-	];
-
+const PlayerProfile = () => {
 	return (
-		<div className=' py-0  container mx-auto p-6'>
-			{sections.map((section, index) => (
-				<div
-					key={index}
-					className={`space-y-8 ${section.className} ${
-						index === 0 ? 'mt-8' : ''
-					}`}>
-					<h2 className='text-2xl font-semibold  relative'>
-						<span className='absolute left-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full'></span>
-						<span className='ml-6'>{section.title}</span>
-					</h2>
+		<section className='max-w-screen-lg m-auto overflow-hidden '>
+			<div className='flex flex-col'>
+				{/* Cover Image */}
+				<img
+					src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw5fHxjb3ZlcnxlbnwwfDB8fHwxNzEwNzQxNzY0fDA&ixlib=rb-4.0.3&q=80&w=1080'
+					alt='User Cover'
+					className='w-full xl:h-[20rem] lg:h-[18rem] md:h-[16rem] sm:h-[14rem] xs:h-[11rem]'
+				/>
 
-					{section.items.map((item, idx) => (
-						<div
-							key={idx}
-							className={section.nestedName}>
-							<h3 className='text-3xl font-bold text-gray-800 dark:text-gray-100'>
-								{item.title}
-							</h3>
-							{section.showImage && idx === 0 && (
-								<div className='flex justify-center mt-4'>
-									<Image
-										src={image}
-										alt='player'
-										width={150}
-										height={150}
-										className='rounded-full border-8 border-blue-500'
-									/>
-								</div>
-							)}
+				{/* Profile Image */}
+				<div className='sm:w-[80%] xs:w-[90%] mx-auto flex'>
+					<Image
+						src={image}
+						alt='User Profile'
+						className=' rounded-full lg:w-[12rem] lg:h-[12rem] md:w-[10rem] md:h-[10rem] sm:w-[8rem] sm:h-[8rem] xs:w-[7rem] xs:h-[7rem] outline outline-2 outline-offset-2 outline-blue-500 p-3 relative lg:bottom-[5rem] sm:bottom-[4rem] xs:bottom-[3rem]'
+					/>
 
-							<p className='mt-6 text-lg text-gray-600 dark:text-gray-100 leading-relaxed'>
-								{item.description}
-							</p>
+					{/* FullName */}
+					<h1 className='w-full text-left my-4 sm:mx-4 xs:pl-4 text-gray-800 dark:text-white lg:text-4xl md:text-3xl sm:text-3xl xs:text-xl font-serif'>
+						Mohamed Salah
+					</h1>
+				</div>
 
-							<div className='grid grid-cols-1 md:grid-cols-2  mt-8 text-lg font-bold'>
-								<div className=' text-blue-700 dark:text-blue-200 border-e-2  border-blue-300 '>
-									{item.country}
-								</div>
-								<div className=' text-red-700 dark:text-red-300'>
-									{item.club}
-								</div>
+				<div className='xl:w-[80%] lg:w-[90%] md:w-[90%] sm:w-[92%] xs:w-[90%] mx-auto flex flex-col gap-4 items-center relative lg:-top-8 md:-top-6 sm:-top-4 xs:-top-4'>
+					{/* Description */}
+					<p className='w-fit text-gray-700 dark:text-gray-400 text-md'>
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+						debitis labore consectetur voluptatibus mollitia dolorem veniam
+						omnis ut quibusdam minima sapiente repellendus asperiores explicabo,
+						eligendi odit, dolore similique fugiat dolor, doloremque eveniet.
+						Odit, consequatur. Ratione voluptate exercitationem hic eligendi
+						vitae animi nam in, est earum culpa illum aliquam.
+					</p>
+
+					{/* Details */}
+					<div className='w-full my-auto py-6 flex flex-col justify-center items-center text-center gap-2'>
+						<div className='w-full flex sm:flex-row xs:flex-col gap-2 justify-center'>
+							{/* Left Column */}
+							<div className='w-full'>
+								<dl className='text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700'>
+									{[
+										{ label: 'club', value: 'Liverpool' },
+										{ label: 'height', value: '178 CM' },
+										{ label: 'score', value: '32 goal' },
+										{ label: 'player Number', value: '11' },
+									].map(({ label, value }, index) => (
+										<div
+											className='flex flex-col py-3'
+											key={index}>
+											<dt className='mb-1 text-gray-500 md:text-lg dark:text-gray-400'>
+												{label}
+											</dt>
+											<dd className='text-lg font-semibold'>{value}</dd>
+										</div>
+									))}
+								</dl>
 							</div>
 
-							<hr className='border-t-2 border-blue-300 my-8' />
+							{/* Right Column */}
+							<div className='w-full'>
+								<dl className='text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700'>
+									{[
+										{ label: 'country', value: 'Egypt' },
+										{ label: 'age', value: '32' },
+										{ label: 'assist', value: '21' },
 
-							<div className='grid grid-cols-1 md:grid-cols-3 gap-8 mt-6'>
-								<div className='text-lg text-gray-100 flex flex-col dark:text-gray-800 bg-blue-900 dark:bg-blue-200 p-3 rounded-2xl'>
-									<div className='text-5xl md:text-3xl lg:text-4xl bold p-1 text-blue-200 dark:text-blue-600'>
-										{item.age}
-									</div>
-									<span className='text-sm '>years old</span>
-								</div>
-								<div className='text-lg text-gray-100 flex flex-col dark:text-gray-800 bg-blue-900 dark:bg-blue-200 p-3 rounded-2xl'>
-									<div className='text-5xl md:text-3xl lg:text-4xl bold p-1 text-blue-200 dark:text-blue-600'>
-										{item.tall}
-									</div>
-									<span className='text-sm '>cm</span>
-								</div>
-								<div className='text-lg  text-gray-100 flex flex-col dark:text-gray-800 bg-blue-900 dark:bg-blue-200 p-3 rounded-2xl'>
-									<div className='text-5xl md:text-3xl lg:text-4xl bold p-1 text-blue-200 dark:text-blue-600'>
-										{item.clubNum}
-									</div>
-									<span className='text-sm '>club-number</span>
-								</div>
+										{
+											label: 'last Team',
+											value: 'Roma',
+										},
+									].map(({ label, value }, index) => (
+										<div
+											className='flex flex-col py-3'
+											key={index}>
+											<dt className='mb-1 text-gray-500 md:text-lg dark:text-gray-400'>
+												{label}
+											</dt>
+											<dd className='text-lg font-semibold'>{value}</dd>
+										</div>
+									))}
+								</dl>
 							</div>
 						</div>
-					))}
+					</div>
 				</div>
-			))}
-		</div>
+			</div>
+		</section>
 	);
 };
 

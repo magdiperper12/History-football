@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 import { FaSearch, FaCog, FaBars, FaSkyatlas } from 'react-icons/fa';
 import image from '../image/logo2-remove.png';
 import Image from 'next/image';
-import { FaFaceDizzy, FaFaceSmile } from 'react-icons/fa6';
-import { CiSettings } from 'react-icons/ci';
+import { FaFaceSmile } from 'react-icons/fa6';
+import { GrLanguage } from 'react-icons/gr';
 
 // Define types for the navbar data structure
 interface NavbarLink {
@@ -35,7 +35,7 @@ const navbarData = {
 	] as NavbarLink[],
 	icons: [
 		{ id: 'search', icon: <FaSearch size={20} /> },
-		{ id: 'settings', icon: <FaCog size={20} /> },
+		{ id: 'settings', icon: <GrLanguage size={20} /> },
 		{ id: 'profile', icon: <FaFaceSmile size={20} /> },
 		// <div className='hidden md:relative md:block'>
 		// 	<button
@@ -60,7 +60,7 @@ const navbarData = {
 
 const Navbar = () => {
 	const [activeToggle, setActiveToggle] = useState<string | null>(null);
-	const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
 	const [isRTL, setIsRTL] = useState<boolean>(false);
 
 	const handleToggle = (toggleName: string) => {
@@ -68,9 +68,6 @@ const Navbar = () => {
 	};
 
 	// Toggle dark mode
-	useEffect(() => {
-		document.documentElement.classList.toggle('dark', isDarkMode);
-	}, [isDarkMode]);
 
 	// Toggle RTL layout based on selected language
 	const handleLanguageChange = (langValue: string) => {
@@ -139,10 +136,11 @@ const Navbar = () => {
 							{id === 'search' &&
 								renderToggleMenu(
 									id,
-									<div className='w-52 flex gap-1  items-center justify-around px-3 py-2 rounded-md bg-secoundry dark:bg-darksecoundry text-darkthird dark:text-primary outline-none my-2 absolute end-5'>
+
+									<div className=' flex w-96 gap-1  items-center justify-around px-3 py-2 rounded-md bg-darkforth dark:bg-darksecoundry text-darkthird dark:text-primary outline-none my-2 absolute end-5'>
 										<FaSearch />
 										<input
-											className='w-full outline-none	bg-secoundry dark:bg-darksecoundry '
+											className='w-full outline-none	bg-darkforth dark:bg-darksecoundry '
 											type='text'
 											placeholder='Search...'
 										/>
@@ -161,7 +159,7 @@ const Navbar = () => {
 														type='button'
 														onClick={() => handleLanguageChange(lang.value)}
 														className='inline-flex w-full items-center  text-sm  outline-none border-none'>
-														<div className='inline-flex w-full px-4 py-2 my-1 items-center bg-secoundry dark:bg-darksecoundry text-darkprimary  dark:text-secoundry hover:bg-blue-300 dark:hover:text-primary dark:hover:bg-darksecoundry rounded-md'>
+														<div className='inline-flex w-full px-4 py-2 my-1 items-center bg-secoundry dark:bg-darksecoundry text-darkprimary  dark:text-secoundry hover:bg-blue-300 dark:hover:text-primary dark:hover:bg-darkthird rounded-md'>
 															<svg
 																aria-hidden='true'
 																className='h-3.5 w-3.5 rounded-full me-2'
@@ -184,19 +182,6 @@ const Navbar = () => {
 												</li>
 											))}
 										</ul>
-
-										{/* Dark Mode Toggle at the Bottom */}
-										<div
-											className={`mt-4 mb-1 ${
-												isDarkMode ? 'bg-darkthird' : 'bg-third'
-											} dark:text-secoundry text-darksecoundry p-3 rounded-full shadow-lg flex items-center gap-2 cursor-pointer`}
-											onClick={() => setIsDarkMode(!isDarkMode)}>
-											<span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
-											<div
-												className={`w-6 h-6 rounded-full ${
-													isDarkMode ? 'bg-third' : 'bg-darkthird'
-												}`}></div>
-										</div>
 									</div>
 								)}
 
@@ -276,9 +261,9 @@ const Navbar = () => {
 
 			{/* Mobile Navbar (Toggleable) */}
 			<nav
-				className={`peer-checked:block hidden md:hidden ${
-					isDarkMode ? 'bg-gray-900' : 'bg-[#0b0e14]'
-				} py-4 px-6 space-y-4`}>
+				className={`peer-checked:block hidden md:hidden 
+				dark:bg-gray-900 bg-[#0b0e14]
+				 py-4 px-6 space-y-4`}>
 				{navbarData.links.map((link) => (
 					<Link
 						key={link.text}
