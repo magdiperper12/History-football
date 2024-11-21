@@ -8,10 +8,10 @@ import LeftSidebar from './component/LeftSidebar';
 import RightSidebar from './component/RightSidebar';
 import AImessage from './AI-massage';
 
-import { Inconsolata, Roboto } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 
 // If loading a variable font, you don't need to specify the font weight
-const inter = Inconsolata({ subsets: ['latin'], weight: '700' });
+const inter = Roboto({ subsets: ['latin'], weight: '700' });
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -26,19 +26,28 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body
-				className={`bg-gradient-to-r ${inter.className} from-third via-primary to-third dark:from-darksecoundry dark:via-black dark:to-darksecoundry  `}>
+				className={`bg-gradient-to-r ${inter.className} h-screen overflow-hidden from-third via-primary to-third dark:from-darksecoundry dark:via-black dark:to-darksecoundry  `}>
 				<Navbar />
 				<div className=' m-auto container '>
 					<div className='flex min-h-screen relative pt-[83px] flex-col lg:flex-row  mx-auto  text-blue-500 dark:text-blue-100 w-full'>
 						<LeftSidebar />
 
-						<main className='flex-grow'>{children}</main>
+						<main
+							className='flex-grow md:pt-20 md:-mt-20 h-screen overflow-scroll overflow-x-hidden overflow-y-auto
+  [&::-webkit-scrollbar]:w-1
+  [&::-webkit-scrollbar-track]:bg-secoundry
+  [&::-webkit-scrollbar-thumb]:bg-forth
+  dark:[&::-webkit-scrollbar-track]:bg-darksecoundry
+  dark:[&::-webkit-scrollbar-thumb]:bg-darkthird'>
+							{children}
+							<div className='max-w-screen-lg'>
+								<Footer />
+							</div>
+						</main>
 
 						<RightSidebar />
 					</div>
 					<AImessage />
-
-					<Footer />
 				</div>
 			</body>
 		</html>

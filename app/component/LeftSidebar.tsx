@@ -104,7 +104,7 @@ const LeftSidebar: React.FC = () => {
 	}, [isDarkMode]);
 
 	return (
-		<div className='lg:w-1/6 relative rounded-lg bg-primary dark:bg-darkprimary text-darkprimary dark:text-primary h-auto'>
+		<div className='lg:w-1/6 h-screen md:pt-20 md:-mt-20 overflow-hidden relative rounded-lg bg-primary dark:bg-darkprimary text-darkprimary dark:text-primary '>
 			<div className='flex h-full'>
 				{/* Sidebar */}
 				<div className='w-16 bg-secoundry dark:bg-darkprimary text-darkprimary dark:text-primary flex flex-col '>
@@ -220,10 +220,10 @@ const LeftSidebar: React.FC = () => {
 					</div>
 				</div>
 
-				<div className='p-2 -bottom-1 absolute w-full'>
+				<div className='py-6 px-3 -bottom-1 absolute w-full'>
 					<button
 						type='button'
-						className='flex items-center gap-2 sm:gap-3 w-full px-6 sm:p-3  text-sm sm:text-base bg-darkforth dark:bg-darkprimary rounded-full text-darksecoundry dark:text-gray-100 hover:bg-red-600 hover:text-white dark:hover:bg-darkthird focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200'>
+						className='flex items-center gap-2 sm:gap-3 w-full px-6 sm:p-3  text-sm sm:text-base bg-secoundry dark:bg-darkprimary rounded-full text-darksecoundry dark:text-gray-100 hover:bg-red-600 hover:text-white dark:hover:bg-darkthird focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200'>
 						<span className='flex-grow text-left text-xl sm:text-sm'>
 							Logout
 						</span>

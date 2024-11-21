@@ -1,5 +1,7 @@
-import React from 'react';
-import Image from 'next/image';
+'use client';
+
+import React, { useState } from 'react';
+import DiscussionSection from './Details/Comment';
 
 // Define the types for clubs and match data
 interface Club {
@@ -20,14 +22,6 @@ const matches: Match[] = [
 		score: '2 - 1',
 	},
 	{
-		clubA: { name: 'Liverpool', logo: 'https://via.placeholder.com/40' },
-		clubB: {
-			name: 'Manchester United',
-			logo: 'https://via.placeholder.com/40',
-		},
-		score: '9 pm',
-	},
-	{
 		clubA: { name: 'Chelsea', logo: 'https://via.placeholder.com/40' },
 		clubB: { name: 'Arsenal', logo: 'https://via.placeholder.com/40' },
 		score: '11 pm',
@@ -35,46 +29,69 @@ const matches: Match[] = [
 ];
 
 const Live: React.FC = () => {
+	// Initialize visibleIndex to 0 to show the first match's discussion section by default
+	const [visibleIndex, setVisibleIndex] = useState<number | null>(0);
+
+	// Function to toggle the visibility of the discussion section
+	const toggleDiscussion = (index: number) => {
+		setVisibleIndex(visibleIndex === index ? null : index);
+	};
+
 	return (
-		<div className='w-full md:w-full p-4 rounded-lg'>
+		<div className='w-full md:max-w-screen-md m-auto p-4 rounded-lg'>
 			{/* Football Match Results */}
 			<div>
-				<h2 className='text-2xl font-semibold m-4 flex justify-center'>
-					محدش مهتم يسمع قصتك غير لما توصل 🏍
+				<h2 className='text-2xl font-semibold m-4 text-darkthird dark:text-darkforth flex justify-center'>
+					Matches Today
 				</h2>
 				<div className='flex flex-col w-full justify-center gap-5'>
 					{matches.map((match, index) => (
 						<div
 							key={index}
-							className='flex items-center justify-between bg-blue-100 dark:bg-gray-800 rounded-full shadow-md w-full'>
-							{/* Club A */}
-							<div className='flex items-center justify-start space-x-2 bg-red-700 text-blue-50 px-4 py-2 w-5/12 rounded-s-full'>
-								<img
-									src={match.clubA.logo}
-									alt={match.clubA.name}
-									className='w-10 h-10 rounded-full'
-								/>
-								<span className='md:text-lg text-sm font-semibold'>
-									{match.clubA.name}
-								</span>
-							</div>
+							className='w-full'>
+							<div
+								onClick={() => toggleDiscussion(index)}
+								className='cursor-pointer flex items-center justify-between bg-secoundry dark:bg-darkthird  rounded-full shadow-md w-full'>
+								{/* Club A */}
+								<div className='flex items-center justify-start space-x-2 bg-third text-darkthird dark:bg-darksecoundry dark:text-darkforth px-4 py-2 w-5/12 rounded-s-full'>
+									<img
+										src={match.clubA.logo}
+										alt={match.clubA.name}
+										className='w-10 h-10 rounded-full'
+									/>
+									<span className='md:text-lg text-sm font-semibold'>
+										{match.clubA.name}
+									</span>
+								</div>
 
-							{/* Score */}
-							<div className='md:text-xl text-sm font-bold text-blue-900 dark:text-white p-3'>
-								{match.score}
-							</div>
+								{/* Score */}
+								<div className='md:text-xl text-sm font-bold text-darkthird dark:text-darkforth  p-3'>
+									{match.score}
+								</div>
 
-							{/* Club B */}
-							<div className='flex items-center justify-end space-x-2 bg-blue-700 text-blue-50 px-4 py-2 w-5/12 rounded-e-full'>
-								<span className='md:text-lg text-sm font-semibold'>
-									{match.clubB.name}
-								</span>
-								<img
-									src={match.clubB.logo}
-									alt={match.clubB.name}
-									className='w-10 h-10 rounded-full'
-								/>
+								{/* Club B */}
+								<div className='flex items-center justify-end space-x-2 bg-primary text-darkthird dark:bg-darkprimary dark:text-darkforth px-4 py-2 w-5/12 rounded-e-full'>
+									<span className='md:text-lg text-sm font-semibold'>
+										{match.clubB.name}
+									</span>
+									<img
+										src={match.clubB.logo}
+										alt={match.clubB.name}
+										className='w-10 h-10 rounded-full'
+									/>
+								</div>
 							</div>
+							{/* Discussion Section */}
+							{visibleIndex === index && (
+								<div
+									className={`mt-4 transition-transform duration-500 ease-in-out shadow-custom shadow-blue-200 ${
+										visibleIndex === index
+											? 'translate-y-0 opacity-100'
+											: 'translate-y-full opacity-0 pointer-events-none'
+									}`}>
+									<DiscussionSection />
+								</div>
+							)}
 						</div>
 					))}
 				</div>

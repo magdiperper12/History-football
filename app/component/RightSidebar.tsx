@@ -57,12 +57,69 @@ const RightSidebar: React.FC = () => {
 					title: 'Health and Wellness',
 					description: 'Tips to maintain a healthy lifestyle...',
 				},
+				{
+					title: 'Football Transfer News',
+					description: 'New player signings around the world...',
+				},
+				{
+					title: 'Tech News',
+					description: 'Latest tech developments and innovations...',
+				},
+				{ title: 'Economy Updates', description: 'Global economy news...' },
+				{
+					title: 'Climate Change Awareness',
+					description: 'How the world is tackling climate change...',
+				},
+				{
+					title: 'Health and Wellness',
+					description: 'Tips to maintain a healthy lifestyle...',
+				},
+				{
+					title: 'Football Transfer News',
+					description: 'New player signings around the world...',
+				},
+				{
+					title: 'Tech News',
+					description: 'Latest tech developments and innovations...',
+				},
+				{ title: 'Economy Updates', description: 'Global economy news...' },
+				{
+					title: 'Climate Change Awareness',
+					description: 'How the world is tackling climate change...',
+				},
+				{
+					title: 'Health and Wellness',
+					description: 'Tips to maintain a healthy lifestyle...',
+				},
+				{
+					title: 'Football Transfer News',
+					description: 'New player signings around the world...',
+				},
+				{
+					title: 'Tech News',
+					description: 'Latest tech developments and innovations...',
+				},
+				{ title: 'Economy Updates', description: 'Global economy news...' },
+				{
+					title: 'Climate Change Awareness',
+					description: 'How the world is tackling climate change...',
+				},
+				{
+					title: 'Health and Wellness',
+					description: 'Tips to maintain a healthy lifestyle...',
+				},
 			],
 		},
 	];
 
 	return (
-		<div className='w-full lg:w-1/6 p-3 rounded-lg bg-primary dark:bg-darkprimary text-darkprimary dark:text-primary'>
+		<div
+			className='w-full h-screen md:pt-20 md:-mt-20 lg:w-1/6 p-3 overflow-scroll rounded-lg bg-primary dark:bg-darkprimary text-darkprimary dark:text-primary overflow-x-hidden overflow-y-auto
+    [&::-webkit-scrollbar]:w-1
+  [&::-webkit-scrollbar-track]:bg-secoundry
+  [&::-webkit-scrollbar-thumb]:bg-forth
+  dark:[&::-webkit-scrollbar-track]:bg-darksecoundry
+  dark:[&::-webkit-scrollbar-thumb]:bg-darkthird'>
 			{sections.map((section, index) => (
 				<div
 					key={index}

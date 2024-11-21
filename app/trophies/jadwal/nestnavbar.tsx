@@ -50,20 +50,40 @@ const NestedNavbar: React.FC = () => {
 
 			<header className='w-full md:px-10 px-3 py-8  bg-white dark:bg-gray-900 transition-colors duration-300'>
 				<div className='container md:mx-auto flex  flex-col md:flex-row justify-between items-center '>
-					<select className='py-1 px-2  dark:bg-gray-800 bg-gray-200 outline-none  rounded-lg '>
-						<option value='2023'>2023 / 2024</option>
-						<option value='2022'>2022 / 2023</option>
-						<option value='2021'>2021 / 2022</option>
-						<option value='2020'>2020 / 2021</option>
-						<option value='2019'>2019 / 2020</option>
-					</select>
+					{/* <select className='py-1 px-2  dark:bg-gray-800 bg-gray-200 outline-none  rounded-lg '>
+					
+					</select> */}
+
+					<div>
+						<label
+							htmlFor='HeadlineAct'
+							className='block text-sm font-medium text-darkthird'>
+							Year
+						</label>
+
+						<select
+							name='HeadlineAct'
+							id='HeadlineAct'
+							className='mt-1.5 cursor-pointer flex justify-center items-center  py-2 px-3  dark:bg-darksecoundry bg-secoundry   rounded-lg w-full border-none outline-none text-darksecoundry dark:text-secoundry sm:text-sm'>
+							<option value=''>Please select </option>
+							<option
+								value='2023'
+								className=''>
+								2023 / 2024
+							</option>
+							<option value='2022'>2022 / 2023</option>
+							<option value='2021'>2021 / 2022</option>
+							<option value='2020'>2020 / 2021</option>
+							<option value='2019'>2019 / 2020</option>
+						</select>
+					</div>
 
 					<nav className='hidden md:flex gap-5'>
 						{navbarData.links.map((link, index) => (
 							<Link
 								key={link.text}
 								href={link.href}
-								className='text-lg font-bold text-blue-500 dark:text-blue-100 hover:text-[#6c83ff] dark:hover:text-[#6c83ff] transition-opacity duration-700 ease-in-out opacity-0 animate-fadeIn font-bold text-xl'
+								className='text-lg font-bold text-blue-500 dark:text-blue-100 hover:text-[#6c83ff] dark:hover:text-[#6c83ff] transition-opacity duration-700 ease-in-out opacity-0 animate-fadeIn'
 								style={{ animationDelay: `${250 * index}ms` }}>
 								{link.text}
 							</Link>
