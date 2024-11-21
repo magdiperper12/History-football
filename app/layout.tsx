@@ -33,7 +33,7 @@ export default function RootLayout({
 						<LeftSidebar />
 
 						<main
-							className='flex-grow md:pt-20 md:-mt-20 h-screen overflow-scroll overflow-x-hidden overflow-y-auto
+							className='flex-grow max-w-screen-lg md:pt-20 md:-mt-20 h-screen overflow-scroll overflow-x-hidden overflow-y-auto
   [&::-webkit-scrollbar]:w-1
   [&::-webkit-scrollbar-track]:bg-secoundry
   [&::-webkit-scrollbar-thumb]:bg-forth

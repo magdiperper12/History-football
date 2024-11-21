@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
 	];
 
 	return (
-		<footer className=' dark:text-blue-100'>
+		<footer className=' dark:text-blue-100 border-t-2 border-third dark:border-darksecoundry mt-20'>
 			<div className='mx-auto max-w-screen-xl px-4 pb-8 pt-16 sm:px-6 lg:px-8'>
 				<div className='mx-auto max-w-md'>
 					<strong className='block text-center text-xl font-bold text-blue-950 dark:text-blue-100 sm:text-3xl'>

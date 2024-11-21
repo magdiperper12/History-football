@@ -1,129 +1,25 @@
+import Image from 'next/image';
 import React from 'react';
+import champion from '../../../public/champions-league-trophy.webp';
+import ContainerTable from './container-table';
+import Club from './clubs';
+import { LatestResults1, PlayerCard1, PlayerStats1 } from './playerCard';
 
 const UnifiedComponent: React.FC = () => {
-	const features = [
-		{
-			id: 1,
-			title: 'Shooting Stars',
-			description:
-				'Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.',
-			icon: (
-				<svg
-					fill='none'
-					stroke='currentColor'
-					strokeLinecap='round'
-					strokeLinejoin='round'
-					strokeWidth='2'
-					className='sm:w-16 sm:h-16 w-10 h-10'
-					viewBox='0 0 24 24'>
-					<path d='M22 12h-4l-3 9L9 3l-3 9H2'></path>
-				</svg>
-			),
-		},
-		{
-			id: 2,
-			title: 'The Catalyzer',
-			description:
-				'Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.',
-			icon: (
-				<svg
-					fill='none'
-					stroke='currentColor'
-					strokeLinecap='round'
-					strokeLinejoin='round'
-					strokeWidth='2'
-					className='sm:w-16 sm:h-16 w-10 h-10'
-					viewBox='0 0 24 24'>
-					<circle
-						cx='6'
-						cy='6'
-						r='3'></circle>
-					<circle
-						cx='6'
-						cy='18'
-						r='3'></circle>
-					<path d='M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12'></path>
-				</svg>
-			),
-		},
-		{
-			id: 3,
-			title: 'Neptune',
-			description:
-				'Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.',
-			icon: (
-				<svg
-					fill='none'
-					stroke='currentColor'
-					strokeLinecap='round'
-					strokeLinejoin='round'
-					strokeWidth='2'
-					className='sm:w-16 sm:h-16 w-10 h-10'
-					viewBox='0 0 24 24'>
-					<path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'></path>
-					<circle
-						cx='12'
-						cy='7'
-						r='4'></circle>
-				</svg>
-			),
-		},
-	];
-
 	return (
 		<section className='text-darksecoundry  body-font'>
-			<div className='container px-5 py-24 mx-auto max-w-screen-lg'>
-				{/* Header */}
-				<div className='text-center mb-20'>
-					<h1 className='sm:text-3xl text-2xl font-medium title-font text-darksecoundry dark:text-primary mb-4'>
-						Raw Denim Heirloom Man Braid
-					</h1>
-					<p className='text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-icon dark:text-third text-opacity-80'>
-						Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-						taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi
-						pug.
-					</p>
-					<div className='flex mt-6 justify-center'>
-						<div className='w-16 h-1 rounded-full bg-indigo-500 inline-flex'></div>
-					</div>
-				</div>
-				{/* Features */}
-				<div className='flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6'>
-					{features.map((feature, index) => (
-						<article
-							key={feature.id}
-							className='p-4 md:w-1/3 flex flex-col text-center items-center'>
-							<div className='w-24 h-24 inline-flex items-center justify-center rounded-full  p-5 text-icon dark:text-icon mb-5 flex-shrink-0'>
-								{feature.icon}
-							</div>
-							<div className='flex-grow'>
-								<h2 className='text-darkprimary dark:text-secoundry text-lg title-font font-medium mb-3'>
-									{feature.title}
-								</h2>
-								<p className='leading-relaxed text-base text-darkprimary dark:text-forth'>
-									{feature.description}
-								</p>
-								<a
-									href='#'
-									className='mt-3 text-indigo-500 inline-flex items-center'>
-									Learn More
-									<svg
-										fill='none'
-										stroke='currentColor'
-										strokeLinecap='round'
-										strokeLinejoin='round'
-										strokeWidth='2'
-										className='w-4 h-4 ml-2'
-										viewBox='0 0 24 24'>
-										<path d='M5 12h14M12 5l7 7-7 7'></path>
-									</svg>
-								</a>
-							</div>
-						</article>
-					))}
-				</div>
-				{/* Button */}
+			<div className='max-w-screen-lg max-h-96 rounded-xl bg-blue-500 overflow-hidden  text-center m-auto'>
+				<Image
+					src={champion}
+					alt='champion'
+					className=' m-auto'
+				/>
 			</div>
+			<ContainerTable />
+			<Club />
+			<PlayerCard1 />
+			<PlayerStats1 />
+			<LatestResults1 />
 			<section className='text-darksecoundry dark:text-primary  body-font'>
 				<div className='container px-5 py-24 mx-auto max-w-screen-md'>
 					<div className='flex flex-col text-center w-full mb-20'>

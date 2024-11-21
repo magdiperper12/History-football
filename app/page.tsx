@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Container from './component/Container';
+import Container from './component/Home/Container';
 
 const Home: React.FC = () => {
 	return (
