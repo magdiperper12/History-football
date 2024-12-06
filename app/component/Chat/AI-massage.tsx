@@ -2,16 +2,16 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { MdSend, MdArrowDropDown } from 'react-icons/md';
-// import soundEffect from './sounds/declarations';
+
 import { MdAttachFile, MdInsertEmoticon } from 'react-icons/md';
 import { IoIosArrowDown } from 'react-icons/io';
 import { IoChatbubbleEllipsesSharp } from 'react-icons/io5';
 import { FaRobot } from 'react-icons/fa';
 import dynamic from 'next/dynamic';
+import historicLogo from '../../assets/image/logo2-remove.png';
+import Image from 'next/image';
 
 const EmojiPicker = dynamic(() => import('emoji-picker-react'), { ssr: false });
-
-// declarations.d.ts
 
 const AImessage: React.FC = () => {
 	const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -99,54 +99,63 @@ const AImessage: React.FC = () => {
 		}
 	};
 
+	const inputfocus = React.useRef<HTMLInputElement>(null);
+
+	const handleFocus = () => {
+		if (inputfocus.current) {
+			inputfocus.current.focus();
+		}
+	};
+
 	return (
 		<div className=''>
 			<div
-				className={`  dark:bg-darkprimary bg-darkthird  dark:shadow-custom-dark shadow-custom-light fixed bottom-10 end-8 md:bottom-8 md:end-10 text-white rounded-full h-14 w-14   flex justify-center items-center cursor-pointer  z-50 transition-transform duration-300 ease-in-out ${
+				className={`${
 					isVisible ? 'opacity-0' : 'opacity-100'
-				}   `}
-				onClick={() => setIsVisible(!isVisible)} // Toggling visibility
-				aria-label='Toggle Chat'>
+				} fixed bottom-10 end-8 md:bottom-8 md:end-10 rounded-full h-14 w-14 flex justify-center items-center cursor-pointer z-50 transition-transform duration-300 ease-in-out dark:bg-darkprimary bg-darkthird dark:shadow-custom-dark shadow-custom-light`}
+				onClick={() => {
+					setIsVisible((prev) => !prev); // Toggle visibility
+					handleFocus(); // Focus the input
+				}}
+				aria-label='Toggle Chat'
+				role='button'
+				tabIndex={0}
+				onKeyPress={(e) => e.key === 'Enter' && setIsVisible((prev) => !prev)}>
 				<div className='font-bold text-indigo-100 dark:text-indigo-400 text-4xl animate-pulse'>
 					<IoChatbubbleEllipsesSharp />
 				</div>
-				{/* <img
-					src='https://botbat.blr1.digitaloceanspaces.com/botbat.logo.io.svg'
-					alt='Chat Icon'
-					className='h-10 w-10 md:h-12 md:w-12 '
-				/> */}
 			</div>
 
 			<div
 				className={`z-50 transition-transform duration-500 ease-in-out w-10/12 md:w-80 shadow-custom shadow-blue-200 rounded-2xl fixed ${
 					isVisible
-						? 'bottom-10 end-8 md:bottom-10 md:end-5 translate-y-0 opacity-100'
+						? 'bottom-10 end-8 md:bottom-16 md:end-10 translate-y-0 opacity-100'
 						: 'bottom-8 md:end-8 md:bottom-12 translate-y-full opacity-0 pointer-events-none'
 				}`}>
-				<div className='bg-blue-600 dark:bg-blue-950 text-white px-7 py-3 flex justify-between items-center rounded-t-2xl'>
-					<div className='flex items-center'>
-						<img
-							src='https://botbat.blr1.digitaloceanspaces.com/botbat.logo.io.svg'
+				<div className='bg-blue-600 dark:bg-darkprimary text-white px-4 py-5 md:py-3 flex justify-between items-center rounded-t-2xl'>
+					<div className='flex items-center justify-around -ms-5 '>
+						<Image
+							src={historicLogo}
 							alt='BotBat Icon'
-							className='h-8 w-8 md:h-16 md:w-16 mr-1'
+							className='h-10 w-auto md:h-16 md:w-auto '
 						/>
-						<span className='text-lg text-blue-100 dark:text-blue-500 md:text-xl font-bold'>
+						<span className='text-xl md:-ms-3 text-primary dark:text-darkforth md:text-xl font-bold'>
 							Historic
 						</span>
 					</div>
 					<button
 						onClick={() => setIsVisible(false)} // Close chat
-						className='hover:text-blue-400 text-blue-100 dark:text-blue-500 dark:hover:text-blue-300'
+						className='hover:text-blue-400 text-secoundry dark:text-darkthird dark:hover:text-blue-300'
 						aria-label='Close Chat'>
 						<IoIosArrowDown className='h-8 w-8    transition-transform duration-300 ease-in-out hover:scale-110 ' />
 					</button>
 				</div>
 
 				<div className='pb-4 space-y-4 h-96 lg:h-80 overflow-auto bg-white transition-all duration-300 ease-in-out custom-scrollbar'>
-					<div className='relative bg-blue-400 dark:bg-blue-800 text-white text-center px-7 pt-1 pb-8 text-lg overflow-hidden'>
+					<div className='relative bg-blue-400 dark:bg-darksecoundry text-white text-center px-7 pt-1 pb-8 text-lg overflow-hidden'>
 						<div className='flex flex-row gap-2 justify-center items-center text-blue-50 text-lg'>
 							{' '}
-							Historic AI is here to help you{' '}
+							Historic AI is her to help{' '}
 							<FaRobot className='h-10 w-10 inline mb-1 ' />{' '}
 						</div>
 						<div className='absolute inset-x-0 bottom-0 h-16'>
@@ -162,13 +171,13 @@ const AImessage: React.FC = () => {
 						</div>
 					</div>
 
-					<div className='flex items-start gap-2 mx-3'>
-						<img
-							src='https://botbat.blr1.digitaloceanspaces.com/botbat.logo.io.svg'
-							alt='Bot Avatar'
-							className='h-10 w-10 lg:h-8 lg:w-8'
+					<div className='flex items-start gap-2 '>
+						<Image
+							src={historicLogo}
+							alt='Historic Avatar'
+							className='h-10 w-auto lg:h-10 lg:w-auto'
 						/>
-						<div className='bg-gray-100 dark:bg-blue-950 dark:text-gray-50  p-3 lg:p-2 text-sm  rounded-full rounded-tl text-gray-600 max-w-xs'>
+						<div className='bg-secoundry dark:bg-darkprimary dark:text-gray-50 -ms-5 mt-3  p-3 lg:p-2 text-sm  rounded-full rounded-tl text-gray-600 max-w-xs'>
 							Welcome! can I assist you today.?
 						</div>
 					</div>
@@ -182,16 +191,16 @@ const AImessage: React.FC = () => {
 								}`}>
 								{msg.type === 'bot' && (
 									<div className='flex items-start gap-2'>
-										<img
-											src='https://botbat.blr1.digitaloceanspaces.com/botbat.logo.io.svg'
+										<Image
+											src={historicLogo}
 											alt='Bot Avatar'
-											className='h-10 w-10 lg:h-8 lg:w-8'
+											className='h-10 w-auto lg:h-10 lg:w-auto -ms-4'
 										/>
-										<div className='flex flex-col space-y-1 max-w-xs'>
-											<div className='bg-gray-100 dark:bg-blue-950 dark:text-gray-50  p-3 lg:p-2 lg:text-xs  rounded-full rounded-tl text-gray-600 '>
+										<div className='flex flex-col space-y-1 -ms-5 mt-3 max-w-xs'>
+											<div className='bg-secoundry dark:bg-darkprimary dark:text-secoundry  p-3  text-sm  rounded-full rounded-tl text-darksecoundry '>
 												{msg.text}
 											</div>
-											<div className='text-xs text-gray-400 mt-2 mx-4 self-start'>
+											<div className='text-xs text-darkthird mt-2 mx-4 self-start'>
 												botbat {msg.time}
 											</div>
 										</div>
@@ -200,10 +209,10 @@ const AImessage: React.FC = () => {
 
 								{msg.type === 'user' && (
 									<div className='flex flex-col space-y-1 max-w-xs ms-5 md:ms-10'>
-										<div className='p-3 rounded-3xl bg-blue-500 dark:bg-blue-800 text-white w-auto rounded-tr break-words text-xs transition-all duration-300 ease-in-out'>
+										<div className='p-3 rounded-3xl bg-blue-500 dark:bg-darksecoundry text-primary dark:text-secoundry w-auto rounded-tr break-words text-sm transition-all duration-300 ease-in-out'>
 											{msg.text}
 										</div>
-										<div className='text-xs text-gray-400 mt-2 mx-4 self-end'>
+										<div className='text-xs text-darkthird mt-2 mx-4 self-end'>
 											{msg.time}
 										</div>
 									</div>
@@ -229,7 +238,7 @@ const AImessage: React.FC = () => {
 					<div ref={chatEndRef} />
 				</div>
 
-				<div className='flex items-center my-0 py-2 px-2 lg:px-1  bg-blue-50 dark:bg-blue-800 rounded-b-2xl'>
+				<div className='flex items-center my-0 py-4 px-2  bg-blue-50 dark:bg-darksecoundry  rounded-b-2xl'>
 					<input
 						type='file'
 						ref={fileInputRef}
@@ -250,10 +259,11 @@ const AImessage: React.FC = () => {
 							)}
 							<input
 								type='text'
+								ref={inputfocus}
 								value={inputValue}
 								onChange={(e) => setInputValue(e.target.value)}
 								onKeyDown={handleKeyDown}
-								className='flex-grow border-none px-3 py-2 dark:bg-blue-200 rounded-2xl me-1 focus:outline-none text-blue-900 '
+								className='flex-grow border-none px-3 py-2 bg-transparent outline-none rounded-2xl me-1 text-darksecondary dark:text-darkforth'
 								placeholder='Type a message...'
 							/>
 							<button
@@ -265,7 +275,7 @@ const AImessage: React.FC = () => {
 					</div>
 					<button
 						onClick={handleSendMessage}
-						className='bg-blue-500 text-white rounded-full p-2 flex justify-center items-center transition-transform duration-300 ease-in-out hover:scale-110 ms-1 hover:text-blue-600 hover:bg-white dark:text-blue-800 dark:bg-blue-200 dark:hover:text-blue-200 dark:hover:bg-blue-950'
+						className='bg-blue-500 dark:bg-darkforth text-white rounded-full p-2 flex justify-center items-center transition-transform duration-300 ease-in-out hover:scale-110 ms-1 hover:text-blue-600 hover:bg-white dark:text-darksecoundry  dark:hover:text-blue-200 dark:hover:bg-blue-950'
 						aria-label='Send Message'>
 						<MdSend className='lg:text-xl text-3xl' />
 					</button>

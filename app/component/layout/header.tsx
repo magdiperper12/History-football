@@ -1,14 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaSearch, FaCog, FaBars, FaSkyatlas } from 'react-icons/fa';
-import image from '../image/logo2-remove.png';
+import image from '../../assets/image/logo2-remove.png';
 import Image from 'next/image';
 import { FaFaceSmile } from 'react-icons/fa6';
 import { GrLanguage } from 'react-icons/gr';
-
-// Define types for the navbar data structure
+import profimage from '../../assets/image/haverts.jpg';
 interface NavbarLink {
 	text: string;
 	href: string;
@@ -22,39 +21,106 @@ interface NavbarIcon {
 interface NavbarLanguage {
 	value: string;
 	label: string;
+	flag: JSX.Element;
 }
 
 const navbarData = {
 	links: [
 		{ text: 'Home', href: '/' },
-		{ text: 'Live match', href: '/live-match' },
-		{ text: 'Player', href: '/trophies' },
-		{ text: 'History', href: '/history' },
+		{ text: 'Player', href: '/Historic/Sections/Player' },
+		{ text: 'Contry', href: '/Historic/Sections/Country' },
+		{ text: 'History', href: '/Historic' },
 		{ text: 'Table', href: '/trophies/jadwal' },
-		{ text: 'Social', href: '/social' },
+		{ text: 'Social', href: '/component/Social' },
 	] as NavbarLink[],
 	icons: [
-		{ id: 'search', icon: <FaSearch size={20} /> },
+		{
+			id: 'search',
+			icon: <FaSearch size={20} />,
+		},
 		{ id: 'settings', icon: <GrLanguage size={20} /> },
-		{ id: 'profile', icon: <FaFaceSmile size={20} /> },
-		// <div className='hidden md:relative md:block'>
-		// 	<button
-		// 		type='button'
-		// 		className='overflow-hidden rounded-full border border-gray-300 shadow-inner'>
-		// 		<span className='sr-only'>Toggle dashboard menu</span>
-
-		// 		<img
-		// 			src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-		// 			alt=''
-		// 			className='size-10 object-cover'
-		// 		/>
-		// 	</button>
-		// </div>,
+		{
+			id: 'profile',
+			icon: (
+				<div className=' rounded-full overflow-hidden'>
+					<Image
+						src={profimage}
+						alt={''}
+						width={35}
+						height={35}
+					/>
+				</div>
+			),
+		},
 	] as NavbarIcon[],
 	languages: [
-		{ value: 'en', label: 'English' },
-		{ value: 'es', label: 'Spanish' },
-		{ value: 'ar', label: 'Arabic' },
+		{
+			value: 'en',
+			label: 'English',
+			flag: (
+				<svg
+					xmlns='http://www.w3.org/2000/svg'
+					viewBox='0 0 640 480'
+					className='h-3.5 w-3.5 rounded-full me-2'
+					aria-hidden='true'>
+					<rect
+						width='640'
+						height='480'
+						fill='#fff'
+					/>
+					<rect
+						x='272'
+						y='0'
+						width='96'
+						height='480'
+						fill='#ce1126'
+					/>
+					<rect
+						x='0'
+						y='192'
+						width='640'
+						height='96'
+						fill='#ce1126'
+					/>
+				</svg>
+			),
+		},
+		{
+			value: 'ar',
+			label: 'العربيه',
+			flag: (
+				<svg
+					xmlns='http://www.w3.org/2000/svg'
+					viewBox='0 0 640 480'
+					className='h-3.5 w-3.5 rounded-full me-2'
+					aria-hidden='true'>
+					<rect
+						width='640'
+						height='480'
+						fill='#006c35'
+					/>
+					<text
+						x='320'
+						y='240'
+						text-anchor='middle'
+						font-size='48'
+						font-family='Arial, sans-serif'
+						fill='#fff'
+						transform='translate(0, 20)'>
+						لا إله إلا الله محمد رسول الله
+					</text>
+					<rect
+						x='200'
+						y='320'
+						width='240'
+						height='20'
+						rx='10'
+						ry='10'
+						fill='#fff'
+					/>
+				</svg>
+			),
+		},
 	] as NavbarLanguage[],
 };
 
@@ -67,9 +133,6 @@ const Navbar = () => {
 		setActiveToggle((prev) => (prev === toggleName ? null : toggleName));
 	};
 
-	// Toggle dark mode
-
-	// Toggle RTL layout based on selected language
 	const handleLanguageChange = (langValue: string) => {
 		const isArabic = langValue === 'ar';
 		setIsRTL(isArabic);
@@ -80,7 +143,7 @@ const Navbar = () => {
 		activeToggle === id && <div>{content}</div>;
 
 	return (
-		<header className='fixed top-0 w-full z-50 shadow-lg bg-primary transition-colors duration-300 dark:bg-darkprimary dark:shadow-darkprimary shadow-secoundry pb-1'>
+		<header className='fixed top-0  w-full z-50 shadow-lg bg-primary transition-colors duration-300 dark:bg-darkprimary dark:shadow-darkprimary shadow-secoundry pb-1'>
 			<div
 				className={`container mx-auto flex justify-between items-center px-1 md:px-6  w-full`}>
 				{/* Logo */}
@@ -137,10 +200,10 @@ const Navbar = () => {
 								renderToggleMenu(
 									id,
 
-									<div className=' flex w-96 gap-1  items-center justify-around px-3 py-2 rounded-md bg-darkforth dark:bg-darksecoundry text-darkthird dark:text-primary outline-none my-2 absolute end-5'>
+									<div className=' flex w-96 gap-1 shadow-md shadow-third dark:shadow-black  items-center rounded-lg border-2 border-blue-500 justify-around px-3 py-2   text-darkthird dark:text-primary outline-none my-2 absolute end-5'>
 										<FaSearch />
 										<input
-											className='w-full outline-none	bg-darkforth dark:bg-darksecoundry '
+											className='w-full outline-none	bg-transparent'
 											type='text'
 											placeholder='Search...'
 										/>
@@ -160,22 +223,7 @@ const Navbar = () => {
 														onClick={() => handleLanguageChange(lang.value)}
 														className='inline-flex w-full items-center  text-sm  outline-none border-none'>
 														<div className='inline-flex w-full px-4 py-2 my-1 items-center bg-secoundry dark:bg-darksecoundry text-darkprimary  dark:text-secoundry hover:bg-blue-300 dark:hover:text-primary dark:hover:bg-darkthird rounded-md'>
-															<svg
-																aria-hidden='true'
-																className='h-3.5 w-3.5 rounded-full me-2'
-																xmlns='http://www.w3.org/2000/svg'
-																id='flag-icon-css-de'
-																viewBox='0 0 512 512'>
-																<path
-																	fill='#ffce00'
-																	d='M0 341.3h512V512H0z'
-																/>
-																<path d='M0 0h512v170.7H0z' />
-																<path
-																	fill='#d00'
-																	d='M0 170.7h512v170.6H0z'
-																/>
-															</svg>
+															{lang.flag}
 															{lang.label}
 														</div>
 													</button>

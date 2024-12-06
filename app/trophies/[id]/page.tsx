@@ -2,164 +2,223 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import Image from 'next/image';
-import image from '../../image/salah.png';
-interface User {
-	id: number;
-	name: string;
-	username: string;
-	email: string;
-	address: {
-		street: string;
-		suite: string;
-		city: string;
-		zipcode: string;
-		geo: {
-			lat: string;
-			lng: string;
-		};
-	};
-	phone: string;
-	website: string;
-	company: {
-		name: string;
-		catchPhrase: string;
-		bs: string;
-	};
+import { CgWebsite } from 'react-icons/cg';
+import {
+	FaFacebook,
+	FaInstagram,
+	FaSquareXTwitter,
+	FaYoutube,
+} from 'react-icons/fa6';
+
+interface PlayerDetails {
+	idPlayer: string;
+	strPlayer: string;
+	strPosition: string;
+	strDescriptionEN: string;
+	strTeam: string;
+	dateBorn: string;
+	strThumb: string;
+	strNationality: string;
+	strNumber: string;
+	strWage: string;
+	strSigning: string;
+	strBirthLocation: string;
+	strFacebook: string;
+	strWebsite: string;
+	strTwitter: string;
+	strInstagram: string;
+	strYoutube: string;
+	strHeight: string;
+	strWeight: string;
+	strCutout: string;
+	strRender: string;
+	strBanner: string;
+	strFanart1: string;
+	strFanart2: string;
+	strFanart3: string;
+	strFanart4: string;
 }
 
-export default function TrophyDetails() {
+const TrophyDetails: React.FC = () => {
 	const params = useParams();
-	const id = Array.isArray(params?.id) ? params.id[0] : params?.id; // Ensure `id` is a string
-	const [item, setItem] = useState<User | null>(null);
+	const id = Array.isArray(params?.id) ? params.id[0] : params?.id;
+	const [item, setItem] = useState<PlayerDetails | null>(null);
 
 	useEffect(() => {
 		if (id) {
-			fetchItem(id)
-				.then(setItem)
-				.catch((error) => {
-					console.error('Error fetching item:', error);
-				});
+			fetch(
+				`https://www.thesportsdb.com/api/v1/json/3/lookupplayer.php?id=${id}`
+			)
+				.then((response) => {
+					if (!response.ok) throw new Error('Failed to fetch item');
+					return response.json();
+				})
+				.then((data) => setItem(data?.players?.[0] ?? null))
+				.catch((error) => console.error('Error fetching item:', error));
 		}
 	}, [id]);
 
-	async function fetchItem(id: string): Promise<User> {
-		const response = await fetch(
-			`https://jsonplaceholder.typicode.com/users/${id}`
-		);
-		if (!response.ok) {
-			throw new Error('Failed to fetch item');
-		}
-		return response.json();
-	}
-
-	if (!id) {
+	if (!id)
 		return (
-			<div className='h-full flex justify-center items-center text-2xl text-red-700 dark:text-red-300'>
+			<div className='text-center text-gray-600'>
 				No ID provided in the route.
 			</div>
 		);
-	}
+	if (!item) return <div className='text-center text-gray-600'>Loading...</div>;
 
-	if (!item) {
-		return (
-			<div className='h-full flex justify-center items-center text-2xl text-blue-700 dark:text-blue-200'>
-				Loading...
-			</div>
-		);
-	}
+	const galleryImages = [
+		{ src: item.strThumb, alt: item.strPlayer, size: 'half' },
+		{ src: item.strCutout, alt: item.strPlayer, size: 'half' },
+		{ src: item.strRender, alt: item.strPlayer, size: 'full' },
+		{ src: item.strBanner, alt: item.strPlayer, size: 'full' },
+		{ src: item.strFanart1, alt: item.strPlayer, size: 'half' },
+		{ src: item.strFanart2, alt: item.strPlayer, size: 'half' },
+		{ src: item.strFanart3, alt: item.strPlayer, size: 'half' },
+		{ src: item.strFanart4, alt: item.strPlayer, size: 'half' },
+	];
 
 	return (
-		<section className='max-w-screen-lg m-auto overflow-hidden '>
-			<div className='flex flex-col'>
-				{/* Cover Image */}
+		<section className='max-w-screen-lg container mx-auto overflow-hidden   rounded-lg'>
+			<div>
 				<img
-					src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw5fHxjb3ZlcnxlbnwwfDB8fHwxNzEwNzQxNzY0fDA&ixlib=rb-4.0.3&q=80&w=1080'
-					alt='User Cover'
-					className='w-full xl:h-[20rem] lg:h-[18rem] md:h-[16rem] sm:h-[14rem] xs:h-[11rem]'
+					src={
+						item.strBanner ||
+						item.strFanart3 ||
+						item.strFanart2 ||
+						item.strRender ||
+						item.strCutout
+					}
+					alt={item.strPlayer}
+					className='w-full object-cover bg-gray-200 xl:h-64 lg:h-56 md:h-48 sm:h-40 rounded-t-lg'
 				/>
-
-				{/* Profile Image */}
-				<div className='sm:w-[80%] xs:w-[90%] mx-auto flex'>
-					<Image
-						src={image}
-						alt='User Profile'
-						className=' rounded-full lg:w-[12rem] lg:h-[12rem] md:w-[10rem] md:h-[10rem] sm:w-[8rem] sm:h-[8rem] xs:w-[7rem] xs:h-[7rem] outline outline-2 outline-offset-2 outline-blue-500 p-3 relative lg:bottom-[5rem] sm:bottom-[4rem] xs:bottom-[3rem]'
+				<div className='flex items-center -mt-16 px-6'>
+					<img
+						alt={item.strPlayer}
+						src={item.strThumb || '/placeholder-image.png'}
+						className='rounded-full w-36 h-36 border-4 border-blue-500 shadow-lg'
 					/>
-
-					{/* FullName */}
-					<h1 className='w-full text-left my-4 sm:mx-4 xs:pl-4 text-gray-800 dark:text-white lg:text-4xl md:text-3xl sm:text-3xl xs:text-xl font-serif'>
-						{item.name}
-					</h1>
-				</div>
-
-				<div className='xl:w-[80%] lg:w-[90%] md:w-[90%] sm:w-[92%] xs:w-[90%] mx-auto flex flex-col gap-4 items-center relative lg:-top-8 md:-top-6 sm:-top-4 xs:-top-4'>
-					{/* Description */}
-					<p className='w-fit text-gray-700 dark:text-gray-400 text-md'>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-						debitis labore consectetur voluptatibus mollitia dolorem veniam
-						omnis ut quibusdam minima sapiente repellendus asperiores explicabo,
-						eligendi odit, dolore similique fugiat dolor, doloremque eveniet.
-						Odit, consequatur. Ratione voluptate exercitationem hic eligendi
-						vitae animi nam in, est earum culpa illum aliquam.
-					</p>
-					<div className='grid md:grid-cols-2 grid-cols-1  gap-10 '>
-						<div className='col'>Email: {item.email}</div>
-						<div className='col'>phone-number : {item.phone}</div>
+					<div className='m-8 mt-20'>
+						<h1 className='text-2xl font-bold text-gray-800 dark:text-white'>
+							{item.strPlayer}
+						</h1>
+						<p className='text-gray-500 dark:text-gray-300'>{item.strTeam}</p>
 					</div>
-
-					{/* Details */}
-					<div className='w-full my-auto py-6 flex flex-col justify-center items-center text-center gap-2'>
-						<div className='w-full flex sm:flex-row xs:flex-col gap-2 justify-center'>
-							{/* Left Column */}
-							<div className='w-full'>
-								<dl className='text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700'>
-									{[
-										{ label: 'club', value: 'Liverpool' },
-										{ label: 'height', value: '178 CM' },
-										{ label: 'score', value: '32 goal' },
-										{ label: 'player Number', value: item.id },
-									].map(({ label, value }, index) => (
-										<div
-											className='flex flex-col py-3'
-											key={index}>
-											<dt className='mb-1 text-gray-500 md:text-lg dark:text-gray-400'>
-												{label}
-											</dt>
-											<dd className='text-lg font-semibold'>{value}</dd>
-										</div>
-									))}
-								</dl>
-							</div>
-
-							{/* Right Column */}
-							<div className='w-full'>
-								<dl className='text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700'>
-									{[
-										{ label: 'country', value: item.address.city },
-										{ label: 'age', value: '32' },
-										{ label: 'assist', value: '21' },
-
-										{
-											label: 'last Team',
-											value: 'Roma',
-										},
-									].map(({ label, value }, index) => (
-										<div
-											className='flex flex-col py-3'
-											key={index}>
-											<dt className='mb-1 text-gray-500 md:text-lg dark:text-gray-400'>
-												{label}
-											</dt>
-											<dd className='text-lg font-semibold'>{value}</dd>
-										</div>
-									))}
-								</dl>
-							</div>
-						</div>
+				</div>
+				<div className='px-6 mt-4'>
+					<p className='text-gray-600 dark:text-gray-300'>
+						{item.strDescriptionEN || 'No description available.'}
+					</p>
+					<div className='grid grid-cols-2 gap-4 mt-8 text-gray-600 dark:text-gray-200'>
+						<p>
+							<strong className='dark:text-darkthird text-darksecoundry'>
+								Position:
+							</strong>{' '}
+							{item.strPosition || '....'}
+						</p>
+						<p>
+							<strong className='dark:text-darkthird text-darksecoundry'>
+								Nationality:
+							</strong>{' '}
+							{item.strNationality || '....'}
+						</p>
+						<p>
+							<strong className='dark:text-darkthird text-darksecoundry'>
+								date Born:
+							</strong>{' '}
+							{item.dateBorn || '....'}
+						</p>
+						<p>
+							<strong className='dark:text-darkthird text-darksecoundry'>
+								last transfer:
+							</strong>{' '}
+							{item.strSigning || '....'}
+						</p>
+						<p>
+							<strong className='dark:text-darkthird text-darksecoundry'>
+								Salary:
+							</strong>{' '}
+							{item.strWage || '....'}
+						</p>
+						<p>
+							<strong className='dark:text-darkthird text-darksecoundry'>
+								Number:
+							</strong>{' '}
+							{item.strNumber || '....'}
+						</p>
+						<p>
+							<strong className='dark:text-darkthird text-darksecoundry'>
+								Height:
+							</strong>{' '}
+							{item.strHeight || '....'}
+						</p>
+						<p>
+							<strong className='dark:text-darkthird text-darksecoundry'>
+								Weight:
+							</strong>{' '}
+							{item.strWeight || '....'}
+						</p>
+						<p>
+							<strong className='dark:text-darkthird text-darksecoundry'>
+								Birthplace:
+							</strong>{' '}
+							{item.strBirthLocation || '....'}
+						</p>
+					</div>
+					<div className='flex flex-row gap-4 justify-center mt-12 mb-8 text-2xl text-blue-600 dark:text-blue-400'>
+						<a
+							href={`https://${item.strWebsite}`}
+							target='_blank'
+							rel='noopener noreferrer'>
+							<CgWebsite />
+						</a>
+						<a
+							href={`https://${item.strYoutube}`}
+							target='_blank'
+							rel='noopener noreferrer'>
+							<FaYoutube />
+						</a>
+						<a
+							href={`https://${item.strFacebook}`}
+							target='_blank'
+							rel='noopener noreferrer'>
+							<FaFacebook />
+						</a>
+						<a
+							href={`https://${item.strTwitter}`}
+							target='_blank'
+							rel='noopener noreferrer'>
+							<FaSquareXTwitter />
+						</a>
+						<a
+							href={`https://${item.strInstagram}`}
+							target='_blank'
+							rel='noopener noreferrer'>
+							<FaInstagram />
+						</a>
+					</div>
+				</div>
+				<div className='p-16'>
+					<div className='grid grid-cols-2 gap-4 md:gap-6'>
+						{galleryImages.map((image, index) =>
+							image.src ? (
+								<div
+									key={index}
+									className={`${
+										image.size === 'full' ? 'col-span-2' : ''
+									} rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-105`}>
+									<img
+										src={image.src}
+										alt={image.alt || 'Gallery Image'}
+										className='w-full h-auto object-cover shadow-lg'
+									/>
+								</div>
+							) : null
+						)}
 					</div>
 				</div>
 			</div>
 		</section>
 	);
-}
+};
+
+export default TrophyDetails;

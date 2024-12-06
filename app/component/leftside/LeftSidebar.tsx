@@ -10,7 +10,9 @@ import { MdOutlineDashboard } from 'react-icons/md';
 import { FaCartShopping } from 'react-icons/fa6';
 import { IoLogOut } from 'react-icons/io5';
 import { FcDownload } from 'react-icons/fc';
-
+import Link from 'next/link';
+import { FaMoon, FaSun } from 'react-icons/fa';
+import { IoChatbubbleEllipsesSharp } from 'react-icons/io5';
 type SidebarItem = {
 	id: string;
 	icon: React.ReactNode;
@@ -20,17 +22,20 @@ type SidebarItem = {
 
 const SidebarData: SidebarItem[] = [
 	{
+		id: 'chat',
+		icon: (
+			<IoChatbubbleEllipsesSharp className='text-3xl dark:text-indigo-600  text-indigo-600' />
+		),
+		label: 'Message',
+		href: '/component/Chat/Massege',
+	},
+	{
 		id: 'notifications',
 		icon: <IoIosNotifications className='text-2xl' />,
 		label: 'Notification',
 		href: '#',
 	},
-	{
-		id: 'chat',
-		icon: <BsChatTextFill className='text-xl' />,
-		label: 'Chat with AI',
-		href: '#',
-	},
+
 	{
 		id: 'standing',
 		icon: <FaChartLine className='text-xl' />,
@@ -96,7 +101,7 @@ const menuItems: MenuItem[] = [
 ];
 
 const LeftSidebar: React.FC = () => {
-	const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+	const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
 
 	// Toggle dark mode
 	useEffect(() => {
@@ -128,23 +133,25 @@ const LeftSidebar: React.FC = () => {
 							</div>
 						</div>
 						<div className='p-4'>
-							<div className='grid size-10 font-bold place-content-center rounded-lg  bg-red-600 dark:bg-red-600 text-blue-200 dark:text-primary text-lg'>
+							<Link
+								href={'/live-match'}
+								className='grid size-10 font-bold place-content-center rounded-lg  bg-red-600 dark:bg-red-600 text-blue-200 dark:text-primary text-lg'>
 								<RiLiveFill className='text-xl animate-pulse' />
-							</div>
+							</Link>
 						</div>
 
 						{/* Menu Items */}
 						<div className='px-2 space-y-4'>
 							{SidebarData.map((item) => (
-								<a
+								<Link
 									key={item.id}
 									href={item.href}
-									className='group relative flex justify-center rounded px-2 py-1.5 text-blue-500 dark:text-blue-200 hover:bg-gray-50 hover:text-darkprimary dark:hover:bg-darkthird'>
+									className='group text-nowrap relative flex justify-center rounded px-2 py-1.5 text-blue-500 dark:text-blue-200 hover:bg-gray-50 hover:text-darkprimary dark:hover:bg-darkthird'>
 									{item.icon}
 									<span className='invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible'>
 										{item.label}
 									</span>
-								</a>
+								</Link>
 							))}
 						</div>
 						{/* Logout */}
@@ -158,8 +165,13 @@ const LeftSidebar: React.FC = () => {
 						</div>
 					</div>
 
-					{/* Main Section */}
-					<div className='flex-1 mb-20 md:mb-0 bg-primary dark:bg-darksecoundry text-darksecoundry dark:text-primary'>
+					<div
+						className='flex-1 mb-20 pb-24	 md:mb-0 overflow-scroll overflow-x-hidden overflow-y-auto
+										[&::-webkit-scrollbar]:w-1
+										[&::-webkit-scrollbar-track]:bg-secoundry
+										[&::-webkit-scrollbar-thumb]:bg-forth
+										dark:[&::-webkit-scrollbar-track]:bg-darksecoundry
+										dark:[&::-webkit-scrollbar-thumb]:bg-darkthird  bg-primary dark:bg-gray-800 text-darksecoundry dark:text-primary'>
 						<div className='px-2 py-6 text-nowrap'>
 							<ul className='space-y-4'>
 								{menuItems.map((item, index) => (
@@ -193,7 +205,7 @@ const LeftSidebar: React.FC = () => {
 											<div>
 												<a
 													href={item.href}
-													className='flex items-center gap-2 rounded-lg bg-secoundry dark:bg-darkthird px-4 py-2 text-md font-medium text-darksecoundry dark:text-primary'>
+													className='flex items-center gap-2 rounded-lg bg-secoundry dark:bg-darksecoundry px-4 py-2 text-md font-medium text-darksecoundry dark:text-primary'>
 													{item.icon} {item.label}
 												</a>
 												<div className='flex my-6 justify-center'>
@@ -229,13 +241,19 @@ const LeftSidebar: React.FC = () => {
 								<div
 									className={`mt-4 mb-1 ${
 										isDarkMode ? 'bg-darkprimary' : 'bg-secoundry'
-									} dark:text-secoundry text-darksecoundry p-3  rounded-full shadow-glow hover:shadow-sm dark:shadow-sm dark:hover:shadow-custom-dark flex items-center justify-around cursor-pointer`}
+									} dark:text-secoundry text-darksecoundry p-2  rounded-full  hover:shadow-sm dark:shadow-sm flex items-center justify-around cursor-pointer`}
 									onClick={() => setIsDarkMode(!isDarkMode)}>
 									<span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
 									<div
-										className={`w-6 h-6 rounded-full ${
-											isDarkMode ? 'bg-secoundry' : 'bg-darksecoundry'
-										}`}></div>
+										className={`w-8 h-8 rounded-full flex justify-center items-center ${
+											isDarkMode ? 'bg-white' : 'bg-darkforth'
+										}`}>
+										{isDarkMode ? (
+											<FaSun className='text-yellow-600' />
+										) : (
+											<FaMoon className='text-darksecoundry' />
+										)}
+									</div>
 								</div>
 							</ul>
 						</div>
@@ -247,108 +265,3 @@ const LeftSidebar: React.FC = () => {
 };
 
 export default LeftSidebar;
-
-// 'use client';
-
-// import React, { useState, useEffect } from 'react';
-// import { IoIosNotifications, IoIosArrowDropdownCircle } from 'react-icons/io';
-// import { CiSettings } from 'react-icons/ci';
-// import { RiLiveFill } from 'react-icons/ri';
-// import { BsChatTextFill, BsMicrosoftTeams } from 'react-icons/bs';
-// import { FaChartLine } from 'react-icons/fa';
-// import { MdOutlineDashboard } from 'react-icons/md';
-// import { FaCartShopping } from 'react-icons/fa6';
-// import { IoLogOut } from 'react-icons/io5';
-// import { FcDownload } from 'react-icons/fc';
-
-// type SidebarItem = {
-// 	id: string;
-// 	icon: React.ReactNode;
-// 	label: string;
-// 	href: string;
-// };
-
-// const SidebarData: SidebarItem[] = [
-// 	{
-// 		id: 'notifications',
-// 		icon: <IoIosNotifications className='text-2xl' />,
-// 		label: 'Notification',
-// 		href: '#',
-// 	},
-// 	{
-// 		id: 'chat',
-// 		icon: <BsChatTextFill className='text-xl' />,
-// 		label: 'Chat with AI',
-// 		href: '#',
-// 	},
-// 	{
-// 		id: 'standing',
-// 		icon: <FaChartLine className='text-xl' />,
-// 		label: 'Standing',
-// 		href: '#',
-// 	},
-// 	{
-// 		id: 'shop',
-// 		icon: <FaCartShopping className='text-xl' />,
-// 		label: 'Shop',
-// 		href: '#',
-// 	},
-// 	{
-// 		id: 'settings',
-// 		icon: <CiSettings className='text-2xl' />,
-// 		label: 'Settings',
-// 		href: '#',
-// 	},
-// ];
-
-// const LeftSidebar: React.FC = () => {
-// 	const [isSidebarVisible, setIsSidebarVisible] = useState(false);
-
-// 	// Toggle sidebar visibility
-// 	const toggleSidebar = () => {
-// 		setIsSidebarVisible(!isSidebarVisible);
-// 	};
-
-// 	return (
-// 		<div className='relative'>
-// 			{/* Toggle Button */}
-// 			<div
-// 				className='grid size-10 font-bold place-content-center rounded-lg bg-primary dark:bg-darksecoundry text-darksecoundry dark:text-primary text-lg cursor-pointer'
-// 				onClick={toggleSidebar}>
-// 				H
-// 			</div>
-
-// 			{/* Sidebar */}
-// 			<div
-// 				className={`transition-transform duration-300 transform ${
-// 					isSidebarVisible ? 'translate-x-0' : '-translate-x-full'
-// 				} fixed top-0 left-0 h-screen w-64 bg-primary dark:bg-darkprimary text-darkprimary dark:text-primary`}>
-// 				<div className='flex flex-col h-full'>
-// 					<div className='p-4 text-lg font-bold'>Sidebar</div>
-
-// 					{/* Menu Items */}
-// 					<div className='space-y-4 px-2'>
-// 						{SidebarData.map((item) => (
-// 							<a
-// 								key={item.id}
-// 								href={item.href}
-// 								className='flex items-center gap-3 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-darkthird'>
-// 								{item.icon}
-// 								{item.label}
-// 							</a>
-// 						))}
-// 					</div>
-
-// 					{/* Dark Mode Toggle */}
-// 					<div
-// 						className='mt-auto p-3 text-center cursor-pointer'
-// 						onClick={() => setIsDarkMode(!isDarkMode)}>
-// 						{isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-// 					</div>
-// 				</div>
-// 			</div>
-// 		</div>
-// 	);
-// };
-
-// export default LeftSidebar;

@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 
-import Footer from './component/footer';
-import Navbar from './component/header';
-import LeftSidebar from './component/LeftSidebar';
-import RightSidebar from './component/RightSidebar';
-import AImessage from './AI-massage';
+import Footer from './component/layout/footer';
+import Navbar from './component/layout/header';
+import LeftSidebar from './component/leftside/LeftSidebar';
+import RightSidebar from './component/rightside/RightSidebar';
+import AImessage from './component/Chat/AI-massage';
 
 import { Roboto } from 'next/font/google';
 
@@ -29,7 +29,7 @@ export default function RootLayout({
 				className={`bg-gradient-to-r ${inter.className} h-screen overflow-hidden from-third via-primary to-third dark:from-darksecoundry dark:via-black dark:to-darksecoundry  `}>
 				<Navbar />
 				<div className=' m-auto container '>
-					<div className='flex min-h-screen relative pt-[83px] flex-col lg:flex-row  mx-auto  text-blue-500 dark:text-blue-100 w-full'>
+					<div className='flex min-h-screen relative pt-[83px] flex-col lg:flex-row  mx-auto  text-darksecoundry dark:text-white  w-full'>
 						<LeftSidebar />
 
 						<main

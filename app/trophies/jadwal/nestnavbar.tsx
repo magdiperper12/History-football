@@ -1,104 +1,123 @@
 'use client';
+
+import { useState, useEffect, JSX } from 'react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import logo from '../../image/logo2-remove.png';
 
 interface NavbarLink {
 	text: string;
 	href: string;
 }
 
-interface NavbarIcon {
-	id: string;
-	icon: JSX.Element;
+interface datas {
+	strSeason: string;
 }
 
-interface NavbarLanguage {
-	value: string;
-	label: string;
+async function fetchSeasons(): Promise<datas[]> {
+	try {
+		const response = await fetch(
+			'https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php?id=4328'
+		);
+		if (!response.ok) throw new Error('Failed to fetch data');
+		const result = await response.json();
+		return result?.seasons || [];
+	} catch (error) {
+		console.error('Error fetching data:', error);
+		return [];
+	}
 }
 
-const NestedNavbar: React.FC = () => {
-	const [isDarkMode, setIsDarkMode] = useState(false);
-
+export default function NestedNavbar() {
 	const navbarData = {
 		links: [
-			{ text: 'Assistant', href: '/trophies/jadwal/sonaa3' },
+			{ text: 'Assistant', href: '/trophies/jadwal/Assist' },
 			{ text: 'TopScorers', href: '/trophies/jadwal/haddaf' },
-			{ text: 'Matches', href: '/trophies/jadwal/matches' }, //
-			{ text: 'Table', href: '/trophies/jadwal/table' }, //
+			{ text: 'Matches', href: '/trophies/jadwal/matches' },
+			{ text: 'Table', href: '/trophies/jadwal/table' },
 		] as NavbarLink[],
 	};
 
+	const [data, setData] = useState<datas[]>([]);
+	const [isLoading, setIsLoading] = useState(true);
+	const [visable, setVisable] = useState(false);
+
 	useEffect(() => {
-		document.documentElement.classList.toggle('dark', isDarkMode);
-	}, [isDarkMode]);
+		(async () => {
+			setIsLoading(true);
+			const seasons = await fetchSeasons();
+			setData(seasons);
+			setIsLoading(false);
+		})();
+	}, []);
 
 	return (
 		<div>
-			<div className='w-full  bg-blue-100 dark:bg-blue-950 flex items-center justify-center flex-col p-10'>
-				<Image
-					src={logo}
-					alt='Football Logo'
-					className='rounded-lg h-44 w-auto'
-				/>
-				<h1 className='md:text-6xl text-3xl -mt-5 text-blue-900 dark:text-blue-200 font-bold'>
-					Primere League
-				</h1>
-			</div>
+			{/* Header Section */}
 
-			<header className='w-full md:px-10 px-3 py-8  bg-white dark:bg-gray-900 transition-colors duration-300'>
-				<div className='container md:mx-auto flex  flex-col md:flex-row justify-between items-center '>
-					{/* <select className='py-1 px-2  dark:bg-gray-800 bg-gray-200 outline-none  rounded-lg '>
-					
-					</select> */}
-
+			<header className='w-full   md:px-10 px-3 py-8 bg-white dark:bg-gray-900'>
+				<div className='container md:mx-auto flex flex-col md:flex-row justify-between items-center'>
 					<div>
 						<label
 							htmlFor='HeadlineAct'
 							className='block text-sm font-medium text-darkthird'>
 							Year
 						</label>
-
-						<select
-							name='HeadlineAct'
-							id='HeadlineAct'
-							className='mt-1.5 cursor-pointer flex justify-center items-center  py-2 px-3  dark:bg-darksecoundry bg-secoundry   rounded-lg w-full border-none outline-none text-darksecoundry dark:text-secoundry sm:text-sm'>
-							<option value=''>Please select </option>
-							<option
-								value='2023'
-								className=''>
-								2023 / 2024
-							</option>
-							<option value='2022'>2022 / 2023</option>
-							<option value='2021'>2021 / 2022</option>
-							<option value='2020'>2020 / 2021</option>
-							<option value='2019'>2019 / 2020</option>
-						</select>
+						<div className='relative'>
+							<button
+								onClick={() => setVisable(!visable)}
+								aria-expanded={visable}
+								aria-haspopup='listbox'
+								className='w-full outline-none text-darksecoundry dark:text-white bg-darkforth dark:bg-darkthird hover:bg-darkthird dark:hover:bg-darksecoundry font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center'>
+								Dropdown button
+							</button>
+							{visable && (
+								<ul
+									id='dropdown'
+									role='listbox'
+									className='absolute top-10 flex flex-col-reverse bg-primary h-44 overflow-x-hidden overflow-y-auto
+  [&::-webkit-scrollbar]:w-1
+  [&::-webkit-scrollbar-track]:bg-secoundry
+  [&::-webkit-scrollbar-thumb]:bg-forth
+  dark:[&::-webkit-scrollbar-track]:bg-darksecoundry
+  dark:[&::-webkit-scrollbar-thumb]:bg-darkthird overflow-scroll m-auto  text-center dark:bg-darkprimary w-full rounded-lg shadow'>
+									{isLoading ? (
+										<li className='p-2 text-center'>Loading...</li>
+									) : (
+										data.map((item, index) => (
+											<li
+												key={index}
+												role='option'>
+												<a
+													href='#'
+													className='block px-4 py-2 hover:bg-third dark:hover:bg-gray-600'>
+													{item.strSeason}
+												</a>
+											</li>
+										))
+									)}
+								</ul>
+							)}
+						</div>
 					</div>
 
+					{/* Desktop Links */}
 					<nav className='hidden md:flex gap-5'>
-						{navbarData.links.map((link, index) => (
+						{navbarData.links.map((link) => (
 							<Link
 								key={link.text}
 								href={link.href}
-								className='text-lg font-bold text-blue-500 dark:text-blue-100 hover:text-[#6c83ff] dark:hover:text-[#6c83ff] transition-opacity duration-700 ease-in-out opacity-0 animate-fadeIn'
-								style={{ animationDelay: `${250 * index}ms` }}>
+								className='text-lg font-bold text-blue-500 dark:text-blue-100 hover:text-[#6c83ff]'>
 								{link.text}
 							</Link>
 						))}
 					</nav>
 
-					<nav
-						className={`md:hidden ${
-							isDarkMode ? 'bg-gray-900' : 'bg-gray-100'
-						} py-4 px-3 mt-3 text-xl flex gap-4 `}>
+					{/* Mobile Links */}
+					<nav className='md:hidden py-4 px-3 mt-3 text-xl flex gap-4'>
 						{navbarData.links.map((link) => (
 							<Link
 								key={link.text}
 								href={link.href}
-								className=' text-blue-600 dark:text-white hover:text-[#6c83ff] transition-all duration-200  '>
+								className='text-blue-500 dark:text-blue-100 hover:text-[#6c83ff]'>
 								{link.text}
 							</Link>
 						))}
@@ -107,6 +126,4 @@ const NestedNavbar: React.FC = () => {
 			</header>
 		</div>
 	);
-};
-
-export default NestedNavbar;
+}

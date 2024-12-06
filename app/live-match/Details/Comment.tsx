@@ -7,12 +7,13 @@ interface Comment {
 	author: string;
 	date: string;
 	text: string;
+	timeing: string;
 }
 
-const DiscussionSection: React.FC = () => {
+const CommentSection: React.FC = () => {
 	const [comments, setComments] = useState<Comment[]>([]);
 	const [newComment, setNewComment] = useState<string>('');
-	const [isvisable, setisvisable] = useState(false);
+	const [isvisable, setisvisable] = useState(true);
 
 	useEffect(() => {
 		setisvisable(!isvisable);
@@ -26,6 +27,8 @@ const DiscussionSection: React.FC = () => {
 		const newCommentData: Comment = {
 			id: comments.length + 1,
 			author: 'User', // Replace with dynamic author if needed
+			// date: new Date().toLocaleDateString(),
+			timeing: new Date().toLocaleTimeString(),
 			date: new Date().toLocaleDateString(),
 			text: newComment,
 		};
@@ -36,7 +39,7 @@ const DiscussionSection: React.FC = () => {
 
 	return (
 		<section className='py-4 lg:py-8 antialiased'>
-			<div className='max-w-screen-lg mx-auto px-4'>
+			<div className='max-w-screen-lg  mx-auto px-4'>
 				<div className='flex justify-between items-center mb-6'>
 					<h2 className='text-lg lg:text-2xl font-bold text-darkthird dark:text-white'>
 						({comments.length}) comment
@@ -63,7 +66,7 @@ const DiscussionSection: React.FC = () => {
 					</div>
 					<button
 						type='submit'
-						className='inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white dark:bg-darksecoundry bg-forth   rounded-lg   hover:scale-95 shadow-lg hover:shadow-sm dark:shadow-darksecoundry duration-200'>
+						className='inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white dark:bg-darksecoundry bg-darkthird   rounded-lg   hover:scale-95 shadow-lg hover:shadow-sm dark:shadow-darkprimary duration-200'>
 						Post comment
 					</button>
 				</form>
@@ -86,8 +89,10 @@ const DiscussionSection: React.FC = () => {
 									<p className='text-sm text-gray-600 dark:text-gray-400'>
 										<time
 											dateTime={comment.date}
-											title={comment.date}>
-											{comment.date}
+											title={comment.date}
+											className='flex items-center gap-2'>
+											<span>{comment.timeing}</span>
+											<span className='text-xs '>{comment.date}</span>
 										</time>
 									</p>
 								</div>
@@ -136,4 +141,4 @@ const DiscussionSection: React.FC = () => {
 	);
 };
 
-export default DiscussionSection;
+export default CommentSection;
