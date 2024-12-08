@@ -41,12 +41,6 @@ const alternativePlayers: Player[] = [
 	{ name: 'bale', top: '85%', left: '48%' },
 ];
 
-// Props Interface
-interface TeamFormProps {
-	teamName: string;
-	teamName2: string;
-}
-
 // Player Position Component
 const PlayerPosition: React.FC<{ player: Player }> = ({ player }) => (
 	<div
@@ -55,9 +49,12 @@ const PlayerPosition: React.FC<{ player: Player }> = ({ player }) => (
 		{player.name}
 	</div>
 );
-
+interface TeamFormProps {
+	teamName: string;
+	opponentName: string; // Add this property
+}
 // Main Component
-const TeamForm: React.FC<TeamFormProps> = ({ teamName, teamName2 }) => {
+const TeamForm: React.FC<TeamFormProps> = ({ teamName, opponentName }) => {
 	const [isFirstTable, setIsFirstTable] = useState(true);
 
 	// Toggle between teams
@@ -73,7 +70,7 @@ const TeamForm: React.FC<TeamFormProps> = ({ teamName, teamName2 }) => {
 				className='bg-blue-500 text-white px-4 py-2 rounded mb-4 hover:bg-blue-600 transition duration-300'>
 				{isFirstTable
 					? `Switch to ${teamName}`
-					: `Switch to ${teamName2 || 'secound team'}`}
+					: `Switch to ${opponentName || 'secound team'}`}
 			</button>
 
 			{/* Current Team or Alternative Team */}

@@ -79,17 +79,17 @@ const ChatApp: React.FC = () => {
 				<div className='flex space-x-4'>
 					{/* People List */}
 					<div className='w-1/4 bg-white dark:bg-gray-700 rounded-lg shadow-lg p-4 transition-all duration-300'>
-						<div className='flex items-center mb-4'>
+						<div className='flex items-center mb-4 gap-3'>
 							<FaSearch
 								size={20}
-								className='text-gray-500 dark:text-gray-400'
+								className='text-gray-500 dark:text-gray-400 absolute mx-2 pe-1'
 							/>
 							<input
 								type='text'
 								placeholder='Search...'
 								value={search}
 								onChange={(e) => setSearch(e.target.value)}
-								className='w-full px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+								className='w-full px-8 py-2 bg-secoundry dark:bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
 							/>
 						</div>
 						<ul className='space-y-2'>
@@ -125,7 +125,7 @@ const ChatApp: React.FC = () => {
 
 					{/* Chat Window */}
 					<div className='flex-1 w-3/4 relative bg-white h-[85vh] dark:bg-gray-800 rounded-lg py-5 shadow-lg ps-6 pe-3 ml-4'>
-						<div className='flex items-center mb-6'>
+						<div className='flex items-center mb-5  '>
 							<img
 								src={user.profilePic}
 								alt={user.name}
@@ -155,10 +155,10 @@ const ChatApp: React.FC = () => {
 										message.user === user.name ? 'end ' : 'start'
 									} `}>
 									<div
-										className={` rounded-xl   bg-${
+										className={` rounded-xl   ${
 											message.user === user.name
-												? 'blue-600 rounded-br-none'
-												: 'gray-600 rounded-bl-none'
+												? ' bg-blue-600 rounded-br-none'
+												: 'bg-slate-600 rounded-bl-none'
 										}
 										  p-4 max-w-xs transition-all text-white duration-300 `}>
 										{message.text}
@@ -171,7 +171,7 @@ const ChatApp: React.FC = () => {
 							<div className='flex items-center'>
 								<input
 									type='text'
-									className='w-full px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+									className='w-full px-4 py-2 bg-secoundry dark:bg-slate-700 outline-none rounded-lg focus:outline-none '
 									placeholder='Type a message...'
 									value={newMessage}
 									onChange={(e) => setNewMessage(e.target.value)}

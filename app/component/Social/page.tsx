@@ -1,9 +1,7 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import DiscussionSection from '../../live-match/Details/Comment';
-import Profile from './Profile';
-import SocialFeed from './social-fead';
 
 function SocialPage() {
 	return (

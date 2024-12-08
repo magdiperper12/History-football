@@ -112,16 +112,16 @@ const LeftSidebar: React.FC = () => {
 		setisvisable(!isvisable);
 	};
 	return (
-		<div className='lg:w-1/6 h-3/4 md:h-screen md:pt-20 md:-mt-20 md:overflow-hidden relative rounded-lg bg-primary dark:bg-darkprimary text-darkprimary dark:text-primary '>
+		<div className='lg:w-1/6 h-3/4 lg:h-screen md:pt-20 md:-mt-20 md:overflow-hidden relative rounded-lg bg-primary dark:bg-darkprimary text-darkprimary dark:text-primary '>
 			<div>
 				<div
 					onClick={togglevisable}
-					className='text-center py-1  md:hidden  font-bold    text-lg'>
+					className='text-center py-1  lg:hidden  font-bold    text-lg'>
 					H
 				</div>
 
 				<div
-					className={` md:h-screen transition-all duration-300  fadeIn md:flex  ${
+					className={` lg:h-screen transition-all duration-300  fadeIn lg:flex  ${
 						isvisable ? `hidden ` : `flex `
 					} w-full relative`}>
 					{/* Sidebar */}
@@ -166,7 +166,7 @@ const LeftSidebar: React.FC = () => {
 					</div>
 
 					<div
-						className='flex-1 mb-20 pb-24	 md:mb-0 overflow-scroll overflow-x-hidden overflow-y-auto
+						className='flex-1 mb-20 pb-24	 lg:mb-0 overflow-scroll overflow-x-hidden overflow-y-auto
 										[&::-webkit-scrollbar]:w-1
 										[&::-webkit-scrollbar-track]:bg-secoundry
 										[&::-webkit-scrollbar-thumb]:bg-forth

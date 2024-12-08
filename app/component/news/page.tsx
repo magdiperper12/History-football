@@ -1,113 +1,13 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-
-interface NewsItem {
-	title: string;
-	description: string;
-	image: string;
-	link: string;
-	tag: string;
-	timestamp: string;
-}
-
-const newsItems: NewsItem[] = [
-	{
-		title: 'Breaking News: Technology Advancements in 2024',
-		description:
-			'Discover the latest trends in AI, robotics, and more shaping our world.',
-		image:
-			'https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg',
-		link: '#',
-		tag: 'Technology',
-		timestamp: '5 mins ago',
-	},
-
-	{
-		title: 'Global Warming: Challenges Ahead',
-		description: 'Experts weigh in on the urgent need for climate action.',
-		image:
-			'https://cdn.pixabay.com/photo/2021/09/08/20/45/bird-6607863_960_720.jpg',
-		link: '#',
-		tag: 'Environment',
-		timestamp: '3 hours ago',
-	},
-	{
-		title: 'Sports Highlights: The Match of the Century',
-		description: "Relive the thrilling moments of last night's game.",
-		image:
-			'https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg',
-		link: '#',
-		tag: 'Sports',
-		timestamp: '1 hour ago',
-	},
-	{
-		title: 'Business Insights: Market Trends',
-		description: 'Top analysts predict major shifts in the global market.',
-		image:
-			'https://cdn.pixabay.com/photo/2021/09/12/17/43/parrot-feathers-6619082_960_720.jpg',
-		link: '#',
-		tag: 'Business',
-		timestamp: '5 hours ago',
-	},
-	{
-		title: 'Global Warming: Challenges Ahead',
-		description: 'Experts weigh in on the urgent need for climate action.',
-		image:
-			'https://cdn.pixabay.com/photo/2021/09/08/20/45/bird-6607863_960_720.jpg',
-		link: '#',
-		tag: 'Environment',
-		timestamp: '3 hours ago',
-	},
-	{
-		title: 'Sports Highlights: The Match of the Century',
-		description: "Relive the thrilling moments of last night's game.",
-		image:
-			'https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg',
-		link: '#',
-		tag: 'Sports',
-		timestamp: '1 hour ago',
-	},
-	{
-		title: 'Business Insights: Market Trends',
-		description: 'Top analysts predict major shifts in the global market.',
-		image:
-			'https://cdn.pixabay.com/photo/2021/09/12/17/43/parrot-feathers-6619082_960_720.jpg',
-		link: '#',
-		tag: 'Business',
-		timestamp: '5 hours ago',
-	},
-	{
-		title: 'Global Warming: Challenges Ahead',
-		description: 'Experts weigh in on the urgent need for climate action.',
-		image:
-			'https://cdn.pixabay.com/photo/2021/09/08/20/45/bird-6607863_960_720.jpg',
-		link: '#',
-		tag: 'Environment',
-		timestamp: '3 hours ago',
-	},
-	{
-		title: 'Sports Highlights: The Match of the Century',
-		description: "Relive the thrilling moments of last night's game.",
-		image:
-			'https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg',
-		link: '#',
-		tag: 'Sports',
-		timestamp: '1 hour ago',
-	},
-	{
-		title: 'Business Insights: Market Trends',
-		description: 'Top analysts predict major shifts in the global market.',
-		image:
-			'https://cdn.pixabay.com/photo/2021/09/12/17/43/parrot-feathers-6619082_960_720.jpg',
-		link: '#',
-		tag: 'Business',
-		timestamp: '5 hours ago',
-	},
-];
+import newsItems from './news';
+import { motion } from 'framer-motion';
 
 const NewsSection: React.FC = () => {
 	const [loading, setLoading] = useState(true);
+	const [visibleItems, setVisibleItems] = useState(8); // Show 4 items initially
+
 	useEffect(() => {
 		const fetchProducts = async () => {
 			try {
@@ -123,14 +23,19 @@ const NewsSection: React.FC = () => {
 
 		fetchProducts();
 	}, []);
+
+	const handleShowMore = () => {
+		setVisibleItems((prev) => prev + 8); // Increment visible items by 4
+	};
+
 	if (loading) {
 		return (
-			<div className='text-center mt-10 text-lg font-medium  mx-auto px-4  mb-12'>
+			<div className='text-center mt-10 text-lg font-medium mx-auto px-4 mb-12'>
 				<h2 className='text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-8'>
 					Latest News
 				</h2>
 				<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl'>
-					{Array.from({ length: 4 }).map((_, index) => (
+					{Array.from({ length: 8 }).map((_, index) => (
 						<div
 							key={index}
 							className='rounded-lg shadow-md bg-gray-200 dark:bg-gray-700 animate-pulse'>
@@ -145,16 +50,20 @@ const NewsSection: React.FC = () => {
 			</div>
 		);
 	}
+
 	return (
 		<section className='max-w-7xl mx-auto px-4 mt-12 mb-12'>
 			<h2 className='text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-8'>
 				Latest News
 			</h2>
 			<div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-8'>
-				{newsItems.map((news, index) => (
-					<div
+				{newsItems.slice(0, visibleItems).map((news, index) => (
+					<motion.div
 						key={index}
-						className='bg-white dark:bg-gray-900 rounded-t-lg shadow-lg hover:shadow-2xl transform transition duration-300 ease-in-out'>
+						className='rounded-t-2xl shadow-md bg-white relative dark:bg-gray-800 overflow-hidden transition-all hover:scale-105 hover:shadow-xl'
+						initial={{ opacity: 0, y: 10 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ delay: index * 0.1 }}>
 						<div className='relative w-full h-56 overflow-hidden rounded-t-lg'>
 							<img
 								src={news.image}
@@ -181,9 +90,18 @@ const NewsSection: React.FC = () => {
 								</a>
 							</div>
 						</div>
-					</div>
+					</motion.div>
 				))}
 			</div>
+			{visibleItems < newsItems.length && (
+				<div className='text-center mt-8'>
+					<button
+						onClick={handleShowMore}
+						className='bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition'>
+						Show More
+					</button>
+				</div>
+			)}
 		</section>
 	);
 };

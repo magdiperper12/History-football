@@ -8,10 +8,6 @@ function Page() {
 					title='map'
 					width='100%'
 					height='100%'
-					frameBorder='0'
-					marginHeight='0'
-					marginWidth='0'
-					scrolling='no'
 					src='https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed'
 					style={{
 						filter: 'grayscale(1) contrast(1.2) opacity(0.16)',
