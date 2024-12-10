@@ -1,14 +1,14 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import '../../globals.css';
+import '../globals.css';
 import Image, { StaticImageData } from 'next/image'; // Import StaticImageData
-import logo from '../../assets/image/laliga.png';
-import logo2 from '../../assets/image/bondizleage.png';
-import logo3 from '../../assets/image/leage1.png';
-import logo4 from '../../assets/image/portoghal.png';
-import logo5 from '../../assets/image/primerleage.png';
-import logo6 from '../../assets/image/seriaA.png';
+import logo from '../assets/image/laliga.png';
+import logo2 from '../assets/image/bondizleage.png';
+import logo3 from '../assets/image/leage1.png';
+import logo4 from '../assets/image/portoghal.png';
+import logo5 from '../assets/image/primerleage.png';
+import logo6 from '../assets/image/seriaA.png';
 
 interface League {
 	id: string;

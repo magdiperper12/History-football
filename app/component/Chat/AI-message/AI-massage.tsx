@@ -8,7 +8,7 @@ import { IoIosArrowDown } from 'react-icons/io';
 import { IoChatbubbleEllipsesSharp } from 'react-icons/io5';
 import { FaRobot } from 'react-icons/fa';
 import dynamic from 'next/dynamic';
-import historicLogo from '../../assets/image/logo2-remove.png';
+import historicLogo from '../../../assets/image/logo2-remove.png';
 import Image from 'next/image';
 
 const EmojiPicker = dynamic(() => import('emoji-picker-react'), { ssr: false });

@@ -4,9 +4,9 @@ import './globals.css';
 
 import Footer from './component/layout/footer';
 import Navbar from './component/layout/header';
-import LeftSidebar from './component/leftside/LeftSidebar';
-import RightSidebar from './component/rightside/RightSidebar';
-import AImessage from './component/Chat/AI-massage';
+import LeftSidebar from './component/layout/leftside/LeftSidebar';
+import RightSidebar from './component/layout/rightside/RightSidebar';
+import AImessage from './component/Chat/AI-message/AI-massage';
 
 import { Roboto } from 'next/font/google';
 

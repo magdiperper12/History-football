@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import DiscussionSection from '../../live-match/Details/Comment';
+import DiscussionSection from '../../../live-match/Details/Comment';
 
 function SocialPage() {
 	return (

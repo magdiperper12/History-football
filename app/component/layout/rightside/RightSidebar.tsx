@@ -2,7 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PiNavigationArrowFill } from 'react-icons/pi';
-import image from '../../assets/image/champions-league-trophy.webp';
+import image from '../../../assets/image/primerleage.png';
+import image2 from '../../../assets/image/portoghal.png';
 import { IoIosArrowForward } from 'react-icons/io';
 
 interface Item {
@@ -113,18 +114,22 @@ const RightSidebar: React.FC = () => (
 					<Link
 						href={item.href}
 						key={idx}
-						className='p-2 py-3 bg-white dark:bg-gray-800 rounded-lg text-gray-700 dark:text-white flex items-start gap-4 transition-all duration-200 hover:shadow-lg group'
+						className={`p-2 py-3 bg-transparent  hover:shadow-blue-100 dark:shadow-black transition-all border-blue-100 dark:border-darksecoundry ${
+							idx === 0
+								? 'border-b-2 pb-6 hover:shadow-none'
+								: 'border-0 hover:shadow-lg'
+						}   text-gray-700 dark:text-white flex items-start gap-4 transition-all duration-200 group`}
 						aria-label={`Link to ${item.description}`}>
 						<div
 							className={`flex ${
 								idx === 0 ? 'flex-col justify-center' : 'flex-row'
 							} gap-3`}>
 							<Image
-								src={image}
+								src={idx === 0 ? image : image2}
 								alt={`Image for ${item.description}`}
 								width={idx === 0 ? 220 : 60}
 								height={idx === 0 ? 60 : 20}
-								className='rounded-lg shadow-md '
+								className='rounded-lg  '
 								layout='intrinsic'
 								priority={idx === 0}
 							/>
@@ -136,7 +141,10 @@ const RightSidebar: React.FC = () => (
 									{item.time}
 								</p>
 							</div>
-							<div className='ml-auto text-xl  text-yellow-500 dark:text-yellow-400 transform  group-hover:scale-105 transition-all'>
+							<div
+								className={`ms-auto text-xl  text-yellow-500 mt-3 dark:text-yellow-400 transform  group-hover:scale-105 transition-all ${
+									idx === 0 ? 'hidden' : 'block'
+								}`}>
 								<PiNavigationArrowFill />
 							</div>
 						</div>

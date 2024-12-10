@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const Shop: React.FC = () => {
 	const [products, setProducts] = useState([]);
@@ -36,7 +37,8 @@ const Shop: React.FC = () => {
 
 	if (loading) {
 		return (
-			<div className='text-center mt-10 text-lg font-medium'>
+			<div className='text-center mt-10 text-lg font-medium mx-10'>
+				<div className='h-8 bg-gray-300 ms-2 w-40 dark:bg-gray-600 rounded mb-7'></div>
 				<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6'>
 					{Array.from({ length: 3 }).map((_, index) => (
 						<div
@@ -98,11 +100,13 @@ const Shop: React.FC = () => {
 									className='h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105'
 								/>
 								<div className='absolute inset-0 flex flex-col items-center justify-center opacity-0 bg-black bg-opacity-50 duration-300 group-hover:opacity-100 transition-all scale-105'>
-									<button
+									<Link
+										key={product.id}
+										href={`/component/shop/${product.id}`}
 										aria-label={`View details for ${product.title}`}
 										className='mt-4 bg-darkthird text-white px-4 py-2 rounded-lg shadow-lg hover:bg-darksecoundry  transition-colors group-scale-95'>
 										View Details
-									</button>
+									</Link>
 								</div>
 							</div>
 							<div className='py-6 px-4'>

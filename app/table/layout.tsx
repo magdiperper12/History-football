@@ -1,4 +1,4 @@
-import '../../globals.css';
+import '../globals.css';
 import Image from 'next/image';
 import NestedNavbar from './nestnavbar';
 import Carousel from './Carousel';

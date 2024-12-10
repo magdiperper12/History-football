@@ -29,10 +29,10 @@ async function fetchSeasons(): Promise<datas[]> {
 export default function NestedNavbar() {
 	const navbarData = {
 		links: [
-			{ text: 'Assistant', href: '/trophies/jadwal/Assist' },
-			{ text: 'TopScorers', href: '/trophies/jadwal/haddaf' },
-			{ text: 'Matches', href: '/trophies/jadwal/matches' },
-			{ text: 'Table', href: '/trophies/jadwal/table' },
+			{ text: 'Assistant', href: '/table/Assist' },
+			{ text: 'TopScorers', href: '/table/haddaf' },
+			{ text: 'Matches', href: '/table/matches' },
+			{ text: 'Table', href: '/table/table' },
 		] as NavbarLink[],
 	};
 

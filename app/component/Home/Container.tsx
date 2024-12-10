@@ -4,7 +4,7 @@ import champion from '../../assets/image/champions-league-trophy.webp';
 import ContainerTable from './Table';
 import SearchContainer from './SearchContainer';
 import Contfooter from './ContFooter';
-import Shop from '@/app/component/shop/Shop';
+import Shop from '@/app/component/shop/page';
 
 const UnifiedComponent: React.FC = () => {
 	return (

@@ -30,8 +30,8 @@ const navbarData = {
 		{ text: 'Player', href: '/Historic/Sections/Player' },
 		{ text: 'Contry', href: '/Historic/Sections/Country' },
 		{ text: 'History', href: '/Historic' },
-		{ text: 'Table', href: '/trophies/jadwal' },
-		{ text: 'Social', href: '/component/Social' },
+		{ text: 'Table', href: '/table' },
+		{ text: 'Social', href: '/component/Chat/Social' },
 	] as NavbarLink[],
 	icons: [
 		{
@@ -240,23 +240,23 @@ const Navbar = () => {
 										className='absolute end-0 z-10 mt-0.5 w-56 divide-y divide-secoundry dark:divide-darksecoundry rounded-lg border border-secoundry dark:border-darksecoundry bg-primary dark:bg-darkprimary shadow-lg'
 										role='menu'>
 										<div className='p-2'>
-											<a
-												href='#'
-												className='block rounded-lg px-4 py-2 text-sm text-darksecoundry hover:bg-primary dark:text-secoundry dark:bg-darkprimary  hover:text-darkprimary dark:hover:text-forth'
+											<Link
+												href={`/component/Chat/users/${101}`}
+												className='block  rounded-lg px-4 py-2 text-sm text-darksecoundry hover:bg-primary dark:text-secoundry dark:bg-darkprimary   hover:text-darkthird'
 												role='menuitem'>
 												My profile
-											</a>
+											</Link>
 
 											<a
 												href='#'
-												className='block rounded-lg px-4 py-2 text-sm text-darksecoundry hover:bg-primary dark:text-secoundry dark:bg-darkprimary  hover:text-darkprimary dark:hover:text-forth'
+												className='block rounded-lg px-4 py-2 text-sm text-darksecoundry hover:bg-primary dark:text-secoundry dark:bg-darkprimary  hover:text-darkthird'
 												role='menuitem'>
 												Billing summary
 											</a>
 
 											<a
 												href='#'
-												className='block rounded-lg px-4 py-2 text-sm text-darksecoundry hover:bg-primary dark:text-secoundry dark:bg-darkprimary  hover:text-darkprimary dark:hover:text-forth'
+												className='block rounded-lg px-4 py-2 text-sm text-darksecoundry hover:bg-primary dark:text-secoundry dark:bg-darkprimary hover:text-darkthird'
 												role='menuitem'>
 												Team settings
 											</a>

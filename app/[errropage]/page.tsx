@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Home: React.FC = () => {
+const Error: React.FC = () => {
 	return (
 		<div className='grid h-screen place-content-center  px-4'>
 			<div className='text-center'>
@@ -36,4 +36,4 @@ const Home: React.FC = () => {
 	);
 };
 
-export default Home;
+export default Error;

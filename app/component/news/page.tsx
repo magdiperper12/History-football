@@ -1,13 +1,14 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import newsItems from './news';
+import newsItems from './news'; // Import static data
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const NewsSection: React.FC = () => {
+	const [visibleItems, setVisibleItems] = useState(8);
 	const [loading, setLoading] = useState(true);
-	const [visibleItems, setVisibleItems] = useState(8); // Show 4 items initially
-
+	const [error, setError] = useState(false);
 	useEffect(() => {
 		const fetchProducts = async () => {
 			try {
@@ -16,6 +17,7 @@ const NewsSection: React.FC = () => {
 				const data = await response.json();
 			} catch (err) {
 				console.error('Error fetching products:', err);
+				setError(true);
 			} finally {
 				setLoading(false);
 			}
@@ -25,16 +27,13 @@ const NewsSection: React.FC = () => {
 	}, []);
 
 	const handleShowMore = () => {
-		setVisibleItems((prev) => prev + 8); // Increment visible items by 4
+		setVisibleItems((prev) => prev + 8);
 	};
-
 	if (loading) {
 		return (
-			<div className='text-center mt-10 text-lg font-medium mx-auto px-4 mb-12'>
-				<h2 className='text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-8'>
-					Latest News
-				</h2>
-				<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl'>
+			<div className='text-center mt-10 text-lg font-medium px-5'>
+				<div className='h-6 bg-gray-300 m-auto dark:bg-gray-500 mb-6 rounded animate-pulse  w-40'></div>
+				<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
 					{Array.from({ length: 8 }).map((_, index) => (
 						<div
 							key={index}
@@ -50,7 +49,18 @@ const NewsSection: React.FC = () => {
 			</div>
 		);
 	}
-
+	if (error) {
+		return (
+			<div className='text-center mt-10 text-lg font-medium text-red-600'>
+				Failed to load products. Please try again later.
+				<button
+					onClick={() => window.location.reload()}
+					className='mt-4 px-6 py-3 border-2 border-red-500 text-white rounded-lg  hover:bg-red-600'>
+					Reload
+				</button>
+			</div>
+		);
+	}
 	return (
 		<section className='max-w-7xl mx-auto px-4 mt-12 mb-12'>
 			<h2 className='text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-8'>
@@ -59,8 +69,7 @@ const NewsSection: React.FC = () => {
 			<div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-8'>
 				{newsItems.slice(0, visibleItems).map((news, index) => (
 					<motion.div
-						key={index}
-						className='rounded-t-2xl shadow-md bg-white relative dark:bg-gray-800 overflow-hidden transition-all hover:scale-105 hover:shadow-xl'
+						className='rounded-t-2xl shadow-lg hover:shadow-sm bg-white relative dark:bg-gray-800 overflow-hidden transition-all hover:scale-105 '
 						initial={{ opacity: 0, y: 10 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ delay: index * 0.1 }}>
@@ -81,13 +90,14 @@ const NewsSection: React.FC = () => {
 							<p className='text-sm text-gray-600 dark:text-gray-400 mb-6 line-clamp-2'>
 								{news.description}
 							</p>
-							<div className='flex justify-between items-center text-gray-500 dark:text-gray-400 text-xs'>
+							<div className='text-gray-500 dark:text-gray-400 text-xs flex justify-between'>
 								<span>{news.timestamp}</span>
-								<a
-									href={news.link}
+								<Link
+									key={news.id}
+									href={`/component/news/${news.id}`}
 									className='text-red-600 hover:underline dark:text-red-400'>
 									Read More
-								</a>
+								</Link>
 							</div>
 						</div>
 					</motion.div>

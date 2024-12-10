@@ -5,6 +5,7 @@ interface NewsItem {
 	link: string;
 	tag: string;
 	timestamp: string;
+	id: number;
 }
 
 const newsItems: NewsItem[] = [
@@ -17,6 +18,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Technology',
 		timestamp: '5 mins ago',
+		id: 1,
 	},
 
 	{
@@ -27,6 +29,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Environment',
 		timestamp: '3 hours ago',
+		id: 2,
 	},
 	{
 		title: 'Sports Highlights: The Match of the Century',
@@ -36,6 +39,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Sports',
 		timestamp: '1 hour ago',
+		id: 3,
 	},
 	{
 		title: 'Business Insights: Market Trends',
@@ -45,6 +49,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Business',
 		timestamp: '5 hours ago',
+		id: 4,
 	},
 	{
 		title: 'Global Warming: Challenges Ahead',
@@ -54,6 +59,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Environment',
 		timestamp: '3 hours ago',
+		id: 5,
 	},
 	{
 		title: 'Sports Highlights: The Match of the Century',
@@ -63,6 +69,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Sports',
 		timestamp: '1 hour ago',
+		id: 6,
 	},
 	{
 		title: 'Business Insights: Market Trends',
@@ -72,6 +79,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Business',
 		timestamp: '5 hours ago',
+		id: 7,
 	},
 	{
 		title: 'Global Warming: Challenges Ahead',
@@ -81,6 +89,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Environment',
 		timestamp: '3 hours ago',
+		id: 8,
 	},
 	{
 		title: 'Sports Highlights: The Match of the Century',
@@ -90,6 +99,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Sports',
 		timestamp: '1 hour ago',
+		id: 9,
 	},
 	{
 		title: 'Business Insights: Market Trends',
@@ -99,6 +109,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Business',
 		timestamp: '5 hours ago',
+		id: 10,
 	},
 	{
 		title: 'Business Insights: Market Trends',
@@ -108,6 +119,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Business',
 		timestamp: '5 hours ago',
+		id: 11,
 	},
 	{
 		title: 'Global Warming: Challenges Ahead',
@@ -117,6 +129,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Environment',
 		timestamp: '3 hours ago',
+		id: 12,
 	},
 	{
 		title: 'Sports Highlights: The Match of the Century',
@@ -126,6 +139,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Sports',
 		timestamp: '1 hour ago',
+		id: 13,
 	},
 	{
 		title: 'Business Insights: Market Trends',
@@ -135,6 +149,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Business',
 		timestamp: '5 hours ago',
+		id: 14,
 	},
 	{
 		title: 'Global Warming: Challenges Ahead',
@@ -144,6 +159,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Environment',
 		timestamp: '3 hours ago',
+		id: 15,
 	},
 	{
 		title: 'Sports Highlights: The Match of the Century',
@@ -153,6 +169,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Sports',
 		timestamp: '1 hour ago',
+		id: 16,
 	},
 	{
 		title: 'Business Insights: Market Trends',
@@ -162,6 +179,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Business',
 		timestamp: '5 hours ago',
+		id: 17,
 	},
 	{
 		title: 'Business Insights: Market Trends',
@@ -171,6 +189,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Business',
 		timestamp: '5 hours ago',
+		id: 18,
 	},
 	{
 		title: 'Global Warming: Challenges Ahead',
@@ -180,6 +199,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Environment',
 		timestamp: '3 hours ago',
+		id: 19,
 	},
 	{
 		title: 'Sports Highlights: The Match of the Century',
@@ -189,6 +209,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Sports',
 		timestamp: '1 hour ago',
+		id: 20,
 	},
 	{
 		title: 'Business Insights: Market Trends',
@@ -198,6 +219,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Business',
 		timestamp: '5 hours ago',
+		id: 21,
 	},
 	{
 		title: 'Global Warming: Challenges Ahead',
@@ -207,6 +229,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Environment',
 		timestamp: '3 hours ago',
+		id: 22,
 	},
 	{
 		title: 'Sports Highlights: The Match of the Century',
@@ -216,6 +239,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Sports',
 		timestamp: '1 hour ago',
+		id: 23,
 	},
 	{
 		title: 'Business Insights: Market Trends',
@@ -225,6 +249,7 @@ const newsItems: NewsItem[] = [
 		link: '#',
 		tag: 'Business',
 		timestamp: '5 hours ago',
+		id: 24,
 	},
 ];
 

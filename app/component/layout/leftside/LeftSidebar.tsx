@@ -1,109 +1,19 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { IoIosNotifications, IoIosArrowDropdownCircle } from 'react-icons/io';
+import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import { CiSettings } from 'react-icons/ci';
 import { RiLiveFill } from 'react-icons/ri';
-import { BsChatTextFill, BsMicrosoftTeams } from 'react-icons/bs';
-import { FaChartLine } from 'react-icons/fa';
-import { MdOutlineDashboard } from 'react-icons/md';
-import { FaCartShopping } from 'react-icons/fa6';
 import { IoLogOut } from 'react-icons/io5';
 import { FcDownload } from 'react-icons/fc';
 import Link from 'next/link';
 import { FaMoon, FaSun } from 'react-icons/fa';
-import { IoChatbubbleEllipsesSharp } from 'react-icons/io5';
-type SidebarItem = {
-	id: string;
-	icon: React.ReactNode;
-	label: string;
-	href: string;
-};
-
-const SidebarData: SidebarItem[] = [
-	{
-		id: 'chat',
-		icon: (
-			<IoChatbubbleEllipsesSharp className='text-3xl dark:text-indigo-600  text-indigo-600' />
-		),
-		label: 'Message',
-		href: '/component/Chat/Massege',
-	},
-	{
-		id: 'notifications',
-		icon: <IoIosNotifications className='text-2xl' />,
-		label: 'Notification',
-		href: '#',
-	},
-
-	{
-		id: 'standing',
-		icon: <FaChartLine className='text-xl' />,
-		label: 'Standing',
-		href: '#',
-	},
-	{
-		id: 'shop',
-		icon: <FaCartShopping className='text-xl' />,
-		label: 'Shop',
-		href: '#',
-	},
-	{
-		id: 'settings',
-		icon: <CiSettings className='text-2xl' />,
-		label: 'Settings',
-		href: '#',
-	},
-];
-type MenuItem = {
-	icon?: React.ReactNode;
-	label: string;
-	href?: string;
-	subItems?: MenuItem[];
-};
-
-const menuItems: MenuItem[] = [
-	{
-		icon: <MdOutlineDashboard />,
-		label: 'Dashboard',
-		href: '#',
-	},
-	{
-		icon: <BsMicrosoftTeams />,
-		label: 'your Teams',
-		subItems: [
-			{ label: 'Manchester City', href: '#' },
-			{ label: 'Arsenal', href: '#' },
-			{ label: 'Liverpool', href: '#' },
-			{ label: 'Barcenlona', href: '#' },
-			{ label: 'tottenham', href: '#' },
-		],
-	},
-	{
-		icon: <BsMicrosoftTeams />,
-		label: 'your players',
-		subItems: [
-			{ label: 'messi', href: '#' },
-			{ label: 'salah', href: '#' },
-			{ label: 'treka', href: '#' },
-			{ label: 'marmoush', href: '#' },
-			{ label: 'inesta', href: '#' },
-		],
-	},
-	{
-		icon: <BsMicrosoftTeams />,
-		label: 'your trophies',
-		subItems: [
-			{ label: 'Banned Users', href: '#' },
-			{ label: 'Calendar', href: '#' },
-		],
-	},
-];
+import SidebarData from './Sm-side';
+import menuItems from './Lg-side';
 
 const LeftSidebar: React.FC = () => {
-	const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+	const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
-	// Toggle dark mode
 	useEffect(() => {
 		document.documentElement.classList.toggle('dark', isDarkMode);
 	}, [isDarkMode]);
@@ -142,7 +52,7 @@ const LeftSidebar: React.FC = () => {
 
 						{/* Menu Items */}
 						<div className='px-2 space-y-4'>
-							{SidebarData.map((item) => (
+							{SidebarData.map((item, index) => (
 								<Link
 									key={item.id}
 									href={item.href}
@@ -168,10 +78,10 @@ const LeftSidebar: React.FC = () => {
 					<div
 						className='flex-1 mb-20 pb-24	 lg:mb-0 overflow-scroll overflow-x-hidden overflow-y-auto
 										[&::-webkit-scrollbar]:w-1
-										[&::-webkit-scrollbar-track]:bg-secoundry
-										[&::-webkit-scrollbar-thumb]:bg-forth
-										dark:[&::-webkit-scrollbar-track]:bg-darksecoundry
-										dark:[&::-webkit-scrollbar-thumb]:bg-darkthird  bg-primary dark:bg-gray-800 text-darksecoundry dark:text-primary'>
+										[&::-webkit-scrollbar-track]:bg-transparent
+										[&::-webkit-scrollbar-thumb]:bg-transparent
+										dark:[&::-webkit-scrollbar-track]:bg-transparent
+										dark:[&::-webkit-scrollbar-thumb]:bg-transparent  bg-primary dark:bg-gray-800 text-darksecoundry dark:text-primary'>
 						<div className='px-2 py-6 text-nowrap'>
 							<ul className='space-y-4'>
 								{menuItems.map((item, index) => (
