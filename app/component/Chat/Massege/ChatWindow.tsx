@@ -48,7 +48,13 @@ const ChatWindow: FC<ChatWindowProps> = ({
 							</div>
 						</div>
 					</div>
-					<div className='space-y-4 mb-14 max-h-[60vh] overflow-auto'>
+					<div
+						className='space-y-4 text-wrap mb-14 max-h-[60vh] overflow-x-hidden overflow-y-auto
+										[&::-webkit-scrollbar]:w-0.5
+										
+										[&::-webkit-scrollbar-track]:bg-transparent
+										[&::-webkit-scrollbar-thumb]:bg-third
+										dark:[&::-webkit-scrollbar-thumb]:bg-darkthird px-2  rounded-lg bg-transparent'>
 						{messages.map((message) => (
 							<div
 								key={message.id}
@@ -60,7 +66,7 @@ const ChatWindow: FC<ChatWindowProps> = ({
 										message.user === 'You'
 											? 'bg-blue-500 rounded-br-none'
 											: 'bg-gray-500 rounded-bl-none'
-									} p-4 max-w-xs text-white`}>
+									}  p-3 max-w-xs text-white`}>
 									{message.text}
 								</div>
 							</div>

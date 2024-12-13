@@ -1,14 +1,12 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 import './globals.css';
-
 import Footer from './component/layout/footer';
-import Navbar from './component/layout/header';
 import LeftSidebar from './component/layout/leftside/LeftSidebar';
 import RightSidebar from './component/layout/rightside/RightSidebar';
 import AImessage from './component/Chat/AI-message/AI-massage';
 
 import { Roboto } from 'next/font/google';
+import Navbar from './component/layout/header/Navbar';
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Roboto({ subsets: ['latin'], weight: '700' });

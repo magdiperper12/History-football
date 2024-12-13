@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { FaTrophy } from 'react-icons/fa';
-import Shop from '@/app/component/shop/page';
-import TeamShirts from '@/app/component/shop/page';
 import ClubHistory from '@/app/table/table/Club/ClubHistory';
 
 interface Datas {

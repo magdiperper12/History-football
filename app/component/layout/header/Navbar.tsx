@@ -1,13 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useState, useEffect, useRef } from 'react';
-import { FaSearch, FaCog, FaBars, FaSkyatlas } from 'react-icons/fa';
-import image from '../../assets/image/logo2-remove.png';
+import React, { useState } from 'react';
+import { FaSearch, FaBars } from 'react-icons/fa';
+import image from '../../../assets/image/logo2-remove.png';
 import Image from 'next/image';
-import { FaFaceSmile } from 'react-icons/fa6';
 import { GrLanguage } from 'react-icons/gr';
-import profimage from '../../assets/image/haverts.jpg';
+import profimage from '../../../assets/image/haverts.jpg';
+import { IoIosNotifications } from 'react-icons/io';
+import Notifications from './Notifications';
+import NestedNav from './NestedNav';
 interface NavbarLink {
 	text: string;
 	href: string;
@@ -25,20 +27,26 @@ interface NavbarLanguage {
 }
 
 const navbarData = {
-	links: [
-		{ text: 'Home', href: '/' },
-		{ text: 'Player', href: '/Historic/Sections/Player' },
-		{ text: 'Contry', href: '/Historic/Sections/Country' },
-		{ text: 'History', href: '/Historic' },
-		{ text: 'Table', href: '/table' },
-		{ text: 'Social', href: '/component/Chat/Social' },
-	] as NavbarLink[],
 	icons: [
 		{
 			id: 'search',
 			icon: <FaSearch size={20} />,
 		},
 		{ id: 'settings', icon: <GrLanguage size={20} /> },
+		{
+			id: 'notifications',
+			icon: (
+				<div>
+					<span className='bg-red-600 w-5 h-5 flex justify-center items-center text-white text-xs rounded-full absolute -top-1 -end-1'>
+						11
+					</span>
+					<IoIosNotifications className='text-3xl' />
+				</div>
+			),
+		},
+
+		// href: '/component/notification',
+
 		{
 			id: 'profile',
 			icon: (
@@ -159,24 +167,12 @@ const Navbar = () => {
 						<p className='bg-red-700 text-white text-xs w-auto  animate-pulse text-center shadow-red-900 rounded-full px-1'>
 							Under Development
 						</p>
-						<h1 className=' font-extrabold dark:text-secoundry text-3xl text-darkthird  tracking-wide'>
+						<h1 className=' font-bold dark:text-secoundry text-3xl text-darkthird  tracking-wide'>
 							HISTORIC
 						</h1>
 					</div>
 				</Link>
-
-				<nav className='hidden md:flex gap-5'>
-					{navbarData.links.map((link, index) => (
-						<Link
-							key={link.text}
-							href={link.href}
-							className={`text-lg font-bold  text-darkthird dark:text-primary hover:text-[#6c83ff] transition-opacity duration-700 ease-in-out opacity-0 animate-fadeIn`}
-							style={{ animationDelay: `${250 * index}ms` }}>
-							{link.text}
-						</Link>
-					))}
-				</nav>
-
+				<NestedNav />
 				{/* Icons for Desktop */}
 				<div className='flex items-center gap-3 md:gap-5'>
 					{navbarData.icons.map(({ id, icon }) => (
@@ -232,6 +228,9 @@ const Navbar = () => {
 										</ul>
 									</div>
 								)}
+
+							{id === 'notifications' &&
+								renderToggleMenu(id, <Notifications />)}
 
 							{id === 'profile' &&
 								renderToggleMenu(
@@ -294,33 +293,10 @@ const Navbar = () => {
 					))}
 
 					{/* Hamburger Menu for Mobile */}
-					<input
-						type='checkbox'
-						id='navbarToggle'
-						className='hidden peer'
-					/>
-					<label
-						htmlFor='navbarToggle'
-						className='md:hidden text-gray-800 dark:text-white p-2 rounded-lg hover:bg-[#e0e0e0] dark:hover:bg-blue-500 cursor-pointer'>
-						<FaBars size={20} />
-					</label>
 				</div>
 			</div>
 
 			{/* Mobile Navbar (Toggleable) */}
-			<nav
-				className={`peer-checked:block hidden md:hidden 
-				dark:bg-gray-900 bg-[#0b0e14]
-				 py-4 px-6 space-y-4`}>
-				{navbarData.links.map((link) => (
-					<Link
-						key={link.text}
-						href={link.href}
-						className='block text-white hover:text-[#6c83ff] transition-all duration-200'>
-						{link.text}
-					</Link>
-				))}
-			</nav>
 		</header>
 	);
 };

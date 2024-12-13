@@ -1,11 +1,13 @@
-import React from 'react';
-import Table from './table/page';
+import React, { Suspense } from 'react';
+import dynamic from 'next/dynamic';
+import Loading from '../loading';
 
+const Table = dynamic(() => import('./table/page'));
 function page() {
 	return (
-		<div>
+		<Suspense fallback={<Loading />}>
 			<Table />
-		</div>
+		</Suspense>
 	);
 }
 

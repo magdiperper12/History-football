@@ -36,19 +36,6 @@ const SidebarData: SidebarItem[] = [
 		label: 'Users',
 		href: '/component/Chat/users',
 	},
-	{
-		id: 'notifications',
-		icon: (
-			<div>
-				<span className='bg-red-600 w-5 h-5 flex justify-center items-center text-white text-xs rounded-full absolute top-0 end-0'>
-					4
-				</span>
-				<IoIosNotifications className='text-2xl' />
-			</div>
-		),
-		label: 'Notification',
-		href: '#',
-	},
 
 	{
 		id: 'standing',

@@ -24,12 +24,34 @@ const sections: Section[] = [
 			{
 				description: 'New player signings around the world...',
 				href: '/trophies/34146370',
-				time: '12:14:00',
+				time: new Date().toLocaleTimeString([], {
+					hour: '2-digit',
+					minute: '2-digit',
+				}),
 			},
 			{
 				description: 'Latest tech developments and innovations...',
 				href: '/trophies/34146304',
-				time: '12:14:00',
+				time: 'just Now',
+			},
+			{
+				description: 'Breaking: Global sports updates...',
+				href: '/trophies/34145506',
+				time: new Date().toLocaleTimeString([], {
+					hour: '2-digit',
+					minute: '2-digit',
+					second: '2-digit',
+				}),
+			},
+			{
+				description: 'New player signings around the world...',
+				href: '/trophies/34146370',
+				time: new Date().toLocaleTimeString(),
+			},
+			{
+				description: 'Latest tech developments and innovations...',
+				href: '/trophies/34146304',
+				time: new Date().toLocaleTimeString(),
 			},
 			{
 				description: 'Breaking: Global sports updates...',
@@ -49,27 +71,15 @@ const sections: Section[] = [
 			{
 				description: 'Breaking: Global sports updates...',
 				href: '/trophies/34145506',
-				time: '12:14:00',
+				time: new Date().toLocaleTimeString(),
 			},
 			{
 				description: 'New player signings around the world...',
 				href: '/trophies/34146370',
-				time: '12:14:00',
-			},
-			{
-				description: 'Latest tech developments and innovations...',
-				href: '/trophies/34146304',
-				time: '12:14:00',
-			},
-			{
-				description: 'Breaking: Global sports updates...',
-				href: '/trophies/34145506',
-				time: '12:14:00',
-			},
-			{
-				description: 'New player signings around the world...',
-				href: '/trophies/34146370',
-				time: '12:14:00',
+				time: new Date().toLocaleTimeString([], {
+					hour: '2-digit',
+					minute: '2-digit',
+				}),
 			},
 			{
 				description: 'Latest tech developments and innovations...',

@@ -1,11 +1,13 @@
-import React from 'react';
-
-import Container from './component/Home/Container';
-
+import React, { Suspense } from 'react';
+import dynamic from 'next/dynamic';
+import Loading from './loading';
+const Container = dynamic(() => import('./component/Home/Container'));
 const Home: React.FC = () => {
 	return (
 		<div className='container mx-auto p-6 '>
-			<Container />
+			<Suspense fallback={<Loading />}>
+				<Container />
+			</Suspense>
 		</div>
 	);
 };

@@ -1,27 +1,32 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { Suspense } from 'react';
 import champion from '../../assets/image/champions-league-trophy.webp';
-import ContainerTable from './Table';
-import SearchContainer from './SearchContainer';
-import Contfooter from './ContFooter';
-import Shop from '@/app/component/shop/page';
+import dynamic from 'next/dynamic';
+import Loading from '@/app/loading';
+// Lazy-loaded components
+const ContainerTable = dynamic(() => import('./Table'));
+const SearchContainer = dynamic(() => import('./SearchContainer'));
+const Contfooter = React.lazy(() => import('./ContFooter')); // Fixed path
+const Shop = React.lazy(() => import('@/app/component/shop/page'));
 
-const UnifiedComponent: React.FC = () => {
+const mainComponent: React.FC = () => {
 	return (
 		<section className='text-darksecoundry dark:text-darkforth body-font'>
-			<div className='max-w-screen-lg max-h-96 rounded-xl bg-blue-500 overflow-hidden  text-center m-auto'>
+			<div className='max-w-screen-lg max-h-96 rounded-xl bg-blue-500 overflow-hidden text-center m-auto'>
 				<Image
 					src={champion}
 					alt='champion'
-					className=' m-auto'
+					className='m-auto'
 				/>
 			</div>
-			<SearchContainer />
-			<ContainerTable />
-			<Shop />
-			<Contfooter />
+			<Suspense fallback={<Loading />}>
+				<SearchContainer />
+				<ContainerTable />
+				<Shop />
+				<Contfooter />
+			</Suspense>
 		</section>
 	);
 };
 
-export default UnifiedComponent;
+export default mainComponent;
