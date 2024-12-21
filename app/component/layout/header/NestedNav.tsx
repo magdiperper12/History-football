@@ -19,13 +19,13 @@ const navdata = [
 const content = [{ text: 'News' }, { text: 'Hello' }, { text: 'Hello again' }];
 
 const cards = [
-	{ title: 'News', subtitle: 'magdi', image: image2 },
-	{ title: 'Nour', subtitle: 'Ganna', image: image },
+	{ title: 'News', subtitle: 'champions leage', image: image2 },
+	{ title: 'primer_leage', subtitle: 'salah', image: image },
 	{ title: 'SalasLJS', subtitle: 'Unknown', image: image3 },
-	{ title: 'News', subtitle: 'Magdi', image: image2 },
-	{ title: 'Nour', subtitle: 'Ganna', image: image },
+	{ title: 'News', subtitle: 'champions leage', image: image2 },
+	{ title: 'laliga', subtitle: 'messi', image: image },
 	{ title: 'SalasLJS', subtitle: 'Unknown', image: image3 },
-	{ title: 'News', subtitle: 'Magdi', image: image2 },
+	{ title: 'News', subtitle: 'champions leage', image: image2 },
 ];
 
 function NestedNav() {
@@ -107,16 +107,19 @@ function NestedNav() {
 			<input
 				type='checkbox'
 				id='navbarToggle'
-				className='hidden peer'
+				className='hidden peer '
 			/>
 			<label
 				htmlFor='navbarToggle'
-				className='md:hidden text-gray-800 dark:text-white p-2 rounded-lg hover:bg-[#e0e0e0] dark:hover:bg-blue-500 cursor-pointer'>
-				<FaBars size={20} />
+				className='md:hidden w-full relative   text-darkthird dark:text-white  rounded-lg hover:bg-[#e0e0e0] dark:hover:bg-blue-500 cursor-pointer'>
+				<FaBars
+					size={24}
+					className='x absolute -start-24 -top-3'
+				/>
 			</label>
 
 			{/* Mobile Menu - Toggle with Checkbox */}
-			<nav className='absolute peer-checked:flex flex-col hidden bg-[#0b0e14] py-6 px-8 space-y-6 shadow-lg rounded-lg'>
+			<nav className='absolute top-14 start-0 w-full rounded-b-lg bg-opacity-85 peer-checked:flex flex-col hidden bg-[#0b0e14] py-6 px-8 space-y-6 shadow-lg '>
 				{navdata.map((link) => (
 					<Link
 						key={link.text}

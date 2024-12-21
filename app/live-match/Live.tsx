@@ -123,7 +123,7 @@ const Live: React.FC = () => {
 	}, []);
 
 	return (
-		<div className='w-full md:max-w-screen-md m-auto p-4 rounded-lg'>
+		<div className='w-full md:max-w-screen-md m-auto p-4 rounded-lg mt-20'>
 			<h2 className='text-2xl font-semibold m-4 text-darkthird dark:text-darkforth flex justify-center'>
 				Last Matches
 			</h2>

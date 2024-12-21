@@ -23,3 +23,7 @@ body {
 	color: var(--foreground);
 	background-color: black;
 }
+
+.scroll-hidden::-webkit-scrollbar {
+	display: none;
+}

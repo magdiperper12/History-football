@@ -4,7 +4,7 @@ import Loading from './loading';
 const Container = dynamic(() => import('./component/Home/Container'));
 const Home: React.FC = () => {
 	return (
-		<div className='container mx-auto p-6 '>
+		<div className='container mx-auto '>
 			<Suspense fallback={<Loading />}>
 				<Container />
 			</Suspense>
