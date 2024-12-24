@@ -77,7 +77,7 @@ const Shop: React.FC = () => {
 						Shop
 					</h1>
 				</div>
-				<div className='grid grid-cols-1 p-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3  gap-7'>
+				<div className='grid grid-cols-1 p-3 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-4 xl:gap-7   '>
 					{displayedProducts.map((product: any, index: number) => (
 						<motion.div
 							key={product.id}

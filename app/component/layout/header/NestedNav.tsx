@@ -1,52 +1,225 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
-import image from '../../../assets/image/messi.jpg';
-import image2 from '../../../assets/image/champions-league-trophy.webp';
-import image3 from '../../../assets/image/laliga.png';
-import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
+import Image, { StaticImageData } from 'next/image';
 import { FaBars } from 'react-icons/fa';
+import messi from '../../../assets/image/seriaA.png';
+import bondezlige from '../../../assets/image/bondizleage.png';
+import primerleage from '../../../assets/image/primerleage.png';
+import champions from '../../../assets/image/champions-league-trophy.webp';
+import laliga from '../../../assets/image/laliga.png';
 
-const navdata = [
+// Type definitions
+interface NavLink {
+	text: string;
+	href: string;
+}
+
+interface Card {
+	title: string;
+	subtitle: string;
+	image: string | StaticImageData;
+}
+
+interface ContentCategory {
+	category: string;
+	cards: Card[];
+}
+
+// Navigation Data
+const navdata: NavLink[] = [
 	{ text: 'Home', href: '/' },
-	{ text: 'Player', href: '/Historic/Player' },
-	{ text: 'Country', href: '/Historic/Country' },
-	{ text: 'History', href: '/Historic' },
-	{ text: 'Table', href: '/table' },
-	{ text: 'Social', href: '/component/Chat/Social' },
-	{ text: 'News', href: '#' },
+	{ text: 'Players', href: '/Historic/Player' },
+	{ text: 'Countries', href: '/Historic/Country' },
+	{ text: 'Standings', href: '/table' },
+	{ text: 'Fan Zone', href: '/component/Chat/Social' },
+	{ text: 'Latest News', href: '/component/news' },
 ];
 
-const content = [{ text: 'News' }, { text: 'Hello' }, { text: 'Hello again' }];
-
-const cards = [
-	{ title: 'News', subtitle: 'champions leage', image: image2 },
-	{ title: 'primer_leage', subtitle: 'salah', image: image },
-	{ title: 'SalasLJS', subtitle: 'Unknown', image: image3 },
-	{ title: 'News', subtitle: 'champions leage', image: image2 },
-	{ title: 'laliga', subtitle: 'messi', image: image },
-	{ title: 'SalasLJS', subtitle: 'Unknown', image: image3 },
-	{ title: 'News', subtitle: 'champions leage', image: image2 },
+// Content Data
+const contentData: ContentCategory[] = [
+	{
+		category: 'Matchday Highlights',
+		cards: [
+			{
+				title: 'Champions League',
+				subtitle: 'Real Madrid vs Manchester City: A Classic Rivalry Renewed',
+				image: champions,
+			},
+			{
+				title: 'Premier League',
+				subtitle: 'Manchester United Defeats Liverpool in a Thrilling Derby',
+				image: bondezlige,
+			},
+			{
+				title: 'Serie A',
+				subtitle: 'Bayern Munich’s Dominant Victory Over Barcelona',
+				image: messi,
+			},
+			{
+				title: 'Premier League',
+				subtitle: 'Chelsea Triumphs Over Arsenal in a London Derby',
+				image: primerleage,
+			},
+			{
+				title: 'World Cup',
+				subtitle: 'Argentina Defeats Brazil in a Historic Final',
+				image: laliga,
+			},
+			{
+				title: 'Champions League',
+				subtitle: 'Liverpool’s Stunning Comeback Against Inter Milan',
+				image: champions,
+			},
+		],
+	},
+	{
+		category: 'Transfer Market',
+		cards: [
+			{
+				title: 'La Liga',
+				subtitle: 'Real Madrid Signs Kylian Mbappé for a Record Fee',
+				image: laliga,
+			},
+			{
+				title: 'UEFA Europa League',
+				subtitle: 'Arsenal Secures Long-Term Deal for Declan Rice',
+				image: primerleage,
+			},
+			{
+				title: 'La Liga',
+				subtitle:
+					'Atletico Madrid’s Latest Signing: Joao Félix on Loan at Chelsea',
+				image: laliga,
+			},
+			{
+				title: 'UEFA Europa League',
+				subtitle:
+					'Manchester United Pursues Bruno Fernandes Amid Transfer Rumors',
+				image: primerleage,
+			},
+			{
+				title: 'La Liga',
+				subtitle: 'Barcelona Looks to Reinforce Squad with New Midfielders',
+				image: laliga,
+			},
+			{
+				title: 'UEFA Europa League',
+				subtitle: 'Lazio’s Key Players Set for Premier League Transfers',
+				image: primerleage,
+			},
+		],
+	},
+	{
+		category: 'Fan Zone',
+		cards: [
+			{
+				title: 'World Cup',
+				subtitle: 'Golden Boot Race: The Top Scorers of 2022',
+				image: messi,
+			},
+			{
+				title: 'World Cup',
+				subtitle: 'Memorable Goals That Shaped the Final',
+				image: laliga,
+			},
+			{
+				title: 'World Cup',
+				subtitle: 'Unforgettable Moments from the 2022 World Cup Group Stage',
+				image: messi,
+			},
+			{
+				title: 'World Cup',
+				subtitle: 'The Best Performances in World Cup History',
+				image: laliga,
+			},
+		],
+	},
+	{
+		category: 'Top Stories',
+		cards: [
+			{
+				title: 'La Liga',
+				subtitle:
+					'Lionel Messi’s Impact on Barcelona’s Success: A Look at His Legacy',
+				image: laliga,
+			},
+			{
+				title: 'La Liga',
+				subtitle: 'Barcelona’s Rebuilding Efforts After Messi’s Departure',
+				image: laliga,
+			},
+			{
+				title: 'Premier League',
+				subtitle: 'Manchester City’s Dominance Under Pep Guardiola Continues',
+				image: primerleage,
+			},
+			{
+				title: 'Bundesliga',
+				subtitle: 'Bayern Munich’s Resilience: A Season Full of Highs and Lows',
+				image: bondezlige,
+			},
+			{
+				title: 'Serie A',
+				subtitle:
+					"Cristiano Ronaldo's Return to Serie A and His Influence on Juventus' Success",
+				image: champions,
+			},
+		],
+	},
 ];
 
-function NestedNav() {
-	const [isHovered, setIsHovered] = useState(false);
+const NestedNav: React.FC = () => {
+	const [isHovered, setIsHovered] = useState<boolean>(false);
+	const [selectedCategory, setSelectedCategory] = useState<string>(
+		'Matchday Highlights'
+	); // Default category
+
+	// Handle card rendering
+	const renderCards = (cards: Card[]) => {
+		return cards.map((card, index) => (
+			<div
+				key={index}
+				className=' bg-white rounded-t-lg dark:bg-darksecoundry transition-transform transform hover:-translate-y-2 duration-300'>
+				<div className='h-24 w-full overflow-hidden relative'>
+					<Image
+						src={card.image}
+						alt={card.subtitle}
+						className='object-contain rounded-t-lg'
+					/>
+				</div>
+				<div className='px-4 py-3'>
+					<h3 className='text-sm xl:text-lg font-bold line-clamp-1 text-darksecoundry dark:text-white'>
+						{card.title}
+					</h3>
+					<p className='text-xs xl:text-sm text-darkthird line-clamp-1 dark:text-gray-300'>
+						{card.subtitle}
+					</p>
+				</div>
+			</div>
+		));
+	};
+
+	// Effect to ensure the first category's cards are rendered on load
+	useEffect(() => {
+		if (!selectedCategory) {
+			setSelectedCategory('Matchday Highlights');
+		}
+	}, [selectedCategory]);
 
 	return (
 		<div>
 			{/* Desktop Navigation */}
 			<nav className='hidden lg:flex lg:gap-4 xl:gap-8 relative py-4 px-6 animate-fadeIn'>
-				{' '}
-				{/* Added fade-in animation to the nav container */}
 				{navdata.map((link, index) => (
 					<div
 						key={link.text}
 						className='relative'
-						onMouseEnter={index === 6 ? () => setIsHovered(true) : undefined}
-						onMouseLeave={index === 6 ? () => setIsHovered(false) : undefined}>
+						onMouseEnter={index === 5 ? () => setIsHovered(true) : undefined}
+						onMouseLeave={index === 5 ? () => setIsHovered(false) : undefined}>
 						<Link
 							href={link.href}
 							className={`${
-								index === 6
+								index === 5
 									? 'text-[#4a5fd3] dark:text-blue-100 font-extrabold'
 									: 'text-darkthird dark:text-primary'
 							} text-lg font-semibold hover:text-[#667cf4] dark:hover:text-darkforth transition-all duration-300 ease-in-out`}
@@ -55,47 +228,35 @@ function NestedNav() {
 						</Link>
 
 						{/* Hovered State Content for "News" */}
-						{isHovered && index === 6 && (
-							<div
-								className='absolute z-10 top-7 -end-56 transform bg-primary text-black dark:bg-darkprimary shadow-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-4 px-6 w-[68vw] max-w-6xl animate-slideIn' // Added slide-in animation
-							>
-								<div className='space-y-8 col-span-1 bg-secoundry dark:bg-darksecoundry p-4 shadow-md'>
-									{/* Loop through the content array to render text */}
-									{content.map((item, idx) => (
+						{isHovered && index === 5 && (
+							<div className='absolute z-10 top-7 -end-56 transform bg-secoundry text-black dark:bg-darkprimary shadow-xl shadow-third grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 xl:gap-6  pe-2 xl:pe-4 w-[67vw] max-w-6xl animate-slideIn'>
+								<div className='space-y-2 col-span-1 bg-white dark:bg-darksecoundry py-4 '>
+									{contentData.map((item, idx) => (
 										<div
 											key={idx}
-											className='p-2'>
-											<p className='text-xl font-semibold text-center text-gray-800 dark:text-white transition-all hover:text-blue-500'>
-												{item.text}
+											className='py-2'>
+											<p
+												onClick={() =>
+													setSelectedCategory(
+														item.category === selectedCategory
+															? ''
+															: item.category
+													)
+												}
+												className='text-sm xl:text-xl font-semibold text-center text-darkthird hover:bg-darkthird hover:text-white dark:text-white transition-all w-full py-4 cursor-pointer'>
+												{item.category}
 											</p>
 										</div>
 									))}
 								</div>
 
 								{/* Grid for Cards */}
-								<div className='col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4 h-[50vh] py-3 overflow-hidden'>
-									{cards.map((card, index) => (
-										<div
-											key={index}
-											className='shadow-lg bg-secoundry dark:bg-darksecoundry transition-transform transform hover:-translate-y-2 duration-300'>
-											<div className='h-24 w-full overflow-hidden relative'>
-												<Image
-													src={card.image}
-													alt={card.subtitle}
-													className='object-contain rounded-t-lg'
-												/>
-											</div>
-
-											<div className='px-4 py-2'>
-												<h3 className='text-xl font-bold text-gray-900 dark:text-white mb-1'>
-													{card.title}
-												</h3>
-												<p className='text-sm text-gray-700 dark:text-gray-300'>
-													{card.subtitle}
-												</p>
-											</div>
-										</div>
-									))}
+								<div className='col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4 xl:h-[50vh] mb-4  pt-4 overflow-hidden'>
+									{contentData.map(
+										(item) =>
+											selectedCategory === item.category &&
+											renderCards(item.cards) // Show cards only if category is selected
+									)}
 								</div>
 							</div>
 						)}
@@ -107,30 +268,18 @@ function NestedNav() {
 			<input
 				type='checkbox'
 				id='navbarToggle'
-				className='hidden peer '
+				className='hidden peer'
 			/>
 			<label
 				htmlFor='navbarToggle'
-				className='lg:hidden w-full relative   text-darkthird dark:text-white  rounded-lg hover:bg-[#e0e0e0] dark:hover:bg-blue-500 cursor-pointer'>
+				className='lg:hidden w-full relative text-darkthird dark:text-white rounded-lg hover:bg-[#e0e0e0] dark:hover:bg-blue-500 cursor-pointer'>
 				<FaBars
 					size={24}
-					className='x absolute -start-16 md:-start-36 -top-3'
+					className='absolute -start-16 md:-start-36 top-1/2 transform -translate-y-1/2'
 				/>
 			</label>
-
-			{/* Mobile Menu - Toggle with Checkbox */}
-			<nav className='absolute top-24 lg:top-20 start-0 w-full rounded-b-lg bg-opacity-85 peer-checked:flex flex-col hidden bg-[#0b0e14] py-6 px-8 space-y-6 shadow-lg  '>
-				{navdata.map((link) => (
-					<Link
-						key={link.text}
-						href={link.href}
-						className='text-white hover:text-[#6c83ff] m-auto focus:text-blue-700 transition-all duration-200 text-lg font-medium'>
-						{link.text}
-					</Link>
-				))}
-			</nav>
 		</div>
 	);
-}
+};
 
 export default NestedNav;

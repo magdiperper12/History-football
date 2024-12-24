@@ -6,10 +6,10 @@ import Link from 'next/link';
 
 const StatsCounter = () => {
 	return (
-		<section className='text-darksecoundry dark:text-primary body-font'>
+		<section className='text-darksecoundry dark:text-primary body-font '>
 			<div className='relative flex  flex-col justify-center py-6 sm:py-12'>
-				<div className='group relative cursor-pointer overflow-hidden bg-primary dark:bg-darksecoundry px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10'>
-					<span className='absolute top-10 z-0 h-20 w-20 rounded-full bg-sky-500 transition-all duration-300 group-hover:scale-[10]'></span>
+				<div className='group relative cursor-pointer overflow-hidden bg-primary dark:bg-darksecoundry px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl m-3  md:m-auto  md:w-2/3  xl:w-1/2 sm:rounded-lg sm:px-10'>
+					<span className='absolute top-10 z-0 h-20 w-20 rounded-full bg-sky-500 transition-all duration-300 group-hover:scale-[12]'></span>
 					<div className='relative z-10 mx-auto max-w-md'>
 						<span className='grid h-20 w-20 place-items-center rounded-full bg-sky-500 transition-all duration-300 group-hover:bg-sky-400'>
 							<svg
@@ -26,17 +26,17 @@ const StatsCounter = () => {
 								/>
 							</svg>
 						</span>
-						<div className='space-y-6 pt-5 text-base leading-7 text-darksecoundry dark:text-forth  transition-all duration-300 group-hover:text-darkforth dark:group-hover:text-white'>
+						<div className='space-y-6 pt-5 text-base leading-7 text-darksecoundry dark:text-forth  transition-all duration-300 group-hover:text-white dark:group-hover:text-white'>
 							<p>
-								Perfect for learning how the framework works, prototyping a new
-								idea, or creating a demo to share online.
+								Relive the legendary moments, players, and matches that shaped
+								the game. Discover profiles of legendary players from the past.
 							</p>
 						</div>
 						<div className='pt-5 text-base font-semibold leading-7'>
 							<p>
 								<Link
 									href='/component/About'
-									className='text-sky-500 transition-all duration-300 dark:text-darkthird group-hover:text-white'>
+									className='text-sky-500 transition-all duration-300 dark:text-darkthird group-hover:text-blue-100'>
 									Read About Us &rarr;
 								</Link>
 							</p>

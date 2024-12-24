@@ -66,7 +66,7 @@ const NewsSection: React.FC = () => {
 			<h2 className='text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-8'>
 				Latest News
 			</h2>
-			<div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-8'>
+			<div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 gap-y-8'>
 				{newsItems.slice(0, visibleItems).map((news, index) => (
 					<motion.div
 						className='rounded-t-2xl shadow-lg hover:shadow-sm bg-white relative dark:bg-gray-800 overflow-hidden transition-all hover:scale-105 '

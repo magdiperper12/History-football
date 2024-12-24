@@ -10,244 +10,261 @@ interface NewsItem {
 
 const newsItems: NewsItem[] = [
 	{
-		title: 'Breaking News: Technology Advancements in 2024',
+		title: 'Football Championship Final: The Ultimate Showdown',
 		description:
-			'Discover the latest trends in AI, robotics, and more shaping our world.',
+			'Get ready for the most anticipated football final of the year!',
 		image:
-			'https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg',
+			'https://www.thesportsdb.com/images/media/team/badge/eqayrf1523184794.png',
 		link: '#',
-		tag: 'Technology',
+		tag: 'Football',
 		timestamp: '5 mins ago',
 		id: 1,
 	},
-
 	{
-		title: 'Global Warming: Challenges Ahead',
-		description: 'Experts weigh in on the urgent need for climate action.',
+		title: 'Player Transfer Rumours Heat Up Before Winter Break',
+		description: 'The latest transfer news as teams gear up for new signings.',
 		image:
-			'https://cdn.pixabay.com/photo/2021/09/08/20/45/bird-6607863_960_720.jpg',
+			'https://www.thesportsdb.com/images/media/team/badge/uyhbfe1612467038.png',
 		link: '#',
-		tag: 'Environment',
+		tag: 'Transfer News',
 		timestamp: '3 hours ago',
 		id: 2,
 	},
 	{
-		title: 'Sports Highlights: The Match of the Century',
-		description: "Relive the thrilling moments of last night's game.",
+		title: 'Match Review: Last Night’s Thrilling Derby',
+		description: 'A complete breakdown of last night’s football derby action.',
 		image:
-			'https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg',
+			'https://www.thesportsdb.com/images/media/league/badge/dsnjpz1679951317.png',
 		link: '#',
-		tag: 'Sports',
+		tag: 'Match Review',
 		timestamp: '1 hour ago',
 		id: 3,
 	},
 	{
-		title: 'Business Insights: Market Trends',
-		description: 'Top analysts predict major shifts in the global market.',
+		title: 'Top Football Clubs Face Off in UEFA Champions League',
+		description:
+			'The top European clubs battle it out in this thrilling competition.',
 		image:
-			'https://cdn.pixabay.com/photo/2021/09/12/17/43/parrot-feathers-6619082_960_720.jpg',
+			'https://www.thesportsdb.com/images/media/event/poster/0gjodd1718956054.jpg',
 		link: '#',
-		tag: 'Business',
+		tag: 'UEFA Champions League',
 		timestamp: '5 hours ago',
 		id: 4,
 	},
 	{
-		title: 'Global Warming: Challenges Ahead',
-		description: 'Experts weigh in on the urgent need for climate action.',
+		title: 'Player Spotlight: Rising Star Shines in Latest Match',
+		description:
+			'Meet the young footballer who is making headlines this season.',
 		image:
-			'https://cdn.pixabay.com/photo/2021/09/08/20/45/bird-6607863_960_720.jpg',
+			'https://www.thesportsdb.com/images/media/team/badge/ggqtd01621593274.png',
 		link: '#',
-		tag: 'Environment',
+		tag: 'Player Spotlight',
 		timestamp: '3 hours ago',
 		id: 5,
 	},
 	{
-		title: 'Sports Highlights: The Match of the Century',
-		description: "Relive the thrilling moments of last night's game.",
+		title: 'Football World Cup: Top Teams to Watch',
+		description:
+			'A preview of the most promising teams for the upcoming World Cup.',
 		image:
-			'https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg',
+			'https://www.thesportsdb.com/images/media/event/poster/4qnshw1689062686.jpg',
 		link: '#',
-		tag: 'Sports',
+		tag: 'World Cup',
 		timestamp: '1 hour ago',
 		id: 6,
 	},
 	{
-		title: 'Business Insights: Market Trends',
-		description: 'Top analysts predict major shifts in the global market.',
+		title: 'Football Fitness: How Top Athletes Stay in Shape',
+		description:
+			'Explore the fitness regimes of the world’s top football stars.',
 		image:
-			'https://cdn.pixabay.com/photo/2021/09/12/17/43/parrot-feathers-6619082_960_720.jpg',
+			'https://www.thesportsdb.com/images/media/event/poster/06rycb1718956056.jpg',
 		link: '#',
-		tag: 'Business',
+		tag: 'Fitness',
 		timestamp: '5 hours ago',
 		id: 7,
 	},
 	{
-		title: 'Global Warming: Challenges Ahead',
-		description: 'Experts weigh in on the urgent need for climate action.',
+		title: 'Tactics Breakdown: How Teams Prepare for Big Matches',
+		description:
+			'An inside look at the tactical preparation behind every great football team.',
 		image:
-			'https://cdn.pixabay.com/photo/2021/09/08/20/45/bird-6607863_960_720.jpg',
+			'https://www.thesportsdb.com/images/media/event/poster/tefnyc1689062744.jpg',
 		link: '#',
-		tag: 'Environment',
+		tag: 'Tactics',
 		timestamp: '3 hours ago',
 		id: 8,
 	},
 	{
-		title: 'Sports Highlights: The Match of the Century',
-		description: "Relive the thrilling moments of last night's game.",
+		title: 'Injury Report: Key Players Out for the Season',
+		description:
+			'A look at the major injuries affecting top players in football.',
 		image:
-			'https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg',
+			'https://www.thesportsdb.com/images/media/event/poster/06rycb1718956056.jpg',
 		link: '#',
-		tag: 'Sports',
+		tag: 'Injury Report',
 		timestamp: '1 hour ago',
 		id: 9,
 	},
 	{
-		title: 'Business Insights: Market Trends',
-		description: 'Top analysts predict major shifts in the global market.',
+		title: 'Football Fans React: Social Media Buzz After Last Game',
+		description:
+			'Fans are taking to social media to share their reactions after the latest football match.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/09/12/17/43/parrot-feathers-6619082_960_720.jpg',
 		link: '#',
-		tag: 'Business',
+		tag: 'Fan Reactions',
 		timestamp: '5 hours ago',
 		id: 10,
 	},
 	{
-		title: 'Business Insights: Market Trends',
-		description: 'Top analysts predict major shifts in the global market.',
+		title: 'Football History: The Greatest Moments of All Time',
+		description: 'A look back at the most iconic moments in football history.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/09/12/17/43/parrot-feathers-6619082_960_720.jpg',
 		link: '#',
-		tag: 'Business',
+		tag: 'History',
 		timestamp: '5 hours ago',
 		id: 11,
 	},
 	{
-		title: 'Global Warming: Challenges Ahead',
-		description: 'Experts weigh in on the urgent need for climate action.',
+		title: 'Women’s Football: Breaking Barriers on the Global Stage',
+		description:
+			'A rise in popularity for women’s football and its impact worldwide.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/09/08/20/45/bird-6607863_960_720.jpg',
 		link: '#',
-		tag: 'Environment',
+		tag: 'Women’s Football',
 		timestamp: '3 hours ago',
 		id: 12,
 	},
 	{
-		title: 'Sports Highlights: The Match of the Century',
-		description: "Relive the thrilling moments of last night's game.",
+		title: 'Football Rivalries: The Best Matches Between Top Clubs',
+		description:
+			'An exploration of the greatest rivalries in football and their unforgettable matches.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg',
 		link: '#',
-		tag: 'Sports',
+		tag: 'Rivalries',
 		timestamp: '1 hour ago',
 		id: 13,
 	},
 	{
-		title: 'Business Insights: Market Trends',
-		description: 'Top analysts predict major shifts in the global market.',
+		title: 'Football Gear Review: Best Boots of the Season',
+		description:
+			'Our top picks for the best football boots worn by professionals.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/09/12/17/43/parrot-feathers-6619082_960_720.jpg',
 		link: '#',
-		tag: 'Business',
+		tag: 'Gear Review',
 		timestamp: '5 hours ago',
 		id: 14,
 	},
 	{
-		title: 'Global Warming: Challenges Ahead',
-		description: 'Experts weigh in on the urgent need for climate action.',
+		title: 'Football Fan Culture: Celebrating the Passion',
+		description:
+			'Exploring the incredible culture that surrounds football fandom.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/09/08/20/45/bird-6607863_960_720.jpg',
 		link: '#',
-		tag: 'Environment',
+		tag: 'Fan Culture',
 		timestamp: '3 hours ago',
 		id: 15,
 	},
 	{
-		title: 'Sports Highlights: The Match of the Century',
-		description: "Relive the thrilling moments of last night's game.",
+		title: 'Football Strategy: The Evolution of Tactics',
+		description:
+			'How football tactics have evolved over the years and the future of play.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg',
 		link: '#',
-		tag: 'Sports',
+		tag: 'Strategy',
 		timestamp: '1 hour ago',
 		id: 16,
 	},
 	{
-		title: 'Business Insights: Market Trends',
-		description: 'Top analysts predict major shifts in the global market.',
+		title: 'Football Legends: Who Will Be Remembered as the Greatest?',
+		description:
+			'A debate on who deserves the title of the greatest football player of all time.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/09/12/17/43/parrot-feathers-6619082_960_720.jpg',
 		link: '#',
-		tag: 'Business',
+		tag: 'Legends',
 		timestamp: '5 hours ago',
 		id: 17,
 	},
 	{
-		title: 'Business Insights: Market Trends',
-		description: 'Top analysts predict major shifts in the global market.',
+		title: 'Football Nutrition: How the Pros Eat to Win',
+		description:
+			'What the world’s best football players eat to stay at the top of their game.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/09/12/17/43/parrot-feathers-6619082_960_720.jpg',
 		link: '#',
-		tag: 'Business',
+		tag: 'Nutrition',
 		timestamp: '5 hours ago',
 		id: 18,
 	},
 	{
-		title: 'Global Warming: Challenges Ahead',
-		description: 'Experts weigh in on the urgent need for climate action.',
+		title: 'Football Awards: Who Will Win Player of the Year?',
+		description:
+			'Predictions for this year’s football awards and who is in the running.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/09/08/20/45/bird-6607863_960_720.jpg',
 		link: '#',
-		tag: 'Environment',
+		tag: 'Awards',
 		timestamp: '3 hours ago',
 		id: 19,
 	},
 	{
-		title: 'Sports Highlights: The Match of the Century',
-		description: "Relive the thrilling moments of last night's game.",
+		title: 'Football Fan Experience: A Day in the Life of a Supporter',
+		description:
+			'An inside look at the exciting and passionate life of a football fan.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg',
 		link: '#',
-		tag: 'Sports',
+		tag: 'Fan Experience',
 		timestamp: '1 hour ago',
 		id: 20,
 	},
 	{
-		title: 'Business Insights: Market Trends',
-		description: 'Top analysts predict major shifts in the global market.',
+		title: 'Football in Asia: Growth and Development',
+		description: 'The growing popularity and development of football in Asia.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/09/12/17/43/parrot-feathers-6619082_960_720.jpg',
 		link: '#',
-		tag: 'Business',
+		tag: 'Asia',
 		timestamp: '5 hours ago',
 		id: 21,
 	},
 	{
-		title: 'Global Warming: Challenges Ahead',
-		description: 'Experts weigh in on the urgent need for climate action.',
+		title: 'Football Club Finances: How the Richest Clubs Make Their Money',
+		description: 'A breakdown of how top football clubs generate revenue.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/09/08/20/45/bird-6607863_960_720.jpg',
 		link: '#',
-		tag: 'Environment',
+		tag: 'Finance',
 		timestamp: '3 hours ago',
 		id: 22,
 	},
 	{
-		title: 'Sports Highlights: The Match of the Century',
-		description: "Relive the thrilling moments of last night's game.",
+		title: 'Football and Technology: Innovations Changing the Game',
+		description:
+			'How technology is shaping the future of football from VAR to wearable tech.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg',
 		link: '#',
-		tag: 'Sports',
+		tag: 'Technology',
 		timestamp: '1 hour ago',
 		id: 23,
 	},
 	{
-		title: 'Business Insights: Market Trends',
-		description: 'Top analysts predict major shifts in the global market.',
+		title: 'Football Legends: The Icons of the Game',
+		description:
+			'Celebrating the legendary figures that have shaped football’s history.',
 		image:
 			'https://cdn.pixabay.com/photo/2021/09/12/17/43/parrot-feathers-6619082_960_720.jpg',
 		link: '#',
-		tag: 'Business',
+		tag: 'Legends',
 		timestamp: '5 hours ago',
 		id: 24,
 	},

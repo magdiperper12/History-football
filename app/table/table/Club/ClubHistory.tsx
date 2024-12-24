@@ -83,7 +83,7 @@ const ClubHistory: React.FC<ClubHistoryProps> = ({ leagueId }) => {
 			{/* Error and loading states */}
 			{loading && (
 				<div className='text-center mt-10 text-lg font-medium'>
-					<div className='grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6'>
+					<div className='grid grid-cols-2  md:grid-cols-4 gap-6'>
 						{Array.from({ length: 4 }).map((_, index) => (
 							<div
 								key={index}

@@ -41,7 +41,7 @@ const SidebarData: SidebarItem[] = [
 		id: 'standing',
 		icon: <FaChartLine className='text-xl' />,
 		label: 'Standing',
-		href: '#',
+		href: '/table',
 	},
 	{
 		id: 'shop',

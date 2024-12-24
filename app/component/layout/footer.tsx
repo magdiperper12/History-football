@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
 				<div className='mx-auto max-w-screen-xl px-4 pb-8 pt-16 sm:px-6 lg:px-8'>
 					<div className='mx-auto max-w-md'>
 						<strong className='block text-center text-xl font-bold text-blue-950 dark:text-blue-100 sm:text-3xl'>
-							Want us to email you with the latest blockbuster news?
+							Stay updated with the latest football news and scores!
 						</strong>
 
 						<form className='mt-6'>
@@ -89,9 +89,9 @@ const Footer: React.FC = () => {
 					<div className='mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-32'>
 						<div className='mx-auto max-w-sm lg:max-w-none'>
 							<p className='mt-4 text-center text-gray-500 dark:text-gray-100 lg:text-left lg:text-lg'>
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-								Praesentium natus quod eveniet aut perferendis distinctio iusto
-								repudiandae, provident velit earum?
+								Stay on top of the latest football matches, stats, and news with
+								our daily updates. From top leagues to international
+								tournaments, we cover it all!
 							</p>
 
 							<div className='mt-6 flex justify-center gap-4 lg:justify-start'>
