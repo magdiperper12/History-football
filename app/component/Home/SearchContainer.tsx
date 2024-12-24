@@ -11,7 +11,6 @@ type Matchday = {
 function SearchContainer() {
 	// Properly initialize the matchday array
 	const matchday: Matchday[] = [
-		{ day: 'Wednesday', date: '09 Aug' },
 		{ day: 'Yesterday', date: '10 Aug' },
 		{ day: 'Today', date: '11 Aug' },
 		{ day: 'Tomorrow', date: '12 Aug' },
@@ -27,17 +26,17 @@ function SearchContainer() {
 
 	return (
 		<div className='container p-5 font-bold my-10 text-center text-xs text-nowrap'>
-			<div className='grid grid-cols-12 gap-2 my-2'>
+			<div className='grid grid-cols-12 gap-2 my-2 items-center'>
 				{/* Live Section */}
-				<div className='col-span-2 flex justify-center rounded-xl text-red-500 shadow-md shadow-third dark:shadow-inner-glow hover:shadow-sm cursor-pointer duration-150 text-xl dark:text-darkforth bg-secoundry dark:bg-darkprimary gap-2 items-center m-1'>
+				<div className='col-span-6 p-1  md:col-span-2 order-1  md:order-1 flex justify-center rounded-xl text-red-500 shadow-md shadow-secoundry bg-primary dark:shadow-inner-glow hover:shadow-sm cursor-pointer duration-150 text-xl dark:text-darkforth  dark:bg-darkprimary gap-2 items-center m-1'>
 					<div className='p-2 rounded-full bg-yellow-700'></div>
 					<div>Live</div>
 					<div>3</div>
 				</div>
 
 				{/* Search Form */}
-				<form className='col-span-7 m-1'>
-					<div className='w-95 flex text-darksecoundry dark:text-secoundry border dark:border-darksecoundry border-darkforth shadow-md shadow-blue-100 dark:shadow-black rounded-3xl p-1 pl-3 text-sm pr-2'>
+				<form className='md:col-span-7 order-3 md:order-2 col-span-12 m-1'>
+					<div className='w-95 flex text-darksecoundry dark:text-secoundry border dark:border-darksecoundry border-darkforth shadow-md shadow-secoundry dark:shadow-black rounded-3xl p-1 pl-3 text-sm pr-2'>
 						<input
 							id='default-search'
 							className='text-center w-full bg-transparent text-darkthird dark:text-darkforth border-none outline-none'
@@ -64,11 +63,11 @@ function SearchContainer() {
 				</form>
 
 				{/* Dropdown Button */}
-				<div className='col-span-3 flex flex-col relative justify-center rounded-xl shadow-md shadow-third dark:shadow-inner-glow hover:shadow-sm cursor-pointer duration-150 bg-secoundry dark:bg-darkprimary text-xl dark:text-darkforth text-darkthird gap-2 items-center m-1'>
+				<div className=' col-span-6 md:col-span-3 order-2 md:order-3 flex flex-col relative justify-center rounded-xl shadow-md shadow-secoundry bg-primary dark:shadow-inner-glow hover:shadow-sm cursor-pointer duration-150  dark:bg-darkprimary text-xl dark:text-darkforth text-darkthird gap-2 items-center m-1'>
 					<button
 						onClick={toggleVisable}
 						id='dropdownDefaultButton'
-						className='justify-around w-full outline-none hover:bg-third font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:text-darkforth text-darkthird bg-secoundry dark:bg-darkprimary dark:hover:bg-darksecoundry'>
+						className='justify-around w-full outline-none hover:bg-third font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:text-darkforth text-darkthird bg-primary dark:bg-darkprimary dark:hover:bg-darksecoundry'>
 						Dropdown button
 						<svg
 							className='w-2.5 h-2.5 ms-3'
@@ -127,11 +126,11 @@ function SearchContainer() {
 			</div>
 
 			{/* Matchday Display */}
-			<div className='grid grid-cols-7 mt-5 gap-5'>
+			<div className='grid grid-cols-6 mt-5 gap-5'>
 				{matchday.map((item, index) => (
 					<div
 						key={index}
-						className={`col py-2 flex flex-col justify-center items-center text-md dark:shadow-darkprimary hover:border-yellow-500 dark:hover:border-yellow-400 border-2 border-transparent duration-150 cursor-pointer rounded-3xl text-darksecoundry shadow-md hover:shadow-sm shadow-third dark:text-primary hover:text-yellow-600 dark:hover:text-yellow-400 ${
+						className={`md:col-span-1 col-span-2 py-2 flex flex-col justify-center items-center text-md dark:shadow-darkprimary hover:border-yellow-500 dark:hover:border-yellow-400 border-2 border-transparent duration-150 cursor-pointer rounded-3xl text-darksecoundry shadow-md hover:shadow-sm shadow-secoundry dark:text-primary hover:text-yellow-600 dark:hover:text-yellow-400 ${
 							index === matchday.length - 1
 								? 'border-yellow-600 text-yellow-600 dark:text-yellow-500'
 								: 'border-transparent'

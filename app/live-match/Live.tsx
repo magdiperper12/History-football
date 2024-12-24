@@ -123,7 +123,7 @@ const Live: React.FC = () => {
 	}, []);
 
 	return (
-		<div className='w-full md:max-w-screen-md m-auto p-4 rounded-lg mt-20'>
+		<div className='w-full md:max-w-screen-md m-auto p-4 rounded-lg mt-5 md:mt-10'>
 			<h2 className='text-2xl font-semibold m-4 text-darkthird dark:text-darkforth flex justify-center'>
 				Last Matches
 			</h2>
@@ -132,7 +132,7 @@ const Live: React.FC = () => {
 			<div className='relative'>
 				<button
 					onClick={() => setDropdownVisible((prev) => !prev)}
-					className='flex items-center px-4 py-2 bg-darkthird  dark:bg-darksecoundry text-white rounded-lg shadow '>
+					className='flex items-center px-4 py-2 border-dashed border-2  border-darkthird  dark:bg-darksecoundry text-darkthird m-auto rounded-lg shadow '>
 					Select League
 					<svg
 						className={`ml-2 w-4 h-4 transform ${
@@ -194,14 +194,14 @@ const Live: React.FC = () => {
 										handleTeamClick(match.strHomeTeam, match.strAwayTeam)
 									}
 									className='flex items-center justify-start space-x-2 bg-third text-darkthird dark:bg-darksecoundry p-4 px-4 w-5/12 rounded-s-full'>
-									<span className='md:text-lg text-sm flex gap-2 font-semibold'>
+									<span className='md:text-lg line-clamp-1 text-sm flex items-center  gap-2 font-semibold'>
 										<img
 											src={match.strHomeTeamBadge || 'default-team-badge.png'}
 											alt={`${match.strHomeTeam || 'Home Team'} badge`}
 											loading='lazy'
 											width={30}
 										/>
-										{match.strHomeTeam}
+										<span className='line-clamp-1'>{match.strHomeTeam}</span>
 									</span>
 								</div>
 								{/* Score or Date */}
@@ -216,8 +216,8 @@ const Live: React.FC = () => {
 										handleTeamClick(match.strAwayTeam, match.strHomeTeam)
 									}
 									className='flex items-center justify-end space-x-2 bg-primary text-darkthird dark:bg-darkprimary dark:text-darkforth px-4 p-4 w-5/12 rounded-e-full'>
-									<span className='md:text-lg text-sm flex gap-2 font-semibold'>
-										{match.strAwayTeam}
+									<span className='md:text-lg text-sm items-center   flex gap-2 font-semibold'>
+										<span className='line-clamp-1'> {match.strAwayTeam}</span>
 										<img
 											src={match.strAwayTeamBadge || 'default-team-badge.png'}
 											alt={`${match.strAwayTeam || 'Away Team'} badge`}

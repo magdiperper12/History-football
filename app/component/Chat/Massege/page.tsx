@@ -68,8 +68,8 @@ const ChatApp: React.FC = () => {
 	};
 
 	return (
-		<div className='min-h-screen mt-5 transition-all duration-300'>
-			<div className='container mx-auto p-4'>
+		<div className='   mt-5 transition-all duration-300'>
+			<div className='container  mx-auto p-4'>
 				<div className='flex space-x-4'>
 					<Suspense
 						fallback={
@@ -77,19 +77,25 @@ const ChatApp: React.FC = () => {
 								<Loading />
 							</div>
 						}>
-						<UserList
-							users={users}
-							search={search}
-							onSearchChange={setSearch}
-							onUserSelect={handleUserSelect}
-						/>
-						<ChatWindow
-							selectedUser={selectedUser}
-							messages={messages}
-							newMessage={newMessage}
-							onMessageChange={setNewMessage}
-							onSendMessage={handleSendMessage}
-						/>
+						<div className='grid grid-cols-12 gap-4 w-full'>
+							<div className='md:col-span-5 xl:col-span-4 col-span-12'>
+								<UserList
+									users={users}
+									search={search}
+									onSearchChange={setSearch}
+									onUserSelect={handleUserSelect}
+								/>
+							</div>
+							<div className='md:col-span-7 xl:col-span-8 col-span-12 '>
+								<ChatWindow
+									selectedUser={selectedUser}
+									messages={messages}
+									newMessage={newMessage}
+									onMessageChange={setNewMessage}
+									onSendMessage={handleSendMessage}
+								/>
+							</div>
+						</div>
 					</Suspense>
 				</div>
 			</div>

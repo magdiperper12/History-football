@@ -35,18 +35,18 @@ const LeftSidebar: React.FC = () => {
 	return (
 		!login && (
 			<div
-				className={`lg:w-1/6 h-3/4 lg:h-screen md:pt-20 md:-mt-20 md:overflow-hidden relative rounded-lg ${
+				className={`lg:w-2/6 xl:w-1/6 h-3/4 lg:h-screen md:pt-20 md:-mt-20 md:overflow-hidden relative rounded-lg ${
 					!Social ? 'bg-primary' : 'bg-white'
 				}  dark:bg-darkprimary text-darkprimary dark:text-primary `}>
 				<div>
 					<div
 						onClick={togglevisable}
-						className='text-center py-1  lg:hidden  font-bold    text-lg'>
+						className='text-center py-1   fixed top-16 pt-2 md:pt-0 md:top-20  bg-white  w-full z-50 lg:hidden  font-bold    text-lg'>
 						H
 					</div>
 
 					<div
-						className={` lg:h-screen transition-all duration-300  fadeIn lg:flex  ${
+						className={` h-screen mt-5 md:mt-7  lg:mt-0 transition-all duration-300  fadeIn lg:flex  ${
 							isvisable ? `hidden ` : `flex `
 						} w-full relative`}>
 						{/* Sidebar */}
@@ -163,7 +163,7 @@ const LeftSidebar: React.FC = () => {
 									<div
 										className={`mt-4 mb-1 ${
 											isDarkMode ? 'bg-darkprimary' : 'bg-primary'
-										} dark:text-secoundry text-darksecoundry p-2  rounded-full  hover:shadow-sm dark:shadow-sm flex items-center justify-around cursor-pointer`}
+										} dark:text-secoundry text-darksecoundry p-2 md:w-1/3 m-auto lg:w-auto  rounded-full  hover:shadow-sm dark:shadow-sm flex items-center justify-around cursor-pointer`}
 										onClick={() => setIsDarkMode(!isDarkMode)}>
 										<span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
 										<div

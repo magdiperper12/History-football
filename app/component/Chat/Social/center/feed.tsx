@@ -1,12 +1,13 @@
 import React from 'react';
 import Post from './post';
 import Comment from './comment';
-import image from '../../../../assets/image/champions-league-trophy.webp';
-import image2 from '../../../../assets/image/bondizleage.png';
-import image3 from '../../../../assets/image/primerleage.png';
+
+import image from '../../../../assets/image/primerleage.png';
+import image2 from '../../../../assets/image/champions-league-trophy.webp';
+import image3 from '../../../../assets/image/salah.png';
 function Feed() {
 	return (
-		<div className='w-auto  bg-white dark:bg-darkprimary dark:text-primary rounded-lg shadow-md mx-3  p-3  space-y-4'>
+		<div className='w-auto  bg-white rounded-lg shadow-md mx-3  p-3  space-y-4'>
 			<Post
 				name='magdi perper'
 				time='3:05 12/12/2024'

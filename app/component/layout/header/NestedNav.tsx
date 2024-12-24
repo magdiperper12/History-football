@@ -8,8 +8,8 @@ import { FaBars } from 'react-icons/fa';
 
 const navdata = [
 	{ text: 'Home', href: '/' },
-	{ text: 'Player', href: '/Historic/Sections/Player' },
-	{ text: 'Country', href: '/Historic/Sections/Country' },
+	{ text: 'Player', href: '/Historic/Player' },
+	{ text: 'Country', href: '/Historic/Country' },
 	{ text: 'History', href: '/Historic' },
 	{ text: 'Table', href: '/table' },
 	{ text: 'Social', href: '/component/Chat/Social' },
@@ -34,7 +34,7 @@ function NestedNav() {
 	return (
 		<div>
 			{/* Desktop Navigation */}
-			<nav className='hidden md:flex gap-8 relative py-4 px-6 animate-fadeIn'>
+			<nav className='hidden lg:flex lg:gap-4 xl:gap-8 relative py-4 px-6 animate-fadeIn'>
 				{' '}
 				{/* Added fade-in animation to the nav container */}
 				{navdata.map((link, index) => (
@@ -111,20 +111,20 @@ function NestedNav() {
 			/>
 			<label
 				htmlFor='navbarToggle'
-				className='md:hidden w-full relative   text-darkthird dark:text-white  rounded-lg hover:bg-[#e0e0e0] dark:hover:bg-blue-500 cursor-pointer'>
+				className='lg:hidden w-full relative   text-darkthird dark:text-white  rounded-lg hover:bg-[#e0e0e0] dark:hover:bg-blue-500 cursor-pointer'>
 				<FaBars
 					size={24}
-					className='x absolute -start-24 -top-3'
+					className='x absolute -start-16 md:-start-36 -top-3'
 				/>
 			</label>
 
 			{/* Mobile Menu - Toggle with Checkbox */}
-			<nav className='absolute top-14 start-0 w-full rounded-b-lg bg-opacity-85 peer-checked:flex flex-col hidden bg-[#0b0e14] py-6 px-8 space-y-6 shadow-lg '>
+			<nav className='absolute top-24 lg:top-20 start-0 w-full rounded-b-lg bg-opacity-85 peer-checked:flex flex-col hidden bg-[#0b0e14] py-6 px-8 space-y-6 shadow-lg  '>
 				{navdata.map((link) => (
 					<Link
 						key={link.text}
 						href={link.href}
-						className='text-white hover:text-[#6c83ff] transition-all duration-200 text-lg font-medium'>
+						className='text-white hover:text-[#6c83ff] m-auto focus:text-blue-700 transition-all duration-200 text-lg font-medium'>
 						{link.text}
 					</Link>
 				))}

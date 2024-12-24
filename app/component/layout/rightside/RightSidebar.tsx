@@ -110,7 +110,7 @@ function RightSidebar() {
 	return (
 		!login && (
 			<div
-				className={`w-full h-screen md:pt-20 md:-mt-20 lg:w-1/6 p-2 overflow-auto rounded-lg 
+				className={`w-full h-screen md:pt-20 xl:flex hidden md:-mt-20 lg:w-1/6 p-2 overflow-auto rounded-lg 
       bg-[#fdffff] dark:bg-darkprimary text-darkprimary dark:text-primary 
       [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-secoundry 
       [&::-webkit-scrollbar-thumb]:bg-forth dark:[&::-webkit-scrollbar-track]:bg-darksecoundry 

@@ -60,25 +60,24 @@ const Shop: React.FC = () => {
 	if (error) {
 		return (
 			<div className='text-center mt-10 text-lg font-medium text-red-600'>
-				Failed to load products. Please try again later.
 				<button
 					onClick={() => window.location.reload()}
 					className='mt-4 px-6 py-3 bg-red-500 text-white rounded-lg shadow-lg hover:bg-red-600'>
-					Reload
+					faild products please Reload
 				</button>
 			</div>
 		);
 	}
 
 	return (
-		<div className=' text-gray-800 dark:text-gray-100'>
+		<div className=' text-gray-800 dark:text-gray-100 mt-8'>
 			<div className='container mx-auto'>
 				<div className='flex justify-between items-center mb-6'>
 					<h1 className='text-4xl mx-5  font-extrabold text-darkthird dark:text-darkforth'>
 						Shop
 					</h1>
 				</div>
-				<div className='grid grid-cols-1 p-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-7'>
+				<div className='grid grid-cols-1 p-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3  gap-7'>
 					{displayedProducts.map((product: any, index: number) => (
 						<motion.div
 							key={product.id}

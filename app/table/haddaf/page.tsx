@@ -68,7 +68,7 @@ const HaddafTable: React.FC = () => {
 
 	return (
 		<div>
-			<div className='container mx-auto p-6 my-10'>
+			<div className='container mx-auto p-1 md:p-6 my-10'>
 				<div
 					className='rounded-md h-96 overflow-scroll overflow-x-auto overflow-y-auto
                         [&::-webkit-scrollbar]:w-1
@@ -82,7 +82,7 @@ const HaddafTable: React.FC = () => {
 							<tr className='bg-blue-500 text-white dark:text-blue-100 dark:bg-blue-950'>
 								<th className='py-3 px-4 text-sm sm:text-base'>Player</th>
 								<th className='py-3 px-4 text-sm sm:text-base'>goal </th>
-								<th className='py-3 px-4 text-sm sm:text-base'>Club</th>
+								<th className='py-3 px-4 text-sm sm:text-base '>Club</th>
 								<th className='py-3 px-4 text-sm sm:text-base'>Played</th>
 							</tr>
 						</thead>
@@ -101,10 +101,14 @@ const HaddafTable: React.FC = () => {
 											alt={''}
 											className='w-6 h-6 rounded-full'
 										/>
-										{player.strPlayer || 'Unknown'}
+										<span className=' line-clamp-1'>
+											{player.strPlayer || 'Unknown'}
+										</span>
 									</td>
 									<td className='py-3 px-4'>{player.strNumber || '0'}</td>
-									<td className='py-3 px-4'>{player.strTeam || ''}</td>
+									<td className='py-3 px-4 line-clamp-1'>
+										{player.strTeam || ''}
+									</td>
 									<td className='py-3 px-4'>{player.idSoccerXML || 'none'}</td>
 								</tr>
 							))}

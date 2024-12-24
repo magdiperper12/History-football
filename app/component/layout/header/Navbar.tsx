@@ -6,7 +6,6 @@ import { FaSearch, FaBars } from 'react-icons/fa';
 import image from '../../../assets/image/logo2-remove.png';
 import Image from 'next/image';
 import { GrLanguage } from 'react-icons/gr';
-import profimage from '../../../assets/image/haverts.jpg';
 import { IoIosNotifications } from 'react-icons/io';
 import Notifications from './Notifications';
 import NestedNav from './NestedNav';
@@ -141,7 +140,7 @@ const Navbar = () => {
 
 	return (
 		!login && (
-			<header className='fixed top-0  w-full z-50 shadow-md bg-white transition-colors duration-300 dark:bg-darkprimary dark:shadow-darkprimary shadow-primary pb-1'>
+			<header className='fixed top-0  w-full z-50 shadow-lg bg-white transition-colors duration-300 dark:bg-darkprimary dark:shadow-darkprimary shadow-primary  py-2 '>
 				<div
 					className={`container mx-auto flex justify-between items-center px-1 md:px-6  w-full`}>
 					{/* Logo */}
@@ -157,7 +156,7 @@ const Navbar = () => {
 							<p className='bg-red-700 text-white text-xs w-auto  animate-pulse text-center shadow-red-900 rounded-full px-1'>
 								Under Development
 							</p>
-							<h1 className=' font-bold dark:text-secoundry text-3xl text-darkthird  tracking-wide'>
+							<h1 className='bg-gradient-to-r from-red-700 dark:from-red-600 dark:via-yellow-400 dark:to-darksecoundry via-yellow-600 to-darksecoundry bg-clip-text md:text-2xl font-extrabold text-transparent sm:text-xl'>
 								HISTORIC
 							</h1>
 						</div>
@@ -232,23 +231,6 @@ const Navbar = () => {
 										login
 									</a>
 								</div>
-
-								<button className='block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden'>
-									<span className='sr-only'>Toggle menu</span>
-									<svg
-										xmlns='http://www.w3.org/2000/svg'
-										className='size-5'
-										fill='none'
-										viewBox='0 0 24 24'
-										stroke='currentColor'
-										strokeWidth='2'>
-										<path
-											strokeLinecap='round'
-											strokeLinejoin='round'
-											d='M4 6h16M4 12h16M4 18h16'
-										/>
-									</svg>
-								</button>
 							</div>
 						) : (
 							<div className='flex justify-center items-center gap-5'>

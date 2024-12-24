@@ -83,7 +83,7 @@ const ClubHistory: React.FC<ClubHistoryProps> = ({ leagueId }) => {
 			{/* Error and loading states */}
 			{loading && (
 				<div className='text-center mt-10 text-lg font-medium'>
-					<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+					<div className='grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6'>
 						{Array.from({ length: 4 }).map((_, index) => (
 							<div
 								key={index}
@@ -102,7 +102,7 @@ const ClubHistory: React.FC<ClubHistoryProps> = ({ leagueId }) => {
 
 			{/* Display the clubs if data is available */}
 			<div
-				className='flex justify-between items-center py-10 gap-10 overflow-scroll overflow-x-auto overflow-y-auto
+				className='flex justify-between items-center py-10 gap-8 md:gap-16 px-5  overflow-scroll overflow-x-auto overflow-y-auto
 						[&::-webkit-scrollbar]:w-1
 						[&::-webkit-scrollbar]:h-1
 						[&::-webkit-scrollbar-track]:bg-secondary
@@ -113,7 +113,7 @@ const ClubHistory: React.FC<ClubHistoryProps> = ({ leagueId }) => {
 					<button
 						key={team.intRank}
 						onClick={() => handleClick(team.strTeam)}
-						className={`flex cursor-pointer justify-center mx-10 rounded-full items-center 
+						className={`flex cursor-pointer justify-center  rounded-full items-center 
 							shadow-glow ${
 								index === 0 ? 'bg-yellow-100 dark:bg-yellow-900' : ''
 							} focus:bg-yellow-400 focus:dark:bg-yellow-400 focus:dark:shadow-none

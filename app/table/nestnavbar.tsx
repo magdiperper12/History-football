@@ -56,24 +56,19 @@ export default function NestedNavbar() {
 			<header className='w-full   md:px-10 px-3 py-8 bg-white dark:bg-gray-900'>
 				<div className='container md:mx-auto flex flex-col md:flex-row justify-between items-center'>
 					<div>
-						<label
-							htmlFor='HeadlineAct'
-							className='block text-sm font-medium text-darkthird'>
-							Year
-						</label>
 						<div className='relative'>
 							<button
 								onClick={() => setVisable(!visable)}
 								aria-expanded={visable}
 								aria-haspopup='listbox'
-								className='w-full outline-none text-darksecoundry dark:text-white bg-darkforth dark:bg-darkthird hover:bg-darkthird dark:hover:bg-darksecoundry font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center'>
-								Dropdown button
+								className='w-44 text-center outline-none text-darkthird border-2 border-dashed hover:text-white  dark:text-white border-darkthird dark:border-darkthird hover:bg-darkthird dark:hover:bg-darksecoundry font-medium rounded-lg text-sm px-5 py-2.5  inline-flex items-center'>
+								<span className='m-auto'>Leage Year</span>
 							</button>
 							{visable && (
 								<ul
 									id='dropdown'
 									role='listbox'
-									className='absolute top-10 flex flex-col-reverse bg-primary h-44 overflow-x-hidden overflow-y-auto
+									className='absolute top-11 flex flex-col-reverse bg-primary h-48 overflow-x-hidden overflow-y-auto
   [&::-webkit-scrollbar]:w-1
   [&::-webkit-scrollbar-track]:bg-secoundry
   [&::-webkit-scrollbar-thumb]:bg-forth
@@ -105,14 +100,14 @@ export default function NestedNavbar() {
 							<Link
 								key={link.text}
 								href={link.href}
-								className='text-lg font-bold text-blue-500 dark:text-blue-100 hover:text-[#6c83ff]'>
+								className='text-lg  font-bold text-darkthird dark:text-blue-100 hover:text-[#6c83ff]'>
 								{link.text}
 							</Link>
 						))}
 					</nav>
 
 					{/* Mobile Links */}
-					<nav className='md:hidden py-4 px-3 mt-3 text-xl flex gap-4'>
+					<nav className='md:hidden py-4 px-3 mt-5  text-lg flex gap-7'>
 						{navbarData.links.map((link) => (
 							<Link
 								key={link.text}

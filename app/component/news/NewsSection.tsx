@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import newsItems from './news'; // Import static data
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const NewsSection: React.FC = () => {
 	const [visibleItems, setVisibleItems] = useState(8);
@@ -52,11 +53,10 @@ const NewsSection: React.FC = () => {
 	if (error) {
 		return (
 			<div className='text-center mt-10 text-lg font-medium text-red-600'>
-				Failed to load products. Please try again later.
 				<button
 					onClick={() => window.location.reload()}
-					className='mt-4 px-6 py-3 border-2 border-red-500 text-white rounded-lg  hover:bg-red-600'>
-					Reload
+					className='mt-4 px-6 py-3 border-2 border-red-500 text-red-600 hover:text-white rounded-lg  hover:bg-red-600'>
+					faild News please Reload
 				</button>
 			</div>
 		);
@@ -66,7 +66,7 @@ const NewsSection: React.FC = () => {
 			<h2 className='text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-8'>
 				Latest News
 			</h2>
-			<div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-8'>
+			<div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-8'>
 				{newsItems.slice(0, visibleItems).map((news, index) => (
 					<motion.div
 						className='rounded-t-2xl shadow-lg hover:shadow-sm bg-white relative dark:bg-gray-800 overflow-hidden transition-all hover:scale-105 '

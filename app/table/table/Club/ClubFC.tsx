@@ -135,7 +135,7 @@ const ClubFc: React.FC<ClubFcProps> = ({ teamName }) => {
 	];
 
 	return (
-		<div className='container mx-auto p-8'>
+		<div className='container mx-auto md:p-8'>
 			<div className='flex space-x-4 border-b-2 border-gray-300'>
 				{tabs.map((tab, index) => (
 					<button
@@ -234,7 +234,7 @@ const ClubFc: React.FC<ClubFcProps> = ({ teamName }) => {
 								)}
 							</div>
 						</div>
-						<div className='p-16'>
+						<div className=' '>
 							<div className='grid grid-cols-2 gap-4 md:gap-6'>
 								{galleryImages.map((image, index) =>
 									image.src ? (

@@ -1,92 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { FaEye } from 'react-icons/fa';
-import { MdFileDownload } from 'react-icons/md';
-import { FaUsers } from 'react-icons/fa';
-import { BiCategory } from 'react-icons/bi';
+
+import Link from 'next/link';
+
 const StatsCounter = () => {
-	const stats = [
-		{
-			count: 2700,
-			label: 'Downloads',
-			icon: <MdFileDownload />,
-		},
-		{
-			count: 1300,
-			label: 'Users',
-			icon: (
-				<>
-					<FaUsers />
-				</>
-			),
-		},
-		{
-			count: 78,
-			label: 'watch now',
-			icon: (
-				<>
-					<FaEye />
-				</>
-			),
-		},
-		{
-			count: 46,
-			label: 'Places',
-			icon: <BiCategory />,
-		},
-	];
-
-	const AnimatedCounter = ({ count }: any) => {
-		const [currentCount, setCurrentCount] = useState(0);
-
-		useEffect(() => {
-			let start = 0;
-			const duration = 10000; // Animation duration: 2 seconds
-			const increment = count / (duration / 10);
-
-			const interval = setTimeout(() => {
-				{
-					setInterval(() => {
-						start += increment;
-						if (start >= count) {
-							clearInterval(interval);
-							setCurrentCount(count);
-						} else {
-							setCurrentCount(Math.ceil(start));
-						}
-					}, 10);
-				}
-			}, 8000);
-
-			return () => clearInterval(interval);
-		}, [count]);
-
-		return <>{currentCount}</>;
-	};
-
 	return (
 		<section className='text-darksecoundry dark:text-primary body-font'>
-			<div className='container px-5 py-24 mx-auto max-w-screen-md'>
-				<div className='flex flex-wrap -m-4 text-center'>
-					{stats.map((stat, index) => (
-						<div
-							key={index}
-							className='p-4 md:w-1/4 sm:w-1/2 w-full'>
-							<div className='border-2 border-forth dark:border-icon px-4 py-6 rounded-lg'>
-								<div className='text-icon text-4xl inline-block p-1'>
-									{stat.icon}
-								</div>
-
-								<h2 className='title-font font-medium text-3xl text-icon'>
-									<AnimatedCounter count={stat.count} />
-								</h2>
-								<p className='leading-relaxed'>{stat.label}</p>
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
 			<div className='relative flex  flex-col justify-center py-6 sm:py-12'>
 				<div className='group relative cursor-pointer overflow-hidden bg-primary dark:bg-darksecoundry px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10'>
 					<span className='absolute top-10 z-0 h-20 w-20 rounded-full bg-sky-500 transition-all duration-300 group-hover:scale-[10]'></span>
@@ -114,11 +34,11 @@ const StatsCounter = () => {
 						</div>
 						<div className='pt-5 text-base font-semibold leading-7'>
 							<p>
-								<a
-									href='#'
+								<Link
+									href='/component/About'
 									className='text-sky-500 transition-all duration-300 dark:text-darkthird group-hover:text-white'>
-									Read the docs &rarr;
-								</a>
+									Read About Us &rarr;
+								</Link>
 							</p>
 						</div>
 					</div>

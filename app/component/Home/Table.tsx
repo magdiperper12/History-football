@@ -108,13 +108,13 @@ const ContainerTable: React.FC = () => {
 	return (
 		<div>
 			<div className='container mx-auto p-6 my-10'>
-				<div className='flex justify-between items-center gap-3 mb-10'>
-					<span className='text-darkthird text-xl flex gap-3'>
+				<div className='flex justify-between items-center md:gap-3 mb-10'>
+					<span className='text-darkthird text-lg md:text-xl flex gap-3'>
 						<FaTrophy className='text-yellow-500 dark:text-yellow-400 text-3xl' />
 						{url.includes('4332')
-							? 'Serie A Table'
+							? 'Serie A '
 							: url.includes('4331')
-							? 'Bundesliga Table'
+							? 'Bundesliga '
 							: url.includes('4334')
 							? 'League 1'
 							: url.includes('4335')
@@ -128,7 +128,7 @@ const ContainerTable: React.FC = () => {
 					<div className='relative'>
 						<button
 							onClick={handleButtonClick}
-							className='flex px-5 my-5 w-44 py-2 relative justify-center rounded-xl shadow-md dark:shadow-inner-glow hover:shadow-sm cursor-pointer duration-150 text-xl text-darkthird dark:text-darkforth gap-2 items-center'>
+							className='flex px-5 my-5 w-36 md:w-44 py-2 relative justify-center rounded-xl shadow-md dark:shadow-inner-glow hover:shadow-sm cursor-pointer duration-150 text-xl text-darkthird dark:text-darkforth gap-2 items-center'>
 							League
 							<svg
 								className='w-2.5 h-2.5 ms-3'
@@ -148,7 +148,7 @@ const ContainerTable: React.FC = () => {
 
 						<div
 							id='dropdown'
-							className={`z-10 bg-primary w-44 text-center dark:bg-darkprimary divide-y absolute top-16 divide-gray-100 rounded-lg shadow ${
+							className={`z-10 bg-primary -start-4 md:start-0 w-44 text-center dark:bg-darkprimary divide-y absolute top-16 divide-gray-100 rounded-lg shadow ${
 								dropdownVisible ? 'flex' : 'hidden'
 							}`}>
 							<ul
@@ -310,14 +310,30 @@ const ContainerTable: React.FC = () => {
 						<table className='min-w-full bg-white dark:bg-gray-800 text-left rtl:text-right border-collapse'>
 							<thead>
 								<tr className='bg-blue-500 text-white dark:text-blue-100 dark:bg-blue-950'>
-									<th className='py-3 px-4 text-sm sm:text-base'>Club</th>
-									<th className='py-3 px-4 text-sm sm:text-base'>Played</th>
-									<th className='py-3 px-4 text-sm sm:text-base'>W</th>
-									<th className='py-3 px-4 text-sm sm:text-base'>L</th>
-									<th className='py-3 px-4 text-sm sm:text-base'>D</th>
-									<th className='py-3 px-4 text-sm sm:text-base'>GF : GA</th>
-									<th className='py-3 px-4 text-sm sm:text-base'>+ / -</th>
-									<th className='py-3 px-4 text-sm sm:text-base'>Points</th>
+									<th className='py-3 px-4 text-sm sm:text-xs text-nowrap'>
+										Club
+									</th>
+									<th className='py-3 px-4 text-sm sm:text-xs text-nowrap'>
+										Played
+									</th>
+									<th className='py-3 px-4 text-sm sm:text-xs text-nowrap'>
+										W
+									</th>
+									<th className='py-3 px-4 text-sm sm:text-xs text-nowrap'>
+										L
+									</th>
+									<th className='py-3 px-4 text-sm sm:text-xs text-nowrap'>
+										D
+									</th>
+									<th className='py-3 px-4 text-sm sm:text-xs text-nowrap'>
+										GF : GA
+									</th>
+									<th className='py-3 px-4 text-sm sm:text-xs text-nowrap'>
+										+ / -
+									</th>
+									<th className='py-3 px-4 text-sm sm:text-xs text-nowrap'>
+										Points
+									</th>
 								</tr>
 							</thead>
 							<tbody className=''>
@@ -328,8 +344,8 @@ const ContainerTable: React.FC = () => {
 											club.intRank % 2 === 0
 												? 'bg-gray-100 dark:bg-darksecoundry dark:text-blue-100'
 												: 'dark:bg-[#044875] dark:text-blue-50'
-										} hover:bg-blue-200 dark:hover:bg-blue-800`}>
-										<td className='py-3 px-4'>
+										} hover:bg-blue-200 dark:hover:bg-blue-800 `}>
+										<td className='py-3 md:px-4 px-4 text-nowrap'>
 											<img
 												src={club.strBadge}
 												alt={club.strTeam}
@@ -338,15 +354,25 @@ const ContainerTable: React.FC = () => {
 											{club.strTeam}
 										</td>
 
-										<td className='py-3 px-4'>{club.intPlayed}</td>
-										<td className='py-3 px-4'>{club.intWin}</td>
-										<td className='py-3 px-4'>{club.intLoss}</td>
-										<td className='py-3 px-4'>{club.intDraw}</td>
-										<td className='py-3 px-4'>
+										<td className='py-3 md:px-4 px-4 text-nowrap'>
+											{club.intPlayed}
+										</td>
+										<td className='py-3 md:px-4 px-4 text-nowrap'>
+											{club.intWin}
+										</td>
+										<td className='py-3 md:px-4 px-4 text-nowrap'>
+											{club.intLoss}
+										</td>
+										<td className='py-3 md:px-4 px-4 text-nowrap'>
+											{club.intDraw}
+										</td>
+										<td className='py-3 md:px-4 px-4 text-nowrap'>
 											{club.intGoalsFor} : {club.intGoalsAgainst}
 										</td>
-										<td className='py-3 px-4'>{club.intGoalDifference}</td>
-										<td className='py-3 px-4 font-extrabold'>
+										<td className='py-3 px-4 text-nowrap'>
+											{club.intGoalDifference}
+										</td>
+										<td className='py-3 md:px-5 px-4 font-extrabold text-nowrap'>
 											{club.intPoints}
 										</td>
 									</tr>

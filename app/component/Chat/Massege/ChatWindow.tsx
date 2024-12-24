@@ -30,7 +30,7 @@ const ChatWindow: FC<ChatWindowProps> = ({
 	onSendMessage,
 }) => {
 	return (
-		<div className='flex-1 w-3/4 relative bg-primary dark:bg-darkprimary rounded-lg shadow-lg p-4'>
+		<div className='h-[590px]  relative bg-white dark:bg-darkprimary rounded-lg shadow-lg p-4'>
 			{selectedUser ? (
 				<>
 					<div className='flex items-center mb-5'>

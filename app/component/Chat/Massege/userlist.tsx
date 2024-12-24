@@ -21,7 +21,7 @@ const UserList: FC<UserListProps> = ({
 	onUserSelect,
 }) => {
 	return (
-		<div className='w-1/4 bg-primary dark:bg-darkprimary rounded-lg shadow-lg p-4 transition-all duration-300'>
+		<div className=' bg-white dark:bg-darkprimary rounded-lg shadow-lg p-4 transition-all duration-300'>
 			{/* Search Input */}
 			<div className='relative mb-4'>
 				<FaSearch
