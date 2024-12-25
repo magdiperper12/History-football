@@ -16,7 +16,7 @@ const SidebarData: SidebarItem[] = [
 		icon: (
 			<div>
 				<span className='bg-red-600 w-5 h-5 flex justify-center items-center text-white text-xs rounded-full absolute top-0 end-0'>
-					8
+					9
 				</span>
 				<IoChatbubbleEllipsesSharp className='text-2xl dark:text-indigo-600  text-indigo-600' />
 			</div>
