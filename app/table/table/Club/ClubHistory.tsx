@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaTrophy } from 'react-icons/fa';
 import ClubFc from './ClubFC';
-import Shop from '../../../../component/shop/Shop';
 
 interface Datas {
 	strSeason: string;
