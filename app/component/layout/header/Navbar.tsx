@@ -9,7 +9,6 @@ import { GrLanguage } from 'react-icons/gr';
 import { IoIosNotifications } from 'react-icons/io';
 import Notifications from './Notifications';
 import NestedNav from './NestedNav';
-import { UserButton, useUser } from '@clerk/nextjs';
 interface NavbarLink {
 	text: string;
 	href: string;
@@ -132,7 +131,6 @@ const Navbar = () => {
 		activeToggle === id && <div>{content}</div>;
 
 	const [login, setLogin] = useState(false);
-	const { user } = useUser();
 	useEffect(() => {
 		const url = window.location.href.toString();
 		setLogin(url.includes('sign-in') || url.includes('sign-up'));
@@ -222,22 +220,15 @@ const Navbar = () => {
 									renderToggleMenu(id, <Notifications />)}
 							</div>
 						))}
-						{!user ? (
-							<div className='flex items-center gap-4'>
-								<div className='sm:flex sm:gap-4'>
-									<a
-										className='block rounded-md text-darkthird border-2 border-darkthird dark:text-darkforth dark:border-darkforth px-5 py-1.5 text-sm font-medium  transition hover:bg-darkthird hover:text-white dark:hover:bg-darkforth dark:hover:text-darksecoundry '
-										href='/sign-up'>
-										login
-									</a>
-								</div>
+						<div className='flex items-center gap-4'>
+							<div className='sm:flex sm:gap-4'>
+								<a
+									className='block rounded-md text-darkthird border-2 border-darkthird dark:text-darkforth dark:border-darkforth px-5 py-1.5 text-sm font-medium  transition hover:bg-darkthird hover:text-white dark:hover:bg-darkforth dark:hover:text-darksecoundry '
+									href='/sign-up'>
+									login
+								</a>
 							</div>
-						) : (
-							<div className='flex justify-center items-center gap-5'>
-								<UserButton />
-							</div>
-						)}
-						{/* Hamburger Menu for Mobile */}
+						</div>
 					</div>
 				</div>
 

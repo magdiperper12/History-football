@@ -7,7 +7,6 @@ import AImessage from './component/Chat/AI-message/AI-massage';
 
 import { Roboto } from 'next/font/google';
 import Navbar from './component/layout/header/Navbar';
-import { ClerkProvider } from '@clerk/nextjs';
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Roboto({ subsets: ['latin'], weight: '700' });
@@ -23,35 +22,33 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<ClerkProvider>
-			<html lang='en'>
-				<body
-					className={`bg-gradient-to-r ${inter.className} h-screen overflow-hidden from-secoundry via-white to-secoundry dark:from-darksecoundry dark:via-black dark:to-darksecoundry  `}>
-					<Navbar />
-					<div className=' m-auto container '>
-						<div className='flex min-h-screen relative pt-[83px] flex-col lg:flex-row  mx-auto  text-darksecoundry dark:text-white  w-full'>
-							<LeftSidebar />
+		<html lang='en'>
+			<body
+				className={`bg-gradient-to-r ${inter.className} h-screen overflow-hidden from-secoundry via-white to-secoundry dark:from-darksecoundry dark:via-black dark:to-darksecoundry  `}>
+				<Navbar />
+				<div className=' m-auto container '>
+					<div className='flex min-h-screen relative pt-[83px] flex-col lg:flex-row  mx-auto  text-darksecoundry dark:text-white  w-full'>
+						<LeftSidebar />
 
-							<main
-								className='flex-grow max-w-screen-lg md:pt-20 md:-mt-20 h-screen overflow-scroll overflow-x-hidden overflow-y-auto
+						<main
+							className='flex-grow max-w-screen-lg md:pt-20 md:-mt-20 h-screen overflow-scroll overflow-x-hidden overflow-y-auto
   [&::-webkit-scrollbar]:w-1
   [&::-webkit-scrollbar-track]:bg-secoundry
   [&::-webkit-scrollbar-thumb]:bg-forth
   dark:[&::-webkit-scrollbar-track]:bg-darksecoundry
   dark:[&::-webkit-scrollbar-thumb]:bg-darkthird'>
-								<div className='max-w-screen-lg'>
-									{children}
+							<div className='max-w-screen-lg'>
+								{children}
 
-									<Footer />
-								</div>
-							</main>
+								<Footer />
+							</div>
+						</main>
 
-							<RightSidebar />
-						</div>
-						<AImessage />
+						<RightSidebar />
 					</div>
-				</body>
-			</html>
-		</ClerkProvider>
+					<AImessage />
+				</div>
+			</body>
+		</html>
 	);
 }

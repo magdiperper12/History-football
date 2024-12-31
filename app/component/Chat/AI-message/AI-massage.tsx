@@ -10,7 +10,6 @@ import { FaRobot } from 'react-icons/fa';
 import dynamic from 'next/dynamic';
 import historicLogo from '../../../assets/image/logo2-remove.png';
 import Image from 'next/image';
-import { useUser } from '@clerk/nextjs';
 
 const EmojiPicker = dynamic(() => import('emoji-picker-react'), { ssr: false });
 

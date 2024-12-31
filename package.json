@@ -9,7 +9,6 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@clerk/nextjs": "^6.9.2",
 		"axios": "^1.7.9",
 		"country-flag-icons": "^1.5.13",
 		"date-fns": "^4.1.0",
